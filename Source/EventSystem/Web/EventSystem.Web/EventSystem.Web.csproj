@@ -174,7 +174,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -245,6 +244,20 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\EventSystem.Data\EventSystem.Data.csproj">
+      <Project>{2a86fea0-000e-4c4c-b539-67f8cde6a22e}</Project>
+      <Name>EventSystem.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\EventSystem.Models\EventSystem.Models.csproj">
+      <Project>{525880e0-bf2b-48ab-993e-ab99cbee8aa3}</Project>
+      <Name>EventSystem.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Services\EventSystem.Services\EventSystem.Services.csproj">
+      <Project>{90ce85a0-08af-46cd-9fad-52a0834e6627}</Project>
+      <Name>EventSystem.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

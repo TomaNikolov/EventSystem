@@ -1,12 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace EventSystem.Data
+﻿namespace EventSystem.Data
 {
-    class EventSystemDbContext
+    using Microsoft.AspNet.Identity.EntityFramework;
+    using Models;
+
+    public class EventSystemDbContext : IdentityDbContext<User>
     {
+        public EventSystemDbContext()
+            : base("EventSustemDb")
+        {
+        }
+
+        public static EventSystemDbContext Create()
+        {
+            return new EventSystemDbContext();
+        }
     }
 }
