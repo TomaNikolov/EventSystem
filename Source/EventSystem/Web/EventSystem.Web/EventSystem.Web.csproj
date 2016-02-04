@@ -168,9 +168,6 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -258,6 +255,10 @@
     <ProjectReference Include="..\..\Services\EventSystem.Services\EventSystem.Services.csproj">
       <Project>{90ce85a0-08af-46cd-9fad-52a0834e6627}</Project>
       <Name>EventSystem.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EventSystem.Web.Controllers\EventSystem.Web.Controllers.csproj">
+      <Project>{e58bd594-7f4a-4e9c-8e0f-6248a3a102b6}</Project>
+      <Name>EventSystem.Web.Controllers</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

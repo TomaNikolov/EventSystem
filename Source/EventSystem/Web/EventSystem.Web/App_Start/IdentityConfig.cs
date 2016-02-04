@@ -9,9 +9,9 @@
     using Microsoft.Owin;
     using Microsoft.Owin.Security;
 
-    using EventSystem.Web.Models;
     using EventSystem.Models;
     using Data;
+
     public class EmailService : IIdentityMessageService
     {
         public Task SendAsync(IdentityMessage message)
