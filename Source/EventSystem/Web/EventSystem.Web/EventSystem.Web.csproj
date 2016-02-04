@@ -171,8 +171,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -259,6 +257,10 @@
     <ProjectReference Include="..\EventSystem.Web.Controllers\EventSystem.Web.Controllers.csproj">
       <Project>{e58bd594-7f4a-4e9c-8e0f-6248a3a102b6}</Project>
       <Name>EventSystem.Web.Controllers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EventSystem.Web.Models\EventSystem.Web.Models.csproj">
+      <Project>{e0b512c4-10df-4431-b0f7-a48f91446ac3}</Project>
+      <Name>EventSystem.Web.Models</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
