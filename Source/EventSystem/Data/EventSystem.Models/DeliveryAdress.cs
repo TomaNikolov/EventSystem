@@ -2,5 +2,6 @@
 {
     public class DeliveryAdress
     {
+        public int Id { get; set; }
     }
 }
