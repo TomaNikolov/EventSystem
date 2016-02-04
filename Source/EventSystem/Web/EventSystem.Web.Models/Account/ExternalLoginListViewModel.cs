@@ -1,4 +1,4 @@
-﻿namespace EventSystem.Web.Models
+﻿namespace EventSystem.Web.Models.Account
 {
     public class ExternalLoginListViewModel
     {

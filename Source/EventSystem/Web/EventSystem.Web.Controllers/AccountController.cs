@@ -19,7 +19,7 @@ namespace EventSystem.Web.Controllers
     using Microsoft.Owin.Security;
     using Microsoft.AspNet.Identity.Owin;
     using System.Web;
-    using Models;
+    using Models.Account;
 
     [Authorize]
     public class AccountController : Controller
