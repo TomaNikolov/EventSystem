@@ -44,6 +44,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.2.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\AutoMapper.4.2.0\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -162,6 +166,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\AutoMapperConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\DbConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -310,6 +315,10 @@
     <ProjectReference Include="..\..\Services\EventSystem.Services\EventSystem.Services.csproj">
       <Project>{90ce85a0-08af-46cd-9fad-52a0834e6627}</Project>
       <Name>EventSystem.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EventSyslem.Web.Infrastructure\EventSystem.Web.Infrastructure.csproj">
+      <Project>{0603837d-c2cf-4f97-8981-c5e2e0a38836}</Project>
+      <Name>EventSystem.Web.Infrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\EventSystem.Web.Controllers\EventSystem.Web.Controllers.csproj">
       <Project>{e58bd594-7f4a-4e9c-8e0f-6248a3a102b6}</Project>
