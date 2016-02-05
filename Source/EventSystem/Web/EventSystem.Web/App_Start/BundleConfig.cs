@@ -34,7 +34,7 @@
 
         private static void RegisterStyleBundels(BundleCollection bundles)
         {
-            bundles.Add(new StyleBundle("~/Content/theme").Include(
+            bundles.Add(new StyleBundle("~/styleBundles/theme").Include(
                   "~/Content/Theme/css/bootstrap.min.css",
                     "~/Content/Theme/css/font.awsome.min.css",
                      "~/Content/Theme/css/main.css",
@@ -43,7 +43,7 @@
                    
                      "~/Content/Theme/css/responsive.css"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
+            bundles.Add(new StyleBundle("~/styleBundles/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
         }
