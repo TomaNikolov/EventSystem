@@ -3,5 +3,6 @@
     public class Assemblies
     {
         public const string ViewModels = "EventSystem.Web.Models";
+        public const string Infrastructure = "EventSystem.Web.Infrastructure";
     }
 }

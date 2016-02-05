@@ -40,7 +40,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\IHomeService.cs" />
+    <Compile Include="Contracts\IService.cs" />
+    <Compile Include="HomeService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\EventSystem.Data\EventSystem.Data.csproj">
+      <Project>{2a86fea0-000e-4c4c-b539-67f8cde6a22e}</Project>
+      <Name>EventSystem.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\EventSystem.Models\EventSystem.Models.csproj">
+      <Project>{525880e0-bf2b-48ab-993e-ab99cbee8aa3}</Project>
+      <Name>EventSystem.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,11 +1,12 @@
 ﻿namespace EventSystem.Data
 {
+    using System;
     using System.Data.Entity;
     using Microsoft.AspNet.Identity.EntityFramework;
 
     using Models;
 
-    public class EventSystemDbContext : IdentityDbContext<User>
+    public class EventSystemDbContext : IdentityDbContext<User>, IEventSystemDbContext
     {
         public EventSystemDbContext()
             : base("EventSustemDb")
@@ -41,6 +42,11 @@
         public static EventSystemDbContext Create()
         {
             return new EventSystemDbContext();
+        }
+
+        public new IDbSet<T> Set<T>() where T : class
+        {
+            return base.Set<T>();
         }
     }
 }
