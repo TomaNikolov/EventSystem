@@ -10,7 +10,7 @@
             RegisterScriptBundels(bundles);
             RegisterStyleBundels(bundles);
         }
-               
+
         private static void RegisterScriptBundels(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
@@ -34,14 +34,13 @@
 
         private static void RegisterStyleBundels(BundleCollection bundles)
         {
-            bundles.Add(new StyleBundle("~/styleBundles/theme").Include(
-                  "~/Content/Theme/css/bootstrap.min.css",
-                    "~/Content/Theme/css/font.awsome.min.css",
-                     "~/Content/Theme/css/main.css",
-                     "~/Content/Theme/css/animate.css",
-                     "~/Content/Theme/css/animate.css",
-                   
-                     "~/Content/Theme/css/responsive.css"));
+            bundles.Add(new StyleBundle("~/styleBundles/theme")
+                .Include("~/Content/Theme/css/bootstrap.min.css")
+                .Include("~/Content/Theme/css/font-awesome.min.css", new CssRewriteUrlTransform())
+                .Include("~/Content/Theme/css/main.css")
+                .Include("~/Content/Theme/css/animate.css")
+                .Include("~/Content/Theme/css/animate.css")
+                .Include("~/Content/Theme/css/responsive.css"));
 
             bundles.Add(new StyleBundle("~/styleBundles/css").Include(
                       "~/Content/bootstrap.css",
