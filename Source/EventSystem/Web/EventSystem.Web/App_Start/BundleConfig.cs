@@ -29,7 +29,13 @@
                       "~/Scripts/respond.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/theme").Include(
-                    "~/Content/Theme/js/*.js"));
+                    "~/Content/Theme/js/gmaps.js",
+                     "~/Content/Theme/js/smoothscroll.js",
+                      "~/Content/Theme/js/coundown-timer.js",
+                       "~/Content/Theme/js/parallax.js",
+                       "~/Content/Theme/js/jquery.scrollTo.js",
+                       "~/Content/Theme/js/jquery.nav.js",
+                       "~/Content/Theme/js/main.js"));
         }
 
         private static void RegisterStyleBundels(BundleCollection bundles)
