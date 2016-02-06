@@ -6,5 +6,7 @@
     public interface IHomeService : IService
     {
         IQueryable<Event> GetAllEvents();
+
+        IQueryable<Event> GetTop(int count);
     }
 }

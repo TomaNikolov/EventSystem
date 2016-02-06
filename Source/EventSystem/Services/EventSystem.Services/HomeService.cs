@@ -20,5 +20,12 @@
         {
             return this.events.All();
         }
+
+        public IQueryable<Event> GetTop(int count)
+        {
+            return this.events.All()
+                 .OrderBy(e => e.Id)
+                 .Take(count);
+        }
     }
 }
