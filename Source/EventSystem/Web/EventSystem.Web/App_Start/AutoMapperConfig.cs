@@ -1,4 +1,4 @@
-﻿namespace EventSystem.Web.App_Start
+﻿namespace EventSystem.Web
 {
     using System;
     using System.Collections.Generic;

@@ -3,7 +3,7 @@
     using EventSystem.Models;
     using System.Linq;
 
-    public interface IHomeService
+    public interface IHomeService : IService
     {
         IQueryable<Event> GetAllEvents();
     }
