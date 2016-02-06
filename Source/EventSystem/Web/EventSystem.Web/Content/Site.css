@@ -1,10 +1,8 @@
 ﻿body {
-    
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-   
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -19,4 +17,25 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+#event-info {
+  background-color: #ecedef;
+  background-image: url("/Content/Theme/images/footer-bg.jpg");
+  background-position: center bottom;
+  background-size: cover;
+  background-repeat:no-repeat;
+  position: relative;
+  padding: 95px 0 90px;
+  overflow: hidden;
+}
+
+#event-info .item img {
+    display: inline-block;
+    width: 300px;
+    height:auto;
+    border-radius: 5px;
+    background-color: #c5c8ce;
+    padding: 2px;
+    margin-bottom: 30px;
 }

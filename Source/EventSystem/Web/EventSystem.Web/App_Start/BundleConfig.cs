@@ -48,9 +48,8 @@
                 .Include("~/Content/Theme/css/animate.css")
                 .Include("~/Content/Theme/css/responsive.css"));
 
-            bundles.Add(new StyleBundle("~/styleBundles/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+            bundles.Add(new StyleBundle("~/styleBundles/css")
+                .Include( "~/Content/Site.css"));
         }
     }
 }
