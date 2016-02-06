@@ -9,7 +9,7 @@
     public class EventSystemDbContext : IdentityDbContext<User>, IEventSystemDbContext
     {
         public EventSystemDbContext()
-            : base("EventSustemDb")
+            : base("EventSystemDb")
         {
         }
 

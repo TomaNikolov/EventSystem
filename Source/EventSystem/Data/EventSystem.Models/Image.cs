@@ -7,10 +7,17 @@
         [Key]
         public int Id { get; set; }
 
-        [Required]
-        [MinLength(2)]
-        [MaxLength(100)]
+        //[Required]
+        //[MaxLength(100)]
         public string Name { get; set; }
+
+        [Required]
+        [MaxLength(100)]
+        public string Path { get; set; }
+
+        [Required]
+        [MaxLength(100)]
+        public string ThumbnailPath { get; set; }
 
         public int EventId { get; set; }
 

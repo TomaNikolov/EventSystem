@@ -22,12 +22,12 @@
 
         [Required]
         [MinLength(10)]
-        [MaxLength(200)]
+        [MaxLength(500)]
         public string Title { get; set; }
 
         [Required]
         [MinLength(10)]
-        [MaxLength(200)]
+        [MaxLength(2000)]
         public string Description { get; set; }
 
         public DateTime EventStart { get; set; }

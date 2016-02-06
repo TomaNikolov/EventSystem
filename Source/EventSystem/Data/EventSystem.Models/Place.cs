@@ -1,8 +1,15 @@
 ﻿namespace EventSystem.Models
 {
+    using System.ComponentModel.DataAnnotations;
+
     public class Place
     {
+        [Key]
         public int Id { get; set; }
+
+        [Required]
+        [MaxLength(400)]
+        public string Venue { get; set; }
 
         public int CountryId { get; set; }
 
