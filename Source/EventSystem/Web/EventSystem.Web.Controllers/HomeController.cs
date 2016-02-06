@@ -6,7 +6,10 @@
     using System.Linq;
     using System.Web;
     using System.Web.Mvc;
-
+    using AutoMapper;
+    using AutoMapper.QueryableExtensions;
+    using Models.Events;
+    using Models.Home;
     public class HomeController : Controller
     {
         private IHomeService homeService;
@@ -18,9 +21,13 @@
 
         public ActionResult Index()
         {
-            var result = this.homeService.GetAllEvents().ToList().Count;
-            this.ViewBag.number = result;
-            return View();
+            var homeViewModel = new HomeViewModel();
+
+            homeViewModel.TopEvents = this.homeService.GetTop(5)
+               .ProjectTo<EventDetailsViewModel>()
+               .ToList();
+
+            return View(homeViewModel);
         }
 
         public ActionResult About()
