@@ -34,7 +34,6 @@
                       "~/Content/Theme/js/coundown-timer.js",
                        "~/Content/Theme/js/parallax.js",
                        "~/Content/Theme/js/jquery.scrollTo.js",
-                       "~/Content/Theme/js/jquery.nav.js",
                        "~/Content/Theme/js/main.js"));
         }
 

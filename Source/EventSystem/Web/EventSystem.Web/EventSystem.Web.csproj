@@ -252,7 +252,6 @@
     <Content Include="Content\Theme\js\gmaps.js" />
     <Content Include="Content\Theme\js\html5shiv.js" />
     <Content Include="Content\Theme\js\jquery.js" />
-    <Content Include="Content\Theme\js\jquery.nav.js" />
     <Content Include="Content\Theme\js\jquery.parallax.js" />
     <Content Include="Content\Theme\js\jquery.scrollTo.js" />
     <Content Include="Content\Theme\js\main.js" />
