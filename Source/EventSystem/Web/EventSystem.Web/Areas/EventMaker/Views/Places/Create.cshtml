@@ -3,8 +3,26 @@
     ViewBag.Title = "Create";
 }
 
-@using(Html.BeginForm("Create", Places))
+@using (Html.BeginForm("Create", "Places"))
 {
-    @Html.LabelFor()
+    <div class="row">
+        <div class="col-md-2">
+            @Html.LabelFor(x => x.Cities)
+        </div>
+        <div class="col-md-6">
+            @Html.DropDownList("Cities", Model.Cities, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2">
+            @Html.LabelFor(x => x.Countries)
+        </div>
+        <div class="col-md-6">
+            @Html.DropDownList("Countries", Model.Countries, new { @class="form-control"})
+        </div>
+    </div>
+
+        <input type="submit" class="btn btn-primary" value="Create" />
 }
 

@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace EventSystem.Services.Contracts
+﻿namespace EventSystem.Services.Contracts
 {
-    class ICitiesService
+    using Models;
+    using System.Linq;
+
+    public interface ICitiesService
     {
+        IQueryable<City> GetAll();
     }
 }
