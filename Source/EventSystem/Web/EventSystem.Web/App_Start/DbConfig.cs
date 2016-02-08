@@ -10,7 +10,7 @@
         public static void Initialize()
         {
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<EventSystemDbContext, Configuration>());
-
+            
             EventSystemDbContext.Create().Database.Initialize(true);
         }
     }

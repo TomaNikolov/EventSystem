@@ -15,7 +15,7 @@
             this.eventService = eventService;
         }
 
-        public ActionResult Index (int id)
+        public ActionResult Details(int id)
         {
             var events = this.eventService.GetById(id);
 #pragma warning disable CS0618 // Type or member is obsolete

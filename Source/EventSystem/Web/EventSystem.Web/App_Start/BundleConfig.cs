@@ -29,7 +29,12 @@
                       "~/Scripts/respond.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/theme").Include(
-                    "~/Content/Theme/js/*.js"));
+                    "~/Content/Theme/js/gmaps.js",
+                     "~/Content/Theme/js/smoothscroll.js",
+                      "~/Content/Theme/js/coundown-timer.js",
+                       "~/Content/Theme/js/parallax.js",
+                       "~/Content/Theme/js/jquery.scrollTo.js",
+                       "~/Content/Theme/js/main.js"));
         }
 
         private static void RegisterStyleBundels(BundleCollection bundles)
@@ -42,9 +47,8 @@
                 .Include("~/Content/Theme/css/animate.css")
                 .Include("~/Content/Theme/css/responsive.css"));
 
-            bundles.Add(new StyleBundle("~/styleBundles/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+            bundles.Add(new StyleBundle("~/styleBundles/css")
+                .Include( "~/Content/Site.css"));
         }
     }
 }
