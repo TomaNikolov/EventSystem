@@ -23,7 +23,7 @@
             clickable: false
         });
 
-        var image = 'Content/Theme/images/map-icon.png';
+        var image = '/Content/Theme/images/map-icon.png';
         map.addMarker({
             lat: lat,
             lng: long,
