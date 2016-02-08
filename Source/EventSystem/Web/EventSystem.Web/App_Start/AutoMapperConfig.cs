@@ -8,7 +8,7 @@
     using AutoMapper;
     using Infrastructure.Constants;
     using Infrastructure.Mappings;
-
+    using Infrastructure;
     public class AutoMapperConfig
     {
         public static void RegisterMappings()
@@ -16,14 +16,21 @@
             var types = Assembly.GetExecutingAssembly().GetExportedTypes();
             var viewModelTypes = Assembly.Load(Assemblies.ViewModels).GetExportedTypes();
 
-            LoadStandardMappings(types);
-            LoadStandardMappings(viewModelTypes);
 
-            LoadCustomMappings(types);
-            LoadCustomMappings(viewModelTypes);
+
+            var config = new MapperConfiguration(cfg =>
+            {
+                LoadStandardMappings(cfg, types);
+                LoadStandardMappings(cfg, viewModelTypes);
+
+                LoadCustomMappings(cfg, types);
+                LoadCustomMappings(cfg, viewModelTypes);
+            });
+
+            MapperFactory.InititializeMapper(config);
         }
 
-        private static void LoadStandardMappings(IEnumerable<Type> types)
+        private static void LoadStandardMappings(IMapperConfiguration config, IEnumerable<Type> types)
         {
             var maps = (from t in types
                         from i in t.GetInterfaces()
@@ -38,15 +45,13 @@
 
             foreach (var map in maps)
             {
-#pragma warning disable CS0618 // Type or member is obsolete
-                Mapper.CreateMap(map.Source, map.Destination);
+                config.CreateMap(map.Source, map.Destination);
 
-                Mapper.CreateMap(map.Destination, map.Source);
-#pragma warning restore CS0618 // Type or member is obsolete
+                config.CreateMap(map.Destination, map.Source);
             }
         }
 
-        private static void LoadCustomMappings(IEnumerable<Type> types)
+        private static void LoadCustomMappings(IMapperConfiguration config, IEnumerable<Type> types)
         {
             var maps = (from t in types
                         from i in t.GetInterfaces()
@@ -57,9 +62,7 @@
 
             foreach (var map in maps)
             {
-#pragma warning disable CS0618 // Type or member is obsolete
-                map.CreateMappings(Mapper.Configuration);
-#pragma warning restore CS0618 // Type or member is obsolete
+                map.CreateMappings(config);
             }
         }
     }

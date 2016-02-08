@@ -2,6 +2,7 @@
 {
     using AutoMapper;
     using EventSystem.Models;
+    using Infrastructure;
     using Models.Events;
     using Services.Contracts;
     using System.Web.Mvc;
@@ -18,9 +19,11 @@
         public ActionResult Details(int id)
         {
             var events = this.eventService.GetById(id);
-#pragma warning disable CS0618 // Type or member is obsolete
-            var viewModel = Mapper.Map<Event, EventDetailsViewModel>(events);
-#pragma warning restore CS0618 // Type or member is obsolete
+            var viewModel = MapperFactory
+                .GetConfig()
+                .CreateMapper()
+                .Map<Event, EventDetailsViewModel>(events);
+
             return View(viewModel);
         }
     }

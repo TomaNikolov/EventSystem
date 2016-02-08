@@ -32,9 +32,9 @@
 
         public ICollection<Comment> Comments { get; set; }
 
-        public void CreateMappings(IConfiguration configuration)
+        public void CreateMappings(IMapperConfiguration configuration)
         {
-            configuration.CreateMap<Event, EventDetailsViewModel>("testProfile")
+            configuration.CreateMap<Event, EventDetailsViewModel>()
                 .ForMember(d => d.UserName, opt => opt.MapFrom(s => s.User.UserName))
                  .ForMember(d => d.CategoryName, opt => opt.MapFrom(s => s.Category.Name))
                  .ReverseMap();

@@ -86,6 +86,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constants\Assemblies.cs" />
+    <Compile Include="MapperFactory.cs" />
     <Compile Include="Mappings\IHaveCustomMappings.cs" />
     <Compile Include="Mappings\IMapFrom.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
