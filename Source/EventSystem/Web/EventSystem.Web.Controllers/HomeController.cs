@@ -1,15 +1,12 @@
 ﻿namespace EventSystem.Web.Controllers
 {
-    using EventSystem.Services.Contracts;
-    using System;
-    using System.Collections.Generic;
     using System.Linq;
-    using System.Web;
     using System.Web.Mvc;
-    using AutoMapper;
-    using AutoMapper.QueryableExtensions;
     using Models.Events;
     using Models.Home;
+    using Services.Contracts;
+    using Infrastructure;
+    using AutoMapper.QueryableExtensions;
     public class HomeController : Controller
     {
         private IHomeService homeService;
@@ -22,9 +19,9 @@
         public ActionResult Index()
         {
             var homeViewModel = new HomeViewModel();
-
+            var bulder = MapperFactory.GetConfig();
             homeViewModel.TopEvents = this.homeService.GetTop(5)
-               .ProjectTo<EventDetailsViewModel>()
+               .ProjectTo<EventDetailsViewModel>(bulder)
                .ToList();
 
             return View(homeViewModel);
