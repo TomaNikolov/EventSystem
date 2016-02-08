@@ -140,6 +140,8 @@
     <Compile Include="Manage\ManageLoginsViewModel.cs" />
     <Compile Include="Manage\SetPasswordViewModel.cs" />
     <Compile Include="Manage\VerifyPhoneNumberViewModel.cs" />
+    <Compile Include="Places\GetCreatePlaceViewModel.cs" />
+    <Compile Include="Places\PostCreatePlaceViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

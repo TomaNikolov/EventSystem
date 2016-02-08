@@ -27,7 +27,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSystem.Web.Models", "W
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSystem.Web.Infrastructure", "Web\EventSyslem.Web.Infrastructure\EventSystem.Web.Infrastructure.csproj", "{0603837D-C2CF-4F97-8981-C5E2E0A38836}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSystem.Web.Areas.EventMaker.Controllers", "EventSystem.Web.Areas.EventMaker.Controllers\EventSystem.Web.Areas.EventMaker.Controllers.csproj", "{75047E96-BFF8-4FE0-9CC9-E68A47661EE6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSystem.Web.Areas.EventMaker.Controllers", "Web\EventSystem.Web.Areas.EventMaker.Controllers\EventSystem.Web.Areas.EventMaker.Controllers.csproj", "{75047E96-BFF8-4FE0-9CC9-E68A47661EE6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
