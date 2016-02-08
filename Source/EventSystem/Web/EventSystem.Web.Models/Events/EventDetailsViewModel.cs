@@ -7,7 +7,6 @@
     using EventSystem.Models;
     using Infrastructure.Mappings;
 
-
     public class EventDetailsViewModel : IMapFrom<Event>, IHaveCustomMappings
     {
         public int Id { get; set; }

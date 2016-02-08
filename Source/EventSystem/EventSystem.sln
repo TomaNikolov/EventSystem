@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSystem.Web.Models", "W
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSystem.Web.Infrastructure", "Web\EventSyslem.Web.Infrastructure\EventSystem.Web.Infrastructure.csproj", "{0603837D-C2CF-4F97-8981-C5E2E0A38836}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSystem.Web.Areas.EventMaker.Controllers", "EventSystem.Web.Areas.EventMaker.Controllers\EventSystem.Web.Areas.EventMaker.Controllers.csproj", "{75047E96-BFF8-4FE0-9CC9-E68A47661EE6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -65,6 +67,10 @@ Global
 		{0603837D-C2CF-4F97-8981-C5E2E0A38836}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0603837D-C2CF-4F97-8981-C5E2E0A38836}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0603837D-C2CF-4F97-8981-C5E2E0A38836}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75047E96-BFF8-4FE0-9CC9-E68A47661EE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75047E96-BFF8-4FE0-9CC9-E68A47661EE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75047E96-BFF8-4FE0-9CC9-E68A47661EE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75047E96-BFF8-4FE0-9CC9-E68A47661EE6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -78,5 +84,6 @@ Global
 		{E58BD594-7F4A-4E9C-8E0F-6248A3A102B6} = {FEA38B6B-6DE8-4902-987A-F66406E62286}
 		{E0B512C4-10DF-4431-B0F7-A48F91446AC3} = {FEA38B6B-6DE8-4902-987A-F66406E62286}
 		{0603837D-C2CF-4F97-8981-C5E2E0A38836} = {FEA38B6B-6DE8-4902-987A-F66406E62286}
+		{75047E96-BFF8-4FE0-9CC9-E68A47661EE6} = {FEA38B6B-6DE8-4902-987A-F66406E62286}
 	EndGlobalSection
 EndGlobal

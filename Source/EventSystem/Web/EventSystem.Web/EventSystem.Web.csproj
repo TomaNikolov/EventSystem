@@ -194,6 +194,7 @@
     <Compile Include="App_Start\NinjectConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\EventMaker\EventMakerAreaRegistration.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -271,6 +272,10 @@
     <Content Include="Content\Theme\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\Theme\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\Theme\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Areas\EventMaker\Views\web.config" />
+    <Content Include="Areas\EventMaker\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\EventMaker\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\EventMaker\Views\Home\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Events\EventsDetails.js" />
     <Content Include="Scripts\Home\index.js" />
@@ -323,6 +328,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\EventMaker\Controllers\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -340,6 +346,10 @@
     <ProjectReference Include="..\..\Data\EventSystem.Models\EventSystem.Models.csproj">
       <Project>{525880e0-bf2b-48ab-993e-ab99cbee8aa3}</Project>
       <Name>EventSystem.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EventSystem.Web.Areas.EventMaker.Controllers\EventSystem.Web.Areas.EventMaker.Controllers.csproj">
+      <Project>{75047e96-bff8-4fe0-9cc9-e68a47661ee6}</Project>
+      <Name>EventSystem.Web.Areas.EventMaker.Controllers</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Services\EventSystem.Services\EventSystem.Services.csproj">
       <Project>{90ce85a0-08af-46cd-9fad-52a0834e6627}</Project>
