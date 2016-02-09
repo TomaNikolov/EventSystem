@@ -537,6 +537,7 @@
     <Content Include="Content\KAdminTheme\script\fontawesome-webfont.ttf" />
     <Content Include="Content\KAdminTheme\script\fontawesome-webfont.woff" />
     <Content Include="Content\KAdminTheme\script\FontAwesome.otf" />
+    <Content Include="App_Code\MyHelpers.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Events\EventsDetails.js" />
     <Content Include="Scripts\Home\index.js" />
