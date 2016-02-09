@@ -1,9 +1,9 @@
 ﻿namespace EventSystem.Data
 {
+    using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
 
     using EventSystem.Models;
-    using System.Data.Entity;
 
     public interface IEventSystemDbContext
     {

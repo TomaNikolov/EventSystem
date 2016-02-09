@@ -1,7 +1,8 @@
 ﻿namespace EventSystem.Services.Contracts
 {
-    using EventSystem.Models;
     using System.Linq;
+
+    using EventSystem.Models;
 
     public interface IHomeService : IService
     {

@@ -1,7 +1,8 @@
 ﻿namespace EventSystem.Services.Contracts
 {
-    using Models;
     using System.Linq;
+
+    using Models;
 
     public interface ICitiesService
     {

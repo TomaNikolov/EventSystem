@@ -22,7 +22,7 @@
 
         public ActionResult All()
         {
-            return View();
+            return this.View();
         }
 
         [HttpGet]
@@ -40,18 +40,18 @@
               .ProjectTo<SelectListItem>(this.config)
               .ToList();
 
-            return View(model);
+            return this.View(model);
         }
 
         [HttpPost]
         public ActionResult Create(PostCreatePlaceViewModel model)
         {
-            return RedirectToAction("Details");
+            return this.RedirectToAction("Details");
         }
 
         public ActionResult Detatils(int id)
         {
-            return View();
+            return this.View();
         }
     }
 }

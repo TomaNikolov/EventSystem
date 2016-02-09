@@ -1,7 +1,7 @@
-﻿using AutoMapper;
-
-namespace EventSystem.Web.Infrastructure
+﻿namespace EventSystem.Web.Infrastructure
 {
+    using AutoMapper;
+
     public static class MapperFactory
     {
         private static MapperConfiguration mapperConfig;

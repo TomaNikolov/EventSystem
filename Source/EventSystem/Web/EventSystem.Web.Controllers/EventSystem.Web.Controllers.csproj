@@ -123,6 +123,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountController.cs" />
+    <Compile Include="Base\BaseController.cs" />
     <Compile Include="EventController.cs" />
     <Compile Include="HomeController.cs" />
     <Compile Include="ManageController.cs" />

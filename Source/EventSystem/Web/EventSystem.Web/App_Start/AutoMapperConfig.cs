@@ -6,9 +6,9 @@
     using System.Reflection;
 
     using AutoMapper;
+    using Infrastructure;
     using Infrastructure.Constants;
     using Infrastructure.Mappings;
-    using Infrastructure;
 
     public class AutoMapperConfig
     {
