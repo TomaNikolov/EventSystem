@@ -1,7 +1,8 @@
 ﻿namespace EventSystem.Web.Models.Places
 {
-    using DropDownList;
     using System.ComponentModel.DataAnnotations;
+
+    using DropDownList;
 
     public class PostCreatePlaceViewModel
     {
