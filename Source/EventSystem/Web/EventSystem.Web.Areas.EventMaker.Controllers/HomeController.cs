@@ -4,10 +4,9 @@
 
     public class HomeController : Controller
     {
-        // GET: EventMaker/Home
         public ActionResult Index()
         {
-            return View();
+            return this.View();
         }
     }
 }
