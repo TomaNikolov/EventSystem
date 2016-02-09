@@ -5,7 +5,7 @@
 
 @using (Html.BeginForm("Create", "Places"))
 {
-    <div class="row">
+    <div class="row form-group">
         <div class="col-md-2">
             @Html.LabelFor(x => x.Cities)
         </div>
@@ -14,15 +14,19 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row form-group">
         <div class="col-md-2">
             @Html.LabelFor(x => x.Countries)
         </div>
         <div class="col-md-6">
-            @Html.DropDownList("Countries", Model.Countries, new { @class="form-control"})
+            @Html.DropDownList("Countries", Model.Countries, new { @class = "form-control" })
         </div>
     </div>
-
-        <input type="submit" class="btn btn-primary" value="Create" />
+    @Html.EditorFor(m => m.Venue)
+    <div class="row form-group">
+        <div class="col-md-8">
+            <input type="submit" class="btn btn-primary pull-right" value="Create" />
+        </div>
+    </div>
 }
 
