@@ -10,7 +10,7 @@
             @Html.LabelFor(x => x.Cities)
         </div>
         <div class="col-md-6">
-            @Html.DropDownList("Cities", Model.Cities, new { @class = "form-control" })
+            @Html.DropDownList("Cities", Model.Cities.Items, new { @class = "form-control" })
         </div>
     </div>
 
@@ -19,7 +19,7 @@
             @Html.LabelFor(x => x.Countries)
         </div>
         <div class="col-md-6">
-            @Html.DropDownList("Countries", Model.Countries, new { @class = "form-control" })
+            @Html.DropDownList("Countries", Model.Countries.Items, new { @class = "form-control" })
         </div>
     </div>
     @Html.EditorFor(m => m.Venue)

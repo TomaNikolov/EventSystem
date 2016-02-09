@@ -1,14 +1,13 @@
-﻿using System.Collections.Generic;
-using System.Web.Mvc;
-
-namespace EventSystem.Web.Models.Places
+﻿namespace EventSystem.Web.Models.Places
 {
+    using EventSystem.Web.Models.DropDownList;
+
     public class GetCreatePlaceViewModel
     {
         public string Venue { get; set; }
 
-        public List<SelectListItem> Countries { get; set; }
+        public DropDownViewModel Countries { get; set; }
 
-        public List<SelectListItem> Cities { get; set; }
+        public DropDownViewModel Cities { get; set; }
     }
 }

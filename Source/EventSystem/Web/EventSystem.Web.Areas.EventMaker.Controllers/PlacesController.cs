@@ -1,11 +1,14 @@
 ﻿namespace EventSystem.Web.Areas.EventMaker.Controllers
 {
-    using Models.Places;
-    using Services.Contracts;
     using System.Linq;
     using System.Web.Mvc;
 
-    public class PlacesController : Controller
+    using AutoMapper.QueryableExtensions;
+    using Models.Places;
+    using Services.Contracts;
+      using Web.Controllers.Base;
+
+    public class PlacesController : BaseController
     {
         private ICountriesService countriesService;
 
@@ -19,22 +22,22 @@
 
         public ActionResult All()
         {
-            // return this.placesService.GetAll();
             return View();
         }
 
         [HttpGet]
         public ActionResult Create()
         {
-            var model = new GetCreatePlaceViewModel();
-            model.Countries = this.countriesService
+            var model = new PostCreatePlaceViewModel();
+
+            model.Countries.Items = this.countriesService
                 .GetAll()
-                .Select(x => new SelectListItem() { Text = x.Name, Value = x.Id.ToString() })
+                .ProjectTo<SelectListItem>(this.config)
                 .ToList();
 
-            model.Cities = this.citiesService
+            model.Cities.Items = this.citiesService
               .GetAll()
-              .Select(x => new SelectListItem() { Text = x.Name, Value = x.Id.ToString() })
+              .ProjectTo<SelectListItem>(this.config)
               .ToList();
 
             return View(model);
