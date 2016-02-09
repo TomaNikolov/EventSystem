@@ -1,8 +1,9 @@
 ﻿namespace EventSystem.Models
 {
     using System.ComponentModel.DataAnnotations;
+    using Data.Common;
 
-    public class City
+    public class City : IListedItem
     {
         [Key]
         public int Id { get; set; }

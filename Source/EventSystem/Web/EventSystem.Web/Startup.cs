@@ -2,6 +2,7 @@
 using Owin;
 
 [assembly: OwinStartupAttribute(typeof(EventSystem.Web.Startup))]
+
 namespace EventSystem.Web
 {
     public partial class Startup

@@ -9,14 +9,13 @@
     using Infrastructure.Constants;
     using Infrastructure.Mappings;
     using Infrastructure;
+
     public class AutoMapperConfig
     {
         public static void RegisterMappings()
         {
             var types = Assembly.GetExecutingAssembly().GetExportedTypes();
             var viewModelTypes = Assembly.Load(Assemblies.ViewModels).GetExportedTypes();
-
-
 
             var config = new MapperConfiguration(cfg =>
             {

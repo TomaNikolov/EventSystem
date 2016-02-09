@@ -1,8 +1,9 @@
 ﻿namespace EventSystem.Models
 {
     using System.ComponentModel.DataAnnotations;
+    using Data.Common;
 
-    public class Country
+    public class Country : IListedItem
     {
         [Key]
         public int Id { get; set; }
