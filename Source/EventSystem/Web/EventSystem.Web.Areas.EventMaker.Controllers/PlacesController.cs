@@ -17,6 +17,12 @@
             this.citiesService = citiesService;
         }
 
+        public ActionResult All()
+        {
+            // return this.placesService.GetAll();
+            return View();
+        }
+
         [HttpGet]
         public ActionResult Create()
         {
