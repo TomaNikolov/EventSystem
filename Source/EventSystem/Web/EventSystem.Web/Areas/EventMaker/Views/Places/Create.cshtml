@@ -1,4 +1,4 @@
-﻿@model  EventSystem.Web.Models.Places.PostCreatePlaceViewModel
+﻿@model  EventSystem.Web.Models.Places.PostPlaceViewModel
 @{
     ViewBag.Title = "Create New Place";
 }
@@ -7,21 +7,22 @@
 {
     <div class="row form-group">
         <div class="col-md-2">
-            @Html.LabelFor(x => x.Cities)
+            @Html.LabelFor(x => x.CountryId)
         </div>
         <div class="col-md-6">
-            @Html.DropDownList("Cities", Model.Cities.Items, new { @class = "form-control" })
+            @Html.DropDownListFor(m => m.CountryId, ViewBag.Countries as IEnumerable<SelectListItem>, new { @class = "form-control" })
         </div>
     </div>
 
     <div class="row form-group">
         <div class="col-md-2">
-            @Html.LabelFor(x => x.Countries)
+            @Html.LabelFor(x => x.CityId)
         </div>
         <div class="col-md-6">
-            @Html.DropDownList("Countries", Model.Countries.Items, new { @class = "form-control" })
+            @Html.DropDownListFor(m => m.CityId, ViewBag.Cities as IEnumerable<SelectListItem>, new { @class = "form-control" })
         </div>
     </div>
+    @Html.EditorFor(m => m.CityId)
     @Html.EditorFor(m => m.Venue)
     <div class="row form-group">
         <div class="col-md-8">

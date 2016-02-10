@@ -6,8 +6,8 @@
     using AutoMapper.QueryableExtensions;
     using Models.Places;
     using Services.Contracts;
-      using Web.Controllers.Base;
-
+    using Web.Controllers.Base;
+    using Infrastructure.Populators;
     public class PlacesController : BaseController
     {
         private ICountriesService countriesService;
@@ -26,25 +26,16 @@
         }
 
         [HttpGet]
+        [PopulateCities]
+        [PopulateCountries]
         public ActionResult Create()
         {
-            var model = new PostCreatePlaceViewModel();
-
-            model.Countries.Items = this.countriesService
-                .GetAll()
-                .ProjectTo<SelectListItem>(this.config)
-                .ToList();
-
-            model.Cities.Items = this.citiesService
-              .GetAll()
-              .ProjectTo<SelectListItem>(this.config)
-              .ToList();
-
+            var model = new PostPlaceViewModel();
             return this.View(model);
         }
 
         [HttpPost]
-        public ActionResult Create(PostCreatePlaceViewModel model)
+        public ActionResult Create(PostPlaceViewModel model)
         {
             return this.RedirectToAction("Details");
         }

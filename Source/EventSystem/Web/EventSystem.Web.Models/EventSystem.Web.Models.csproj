@@ -141,8 +141,7 @@
     <Compile Include="Manage\ManageLoginsViewModel.cs" />
     <Compile Include="Manage\SetPasswordViewModel.cs" />
     <Compile Include="Manage\VerifyPhoneNumberViewModel.cs" />
-    <Compile Include="Places\GetCreatePlaceViewModel.cs" />
-    <Compile Include="Places\PostCreatePlaceViewModel.cs" />
+    <Compile Include="Places\PostPlaceViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -163,6 +162,7 @@
       <Name>EventSystem.Web.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
