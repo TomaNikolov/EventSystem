@@ -32,10 +32,10 @@
             var cities = new List<City> { new City() { Name = "Plovdiv" }, new City() { Name = "Sofia" }, new City() { Name = "Varna" } };
 
             this.Places = new List<Place>();
-            this.Places.Add(new Place() { Country = country, City = cities[this.GetRandomNumber(0, this.Places.Count - 1)], Adress = adress, Venue = "Bar Fabric" });
-            this.Places.Add(new Place() { Country = country, City = cities[this.GetRandomNumber(0, this.Places.Count - 1)], Adress = adress, Venue = "Bar No Sense" });
-            this.Places.Add(new Place() { Country = country, City = cities[this.GetRandomNumber(0, this.Places.Count - 1)], Adress = adress, Venue = "Bar Gramophone" });
-            this.Places.Add(new Place() { Country = country, City = cities[this.GetRandomNumber(0, this.Places.Count - 1)], Adress = adress, Venue = "Bar Apartment" });
+            this.Places.Add(new Place() { Country = country, City = cities[this.GetRandomNumber(0, this.Places.Count - 1)], Street = "Otec Paisii 2", Latitude = 42.145404, Longitude = 24.7480313, Name = "Bar Fabric" });
+            this.Places.Add(new Place() { Country = country, City = cities[this.GetRandomNumber(0, this.Places.Count - 1)], Street = "Otec Paisii 2", Latitude = 42.145404, Longitude = 24.7480313, Name = "Bar No Sense" });
+            this.Places.Add(new Place() { Country = country, City = cities[this.GetRandomNumber(0, this.Places.Count - 1)], Street = "Otec Paisii 2", Latitude = 42.145404, Longitude = 24.7480313, Name = "Bar Gramophone" });
+            this.Places.Add(new Place() { Country = country, City = cities[this.GetRandomNumber(0, this.Places.Count - 1)], Street = "Otec Paisii 2", Latitude = 42.145404, Longitude = 24.7480313, Name = "Bar Apartment" });
 
             this.Events = new List<Event>();
 

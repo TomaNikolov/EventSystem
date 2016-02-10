@@ -1,6 +1,10 @@
 ﻿namespace EventSystem.Services.Contracts
 {
-  public  interface IImageServices
+    using System.Collections.Generic;
+    using System.Web;
+
+    public interface IImagesService
     {
+        void SaveImages(IEnumerable<HttpPostedFileBase> files);
     }
 }

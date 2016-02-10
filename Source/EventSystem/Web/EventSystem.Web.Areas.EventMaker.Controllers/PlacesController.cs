@@ -1,9 +1,7 @@
 ﻿namespace EventSystem.Web.Areas.EventMaker.Controllers
 {
-    using System.Linq;
     using System.Web.Mvc;
 
-    using AutoMapper.QueryableExtensions;
     using Models.Places;
     using Services.Contracts;
     using Web.Controllers.Base;
@@ -14,10 +12,13 @@
 
         private ICitiesService citiesService;
 
-        public PlacesController(ICountriesService countriesService, ICitiesService citiesService)
+        private IImagesService imagesService;
+
+        public PlacesController(ICountriesService countriesService, ICitiesService citiesService, IImagesService imagesService)
         {
             this.countriesService = countriesService;
             this.citiesService = citiesService;
+            this.imagesService = imagesService;
         }
 
         public ActionResult All()
@@ -37,6 +38,7 @@
         [HttpPost]
         public ActionResult Create(PostPlaceViewModel model)
         {
+            this.imagesService.SaveImages(model.Files);
             return this.RedirectToAction("Details");
         }
 

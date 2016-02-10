@@ -1,10 +1,11 @@
 ﻿namespace EventSystem.Web.Models.Places
 {
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.Web;
 
     using EventSystem.Models;
     using Infrastructure.Mappings;
-
     public class PostPlaceViewModel : IMapFrom<Place>
     {
         [Required]
@@ -16,5 +17,7 @@
 
         [Display(Name = "City")]
         public int CityId { get; set; }
+
+        public IEnumerable<HttpPostedFileBase> Files { get; set; }
     }
 }

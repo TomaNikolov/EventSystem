@@ -1,6 +1,5 @@
 ﻿namespace EventSystem.Services
 {
-    using System;
     using System.Linq;
 
     using EventSystem.Data.Repositories;

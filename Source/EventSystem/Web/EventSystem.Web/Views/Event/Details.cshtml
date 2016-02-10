@@ -33,7 +33,7 @@
                 <img class="img-responsive" src="~/Content/Theme/images/watch.png" alt="">
             </div>
             <div class="col-md-4 col-md-offset-2 col-sm-5">
-                <h2>Place : @Model.Place.Venue</h2>
+                <h2>Place : @Model.Place.Name</h2>
                 <h2>Date: @Model.EventStart</h2>
             </div>
             <div class="col-sm-7 col-md-6">
@@ -139,7 +139,7 @@
 </section><!--/#about-->
 
 <section id="contact">
-    <div id="map" data-lat="@Model.Place.Adress.Latitude" , data-long="@Model.Place.Adress.Longitude">
+    <div id="map" data-lat="@Model.Place.Latitude" , data-long="@Model.Place.Longitude">
         <div id="gmap-wrap">
             <div id="gmap">
             </div>

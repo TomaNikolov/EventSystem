@@ -3,7 +3,7 @@
     ViewBag.Title = "Create New Place";
 }
 
-@using (Html.BeginForm("Create", "Places"))
+@using (Html.BeginForm("Create", "Places", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     <div class="row form-group">
         <div class="col-md-2">
@@ -22,8 +22,13 @@
             @Html.DropDownListFor(m => m.CityId, ViewBag.Cities as IEnumerable<SelectListItem>, new { @class = "form-control" })
         </div>
     </div>
-    @Html.EditorFor(m => m.CityId)
     @Html.EditorFor(m => m.Venue)
+
+    <label for="file1">Filename:</label>
+    <input type="file" name="Files[0]" id="file1" />
+
+    <label for="file2">Filename:</label>
+    <input type="file" name="Files[1]" id="file2" />
     <div class="row form-group">
         <div class="col-md-8">
             <input type="submit" class="btn btn-primary pull-right" value="Create" />

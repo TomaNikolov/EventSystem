@@ -21,8 +21,6 @@
 
         IDbSet<Image> Images { get; set; }
 
-        IDbSet<Adress> Adresses { get; set; }
-
         IDbSet<DeliveryAdress> DeliveryAdresses { get; set; }
 
         IDbSet<Order> Orders { get; set; }
