@@ -10,7 +10,7 @@
     {
         [Required]
         [MinLength(2)]
-        public string Venue { get; set; }
+        public string Name { get; set; }
 
         [Display(Name = "Country")]
         public int CountryId { get; set; }
@@ -19,5 +19,17 @@
         public int CityId { get; set; }
 
         public IEnumerable<HttpPostedFileBase> Files { get; set; }
+
+        [Required]
+        public string Street { get; set; }
+
+        [Required]
+        public double Latitude { get; set; }
+
+        [Required]
+        public double Longitude { get; set; }
+
+        [DataType(DataType.MultilineText)]
+        public string Description { get; set; }
     }
 }

@@ -12,7 +12,8 @@
         protected IEnumerable<SelectListItem> GetSelecTedList<T>(IRepository<T> repooitory) where T : class, IListedItem
         {
             var config = MapperFactory.GetConfig();
-            return repooitory.All().ProjectTo<SelectListItem>(config).ToList();
+            var result = repooitory.All();
+            return result.ProjectTo<SelectListItem>(config).ToList();
         }
     }
 }
