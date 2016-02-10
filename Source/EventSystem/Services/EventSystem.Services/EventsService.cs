@@ -23,7 +23,7 @@
         public Event GetById(int id)
         {
             return this.events
-                .Include(e => e.Place.Adress)
+                .All()
                 .FirstOrDefault(e => e.Id == id);
         }
     }

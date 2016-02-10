@@ -27,15 +27,14 @@
             this.categories.Add(new Category() { Name = "Weather" });
 
             var country = new Country() { Name = "Bulgaria" };
-            var adress = new Adress() { Street = "Otec Paisii 2", Latitude = 42.145404, Longitude = 24.7480313 };
 
             var cities = new List<City> { new City() { Name = "Plovdiv" }, new City() { Name = "Sofia" }, new City() { Name = "Varna" } };
 
             this.Places = new List<Place>();
-            this.Places.Add(new Place() { Country = country, City = cities[this.GetRandomNumber(0, this.Places.Count - 1)], Adress = adress, Venue = "Bar Fabric" });
-            this.Places.Add(new Place() { Country = country, City = cities[this.GetRandomNumber(0, this.Places.Count - 1)], Adress = adress, Venue = "Bar No Sense" });
-            this.Places.Add(new Place() { Country = country, City = cities[this.GetRandomNumber(0, this.Places.Count - 1)], Adress = adress, Venue = "Bar Gramophone" });
-            this.Places.Add(new Place() { Country = country, City = cities[this.GetRandomNumber(0, this.Places.Count - 1)], Adress = adress, Venue = "Bar Apartment" });
+            this.Places.Add(new Place() { Country = country, City = cities[this.GetRandomNumber(0, this.Places.Count - 1)], Street = "Otec Paisii 2", Latitude = 42.145404, Longitude = 24.7480313, Name = "Bar Fabric" });
+            this.Places.Add(new Place() { Country = country, City = cities[this.GetRandomNumber(0, this.Places.Count - 1)], Street = "Otec Paisii 2", Latitude = 42.145404, Longitude = 24.7480313, Name = "Bar No Sense" });
+            this.Places.Add(new Place() { Country = country, City = cities[this.GetRandomNumber(0, this.Places.Count - 1)], Street = "Otec Paisii 2", Latitude = 42.145404, Longitude = 24.7480313, Name = "Bar Gramophone" });
+            this.Places.Add(new Place() { Country = country, City = cities[this.GetRandomNumber(0, this.Places.Count - 1)], Street = "Otec Paisii 2", Latitude = 42.145404, Longitude = 24.7480313, Name = "Bar Apartment" });
 
             this.Events = new List<Event>();
 
@@ -48,7 +47,7 @@
                 CreatedOn = DateTime.Now.AddDays(rand.Next(-5, 5)),
                 EventStart = DateTime.Now.AddDays(rand.Next(10, 100)),
                 Place = this.Places[this.GetRandomNumber(0, this.Places.Count - 1)],
-                Images = new List<Image>() { new Image() { Path = "~Content/Images/SeedImages/bg1.jpg", ThumbnailPath = "~Content/Images/SeedImages/event1.jpg" }, new Image() { Path = "~Content/Images/SeedImages/bg3.jpg", ThumbnailPath = "~Content/Images/SeedImages/event3.jpg" } },
+                Images = new List<Image>() { new Image() { Path = "/Content/Images/SeedImages/bg1.jpg", ThumbnailPath = "/Content/Images/SeedImages/event1.jpg" }, new Image() { Path = "/Content/Images/SeedImages/bg3.jpg", ThumbnailPath = "/Content/Images/SeedImages/event3.jpg" } },
                 Tickets = new List<Ticket>() { new Ticket() { Ammount = 100, Price = 20 }, new Ticket() { Ammount = 100, Price = 40 } }
             });
             this.Events.Add(new Event()
@@ -60,7 +59,7 @@
                 CreatedOn = DateTime.Now.AddDays(rand.Next(-5, 5)),
                 EventStart = DateTime.Now.AddDays(rand.Next(10, 100)),
                 Place = this.Places[this.GetRandomNumber(0, this.Places.Count - 1)],
-                Images = new List<Image>() { new Image() { Path = "~Content/Images/SeedImages/bg2.jpg", ThumbnailPath = "~Content/Images/SeedImages/event2.jpg" }, new Image() { Path = "~Content/Images/SeedImages/bg3.jpg", ThumbnailPath = "~Content/Images/SeedImages/event3.jpg" } },
+                Images = new List<Image>() { new Image() { Path = "/Content/Images/SeedImages/bg2.jpg", ThumbnailPath = "/Content/Images/SeedImages/event2.jpg" }, new Image() { Path = "/Content/Images/SeedImages/bg3.jpg", ThumbnailPath = "/Content/Images/SeedImages/event3.jpg" } },
                 Tickets = new List<Ticket>() { new Ticket() { Ammount = 100, Price = 20 }, new Ticket() { Ammount = 100, Price = 40 } }
             });
             this.Events.Add(new Event()
@@ -72,7 +71,7 @@
                 CreatedOn = DateTime.Now.AddDays(rand.Next(-5, 5)),
                 EventStart = DateTime.Now.AddDays(rand.Next(10, 100)),
                 Place = this.Places[this.GetRandomNumber(0, this.Places.Count - 1)],
-                Images = new List<Image>() { new Image() { Path = "~Content/Images/SeedImages/bg3.jpg", ThumbnailPath = "~Content/Images/SeedImages/event3.jpg" }, new Image() { Path = "~Content/Images/SeedImages/bg2.jpg", ThumbnailPath = "~Content/Images/SeedImages/event2.jpg" } },
+                Images = new List<Image>() { new Image() { Path = "/Content/Images/SeedImages/bg3.jpg", ThumbnailPath = "/Content/Images/SeedImages/event3.jpg" }, new Image() { Path = "/Content/Images/SeedImages/bg2.jpg", ThumbnailPath = "/Content/Images/SeedImages/event2.jpg" } },
                 Tickets = new List<Ticket>() { new Ticket() { Ammount = 100, Price = 20 }, new Ticket() { Ammount = 100, Price = 40 } }
             });
             this.Events.Add(new Event()
@@ -84,7 +83,7 @@
                 CreatedOn = DateTime.Now.AddDays(rand.Next(-5, 5)),
                 EventStart = DateTime.Now.AddDays(rand.Next(10, 100)),
                 Place = this.Places[this.GetRandomNumber(0, this.Places.Count - 1)],
-                Images = new List<Image>() { new Image() { Path = "~Content/Images/SeedImages/bg1.jpg", ThumbnailPath = "~Content/Images/SeedImages/event1.jpg" }, new Image() { Path = "~Content/Images/SeedImages/bg3.jpg", ThumbnailPath = "~Content/Images/SeedImages/event3.jpg" } },
+                Images = new List<Image>() { new Image() { Path = "/Content/Images/SeedImages/bg1.jpg", ThumbnailPath = "/Content/Images/SeedImages/event1.jpg" }, new Image() { Path = "/Content/Images/SeedImages/bg3.jpg", ThumbnailPath = "/Content/Images/SeedImages/event3.jpg" } },
                 Tickets = new List<Ticket>() { new Ticket() { Ammount = 100, Price = 20 }, new Ticket() { Ammount = 100, Price = 40 } }
             });
             this.Events.Add(new Event()
@@ -96,7 +95,7 @@
                 CreatedOn = DateTime.Now.AddDays(rand.Next(-5, 5)),
                 EventStart = DateTime.Now.AddDays(rand.Next(10, 100)),
                 Place = this.Places[this.GetRandomNumber(0, this.Places.Count - 1)],
-                Images = new List<Image>() { new Image() { Path = "~Content/Images/SeedImages/bg1.jpg", ThumbnailPath = "~Content/Images/SeedImages/event1.jpg" }, new Image() { Path = "~Content/Images/SeedImages/bg3.jpg", ThumbnailPath = "~Content/Images/SeedImages/event3.jpg" } },
+                Images = new List<Image>() { new Image() { Path = "/Content/Images/SeedImages/bg1.jpg", ThumbnailPath = "/Content/Images/SeedImages/event1.jpg" }, new Image() { Path = "/Content/Images/SeedImages/bg3.jpg", ThumbnailPath = "/Content/Images/SeedImages/event3.jpg" } },
                 Tickets = new List<Ticket>() { new Ticket() { Ammount = 100, Price = 20 }, new Ticket() { Ammount = 100, Price = 40 } }
             });
             this.Events.Add(new Event()
@@ -108,7 +107,7 @@
                 CreatedOn = DateTime.Now.AddDays(rand.Next(-5, 5)),
                 EventStart = DateTime.Now.AddDays(rand.Next(10, 100)),
                 Place = this.Places[this.GetRandomNumber(0, this.Places.Count - 1)],
-                Images = new List<Image>() { new Image() { Path = "~Content/Images/SeedImages/bg1.jpg", ThumbnailPath = "~Content/Images/SeedImages/event1.jpg" }, new Image() { Path = "~Content/Images/SeedImages/bg3.jpg", ThumbnailPath = "~Content/Images/SeedImages/event3.jpg" } },
+                Images = new List<Image>() { new Image() { Path = "/Content/Images/SeedImages/bg1.jpg", ThumbnailPath = "/Content/Images/SeedImages/event1.jpg" }, new Image() { Path = "/Content/Images/SeedImages/bg3.jpg", ThumbnailPath = "/Content/Images/SeedImages/event3.jpg" } },
                 Tickets = new List<Ticket>() { new Ticket() { Ammount = 100, Price = 20 }, new Ticket() { Ammount = 100, Price = 40 } }
             });
             this.Events.Add(new Event()
@@ -120,7 +119,7 @@
                 CreatedOn = DateTime.Now.AddDays(rand.Next(-5, 5)),
                 EventStart = DateTime.Now.AddDays(rand.Next(10, 100)),
                 Place = this.Places[this.GetRandomNumber(0, this.Places.Count - 1)],
-                Images = new List<Image>() { new Image() { Path = "~Content/Images/SeedImages/bg1.jpg", ThumbnailPath = "~Content/Images/SeedImages/event1.jpg" }, new Image() { Path = "~Content/Images/SeedImages/bg3.jpg", ThumbnailPath = "~Content/Images/SeedImages/event3.jpg" } },
+                Images = new List<Image>() { new Image() { Path = "/Content/Images/SeedImages/bg1.jpg", ThumbnailPath = "/Content/Images/SeedImages/event1.jpg" }, new Image() { Path = "/Content/Images/SeedImages/bg3.jpg", ThumbnailPath = "/Content/Images/SeedImages/event3.jpg" } },
                 Tickets = new List<Ticket>() { new Ticket() { Ammount = 100, Price = 20 }, new Ticket() { Ammount = 100, Price = 40 } }
             });
             this.Events.Add(new Event()
@@ -132,7 +131,7 @@
                 CreatedOn = DateTime.Now.AddDays(rand.Next(-5, 5)),
                 EventStart = DateTime.Now.AddDays(rand.Next(10, 100)),
                 Place = this.Places[this.GetRandomNumber(0, this.Places.Count - 1)],
-                Images = new List<Image>() { new Image() { Path = "~Content/Images/SeedImages/bg1.jpg", ThumbnailPath = "~Content/Images/SeedImages/event1.jpg" }, new Image() { Path = "~Content/Images/SeedImages/bg3.jpg", ThumbnailPath = "~Content/Images/SeedImages/event3.jpg" } },
+                Images = new List<Image>() { new Image() { Path = "/Content/Images/SeedImages/bg1.jpg", ThumbnailPath = "/Content/Images/SeedImages/event1.jpg" }, new Image() { Path = "/Content/Images/SeedImages/bg3.jpg", ThumbnailPath = "/Content/Images/SeedImages/event3.jpg" } },
                 Tickets = new List<Ticket>() { new Ticket() { Ammount = 100, Price = 20 }, new Ticket() { Ammount = 100, Price = 40 } }
             });
             this.Events.Add(new Event()
@@ -144,7 +143,7 @@
                 CreatedOn = DateTime.Now.AddDays(rand.Next(-5, 5)),
                 EventStart = DateTime.Now.AddDays(rand.Next(10, 100)),
                 Place = this.Places[this.GetRandomNumber(0, this.Places.Count - 1)],
-                Images = new List<Image>() { new Image() { Path = "~Content/Images/SeedImages/bg1.jpg", ThumbnailPath = "~Content/Images/SeedImages/event1.jpg" }, new Image() { Path = "~Content/Images/SeedImages/bg3.jpg", ThumbnailPath = "~Content/Images/SeedImages/event3.jpg" } },
+                Images = new List<Image>() { new Image() { Path = "/Content/Images/SeedImages/bg1.jpg", ThumbnailPath = "/Content/Images/SeedImages/event1.jpg" }, new Image() { Path = "/Content/Images/SeedImages/bg3.jpg", ThumbnailPath = "/Content/Images/SeedImages/event3.jpg" } },
                 Tickets = new List<Ticket>() { new Ticket() { Ammount = 100, Price = 20 }, new Ticket() { Ammount = 100, Price = 40 } }
             });
         }

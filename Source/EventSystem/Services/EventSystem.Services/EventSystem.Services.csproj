@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,10 +46,12 @@
     <Compile Include="Contracts\ICountriesService.cs" />
     <Compile Include="Contracts\IEventsService.cs" />
     <Compile Include="Contracts\IHomeService.cs" />
+    <Compile Include="Contracts\IImagesService.cs" />
     <Compile Include="Contracts\IService.cs" />
     <Compile Include="CountriesService.cs" />
     <Compile Include="EventsService.cs" />
     <Compile Include="HomeService.cs" />
+    <Compile Include="ImagesService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

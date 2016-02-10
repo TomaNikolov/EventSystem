@@ -9,7 +9,10 @@
 
         [Required]
         [MaxLength(400)]
-        public string Venue { get; set; }
+        public string Name { get; set; }
+
+        [MaxLength(2000)]
+        public string Description { get; set; }
 
         public int CountryId { get; set; }
 
@@ -19,8 +22,10 @@
 
         public virtual City City { get; set; }
 
-        public int AdressId { get; set; }
+        public string Street { get; set; }
 
-        public Adress Adress { get; set; }
+        public double Latitude { get; set; }
+
+        public double Longitude { get; set; }
     }
 }

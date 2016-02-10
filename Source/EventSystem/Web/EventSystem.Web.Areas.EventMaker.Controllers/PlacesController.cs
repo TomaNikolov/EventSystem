@@ -1,23 +1,24 @@
 ﻿namespace EventSystem.Web.Areas.EventMaker.Controllers
 {
-    using System.Linq;
     using System.Web.Mvc;
 
-    using AutoMapper.QueryableExtensions;
     using Models.Places;
     using Services.Contracts;
-      using Web.Controllers.Base;
-
+    using Web.Controllers.Base;
+    using Infrastructure.Populators;
     public class PlacesController : BaseController
     {
         private ICountriesService countriesService;
 
         private ICitiesService citiesService;
 
-        public PlacesController(ICountriesService countriesService, ICitiesService citiesService)
+        private IImagesService imagesService;
+
+        public PlacesController(ICountriesService countriesService, ICitiesService citiesService, IImagesService imagesService)
         {
             this.countriesService = countriesService;
             this.citiesService = citiesService;
+            this.imagesService = imagesService;
         }
 
         public ActionResult All()
@@ -26,26 +27,18 @@
         }
 
         [HttpGet]
+        [PopulateCities]
+        [PopulateCountries]
         public ActionResult Create()
         {
-            var model = new PostCreatePlaceViewModel();
-
-            model.Countries.Items = this.countriesService
-                .GetAll()
-                .ProjectTo<SelectListItem>(this.config)
-                .ToList();
-
-            model.Cities.Items = this.citiesService
-              .GetAll()
-              .ProjectTo<SelectListItem>(this.config)
-              .ToList();
-
+            var model = new PostPlaceViewModel();
             return this.View(model);
         }
 
         [HttpPost]
-        public ActionResult Create(PostCreatePlaceViewModel model)
+        public ActionResult Create(PostPlaceViewModel model)
         {
+            this.imagesService.SaveImages(model.Files);
             return this.RedirectToAction("Details");
         }
 
