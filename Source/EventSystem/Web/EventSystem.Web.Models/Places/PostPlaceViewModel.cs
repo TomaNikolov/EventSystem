@@ -1,11 +1,13 @@
 ﻿namespace EventSystem.Web.Models.Places
 {
+    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.Web;
-
+    using AutoMapper;
     using EventSystem.Models;
     using Infrastructure.Mappings;
+
     public class PostPlaceViewModel : IMapFrom<Place>
     {
         [Required]

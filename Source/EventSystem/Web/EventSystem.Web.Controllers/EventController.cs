@@ -24,7 +24,7 @@
                 .CreateMapper()
                 .Map<Event, EventDetailsViewModel>(events);
 
-            return View(viewModel);
+            return this.View(viewModel);
         }
     }
 }

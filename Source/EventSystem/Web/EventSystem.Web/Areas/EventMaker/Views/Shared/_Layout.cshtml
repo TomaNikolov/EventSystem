@@ -4,15 +4,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Scripts.Render("~/bundles/modernizr")
     <link href="~/Content/KAdminTheme/styles/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/KAdminTheme/styles/animate.css" rel="stylesheet" />
     <link href="~/Content/KAdminTheme/styles/font-awesome.min.css" rel="stylesheet" />
     <link href="~/Content/KAdminTheme/styles/all.css" rel="stylesheet" />
     <link href="~/Content/KAdminTheme/styles/main.css" rel="stylesheet" />
-
     <link href="~/Content/KAdminTheme/styles/style-responsive.css" rel="stylesheet" />
     <link href="~/Content/KAdminTheme/styles/pace.css" rel="stylesheet" />
+    @RenderSection("styles", required: false)
     @Styles.Render("~/styleBundles/css")
 </head>
 <body>

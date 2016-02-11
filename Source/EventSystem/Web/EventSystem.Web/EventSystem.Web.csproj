@@ -539,7 +539,10 @@
     <Content Include="Content\KAdminTheme\script\FontAwesome.otf" />
     <Content Include="App_Code\MyHelpers.cshtml" />
     <Content Include="Areas\EventMaker\Views\Shared\EditorTemplates\String.cshtml" />
+    <Content Include="Areas\EventMaker\Views\Shared\EditorTemplates\Double.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\EventMaker\Places\Create\images.js" />
+    <Content Include="Scripts\EventMaker\Places\Create\maps.js" />
     <Content Include="Scripts\Events\EventsDetails.js" />
     <Content Include="Scripts\Home\index.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -629,6 +632,11 @@
       <Project>{e0b512c4-10df-4431-b0f7-a48f91446ac3}</Project>
       <Name>EventSystem.Web.Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\Newtonsoft.Json.dll" />
+    <Analyzer Include="..\..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
+    <Analyzer Include="..\..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

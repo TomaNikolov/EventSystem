@@ -42,12 +42,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CitiesService.cs" />
+    <Compile Include="Contracts\IAdministrationService.cs" />
     <Compile Include="Contracts\ICitiesService.cs" />
     <Compile Include="Contracts\ICountriesService.cs" />
     <Compile Include="Contracts\IEventsService.cs" />
     <Compile Include="Contracts\IHomeService.cs" />
     <Compile Include="Contracts\IImagesService.cs" />
+    <Compile Include="Contracts\IPlacesService.cs" />
     <Compile Include="Contracts\IService.cs" />
+    <Compile Include="PlacesService.cs" />
     <Compile Include="CountriesService.cs" />
     <Compile Include="EventsService.cs" />
     <Compile Include="HomeService.cs" />
@@ -63,6 +66,14 @@
       <Project>{525880e0-bf2b-48ab-993e-ab99cbee8aa3}</Project>
       <Name>EventSystem.Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\Newtonsoft.Json.dll" />
+    <Analyzer Include="..\..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
+    <Analyzer Include="..\..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

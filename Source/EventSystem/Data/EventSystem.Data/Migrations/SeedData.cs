@@ -12,7 +12,7 @@
         private List<Category> categories;
 
         private List<User> users;
-               
+
         public SeedData(List<User> users)
         {
             this.users = users;
