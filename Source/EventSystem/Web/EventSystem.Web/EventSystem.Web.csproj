@@ -539,6 +539,7 @@
     <Content Include="Content\KAdminTheme\script\FontAwesome.otf" />
     <Content Include="App_Code\MyHelpers.cshtml" />
     <Content Include="Areas\EventMaker\Views\Shared\EditorTemplates\String.cshtml" />
+    <Content Include="Areas\EventMaker\Views\Shared\EditorTemplates\Double.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Events\EventsDetails.js" />
     <Content Include="Scripts\Home\index.js" />
