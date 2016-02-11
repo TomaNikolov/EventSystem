@@ -2,10 +2,11 @@
 {
     using System.Web.Mvc;
 
+    using Infrastructure.Populators;
     using Models.Places;
     using Services.Contracts;
     using Web.Controllers.Base;
-    using Infrastructure.Populators;
+
     public class PlacesController : BaseController
     {
         private ICountriesService countriesService;

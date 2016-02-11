@@ -1,9 +1,10 @@
 ﻿namespace EventSystem.Services
 {
-    using EventSystem.Services.Contracts;
     using System.Collections.Generic;
     using System.IO;
     using System.Web;
+
+    using EventSystem.Services.Contracts;
 
     public class ImagesService : IImagesService
     {

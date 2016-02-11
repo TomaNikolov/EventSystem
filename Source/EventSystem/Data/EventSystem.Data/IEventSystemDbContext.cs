@@ -31,8 +31,10 @@
 
         IDbSet<Reservation> Reservations { get; set; }
 
-        IDbSet<T> Set<T>() where T : class;
+        IDbSet<T> Set<T>()
+            where T : class;
 
-        DbEntityEntry<TEntity> Entry<TEntity>(TEntity entity) where TEntity : class;
+        DbEntityEntry<TEntity> Entry<TEntity>(TEntity entity)
+            where TEntity : class;
     }
 }

@@ -6,6 +6,7 @@
 
     using EventSystem.Models;
     using Infrastructure.Mappings;
+
     public class PostPlaceViewModel : IMapFrom<Place>
     {
         [Required]

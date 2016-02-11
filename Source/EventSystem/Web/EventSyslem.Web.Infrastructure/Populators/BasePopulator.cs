@@ -9,7 +9,8 @@
 
     public class BasePopulator : ActionFilterAttribute
     {
-        protected IEnumerable<SelectListItem> GetSelecTedList<T>(IRepository<T> repooitory) where T : class, IListedItem
+        protected IEnumerable<SelectListItem> GetSelecTedList<T>(IRepository<T> repooitory) 
+            where T : class, IListedItem
         {
             var config = MapperFactory.GetConfig();
             var result = repooitory.All();

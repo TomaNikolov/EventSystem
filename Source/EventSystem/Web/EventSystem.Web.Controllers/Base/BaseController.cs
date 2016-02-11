@@ -1,16 +1,17 @@
 ﻿namespace EventSystem.Web.Controllers.Base
 {
-    using AutoMapper;
-    using Infrastructure;
     using System.Web.Mvc;
 
-    public class BaseController :Controller
-    {
-        protected MapperConfiguration config;
+    using AutoMapper;
+    using Infrastructure;
 
+    public class BaseController : Controller
+    {
         public BaseController()
         {
-            this.config = MapperFactory.GetConfig();
+            this.Config = MapperFactory.GetConfig();
         }
+
+        protected MapperConfiguration Config { get; set; }
     }
 }

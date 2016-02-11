@@ -2,9 +2,9 @@
 {
     using System.Web.Mvc;
 
-    using Ninject;
     using Data.Repositories;
     using Models;
+    using Ninject;
 
     public class PopulateCitiesAttribute : BasePopulator
     {
