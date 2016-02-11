@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<EventSystem.Web.Models.Places.PlaceViewModel>
 @{
     ViewBag.Title = "All Places";
 }
@@ -7,8 +7,7 @@
 <link href="~/Content/KAdminTheme/styles/jquery.news-ticker.css" rel="stylesheet" />
     }
 
-<div id="page-wrapper">
-    <div class="page-content">
+    <div>
         <div id="tab-general">
             <div class="row mbl">
                 <div class="col-lg-12">
@@ -64,17 +63,25 @@
                                             <div class="box text-shadow">
                                                 <table class="demo-tbl">
                                                     <!--<item>1</item>-->
-                                                    <tr class="tbl-item">
-                                                        <!--<img/>-->
-                                                        <td class="img"><img src="~/Content/KAdminTheme/images/thumbs/arch-1.jpg" /></td>
-                                                        <!--<data></data>-->
-                                                        <td class="td-block">
-                                                            <p class="date">03/15/2012</p>
-                                                            <p class="title">Arch</p>
-                                                            <p class="desc">An arch is a structure that spans a space and supports a load. Arches appeared as early as the 2nd millennium BC in Mesopotamian brick architecture and their systematic use started with the Ancient Romans who were the first to apply the technique to a wide range of structures.</p>
-                                                            <p class="like">5 Likes</p>
-                                                        </td>
-                                                    </tr>
+                                                    @foreach (var place in Model)
+                                                    {
+                                                        <tr class="tbl-item">
+                                                            <!--<img/>-->
+                                                            <td class="img"><img src="~/Content/KAdminTheme/images/thumbs/arch-1.jpg" /></td>
+                                                            <!--<data></data>-->
+                                                            <td class="td-block">
+                                                                <p class="date">@place.Street</p>
+                                                                <p class="title">@Html.ActionLink(@place.Name, "Edit", new { id = place.Id } )</p>
+                                                                @*<p class="desc">@place.Description</p>*@
+                                                                <p class="desc">
+                                                                    A calendar is a system of organizing days for social, religious, commercial, or administrative purposes. This is done by giving names to periods of time, typically days, weeks, months, and years. The name given to each day is known as a date. Periods in a calendar (such as years and months) are usually, though not necessarily,
+                                                                    synchronized with the cycle of the sun or the moon.
+                                                                </p>
+                                                                <p class="like">5 Likes</p>
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                   
                                                 </table>
                                             </div>
                                             <div class="box jplist-no-results text-shadow align-center"><p>No results found</p></div>
@@ -103,6 +110,9 @@
                                                 </div>
                                                 <div data-type="{start} - {end} of {all}" data-control-type="pagination-info" data-control-name="paging" data-control-action="paging" class="jplist-label btn btn-default"></div>
                                                 <div data-control-type="pagination" data-control-name="paging" data-control-action="paging" data-control-animate-to-top="true" class="jplist-pagination"></div>
+                                                <div>
+                                                    @Html.ActionLink("Create new place", "Create", null, new { @class = "btn btn-green pull-right" })
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -117,15 +127,7 @@
         </div>
     </div>
     <!--END CONTENT-->
-    <!--BEGIN FOOTER-->
-    <div id="footer">
-        <div class="copyright">
-            <a href="http://themifycloud.com">2014 © KAdmin Responsive Multi-Purpose Template</a>
-        </div>
-    </div>
-    <!--END FOOTER-->
-</div>
+  
 <!--END PAGE WRAPPER-->
 
-@Html.ActionLink("Create new place", "Create", null, new { @class = "btn btn-primary" } )
 
