@@ -42,12 +42,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CitiesService.cs" />
+    <Compile Include="Contracts\IAdministrationService.cs" />
     <Compile Include="Contracts\ICitiesService.cs" />
     <Compile Include="Contracts\ICountriesService.cs" />
     <Compile Include="Contracts\IEventsService.cs" />
     <Compile Include="Contracts\IHomeService.cs" />
     <Compile Include="Contracts\IImagesService.cs" />
+    <Compile Include="Contracts\IPlacesService.cs" />
     <Compile Include="Contracts\IService.cs" />
+    <Compile Include="PlacesService.cs" />
     <Compile Include="CountriesService.cs" />
     <Compile Include="EventsService.cs" />
     <Compile Include="HomeService.cs" />

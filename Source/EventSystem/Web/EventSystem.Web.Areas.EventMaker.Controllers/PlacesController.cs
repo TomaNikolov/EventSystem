@@ -1,30 +1,25 @@
 ﻿namespace EventSystem.Web.Areas.EventMaker.Controllers
 {
+    using System.Linq;
     using System.Web.Mvc;
 
+    using AutoMapper.QueryableExtensions;
+    using Base;
+    using EventSystem.Models;
     using Infrastructure.Populators;
     using Models.Places;
     using Services.Contracts;
-    using Web.Controllers.Base;
 
-    public class PlacesController : BaseController
+    public class PlacesController : BaseEventMakerController<PlaceViewModel>
     {
-        private ICountriesService countriesService;
-
-        private ICitiesService citiesService;
+        private IPlacesService placesService;
 
         private IImagesService imagesService;
 
-        public PlacesController(ICountriesService countriesService, ICitiesService citiesService, IImagesService imagesService)
+        public PlacesController(IPlacesService placesService, IImagesService imagesService)
         {
-            this.countriesService = countriesService;
-            this.citiesService = citiesService;
+            this.placesService = placesService;
             this.imagesService = imagesService;
-        }
-
-        public ActionResult All()
-        {
-            return this.View();
         }
 
         [HttpGet]
@@ -32,7 +27,18 @@
         [PopulateCountries]
         public ActionResult Create()
         {
-            var model = new PostPlaceViewModel();
+            var model = this.GetModel<PostPlaceViewModel, Place>(this.placesService, null);
+
+            return this.View(model);
+        }
+
+        [HttpGet]
+        [PopulateCities]
+        [PopulateCountries]
+        public ActionResult Edit(int id)
+        {
+            var model = this.GetModel<PostPlaceViewModel, Place>(this.placesService, id);
+
             return this.View(model);
         }
 
@@ -46,6 +52,13 @@
         public ActionResult Detatils(int id)
         {
             return this.View();
+        }
+
+        protected override IQueryable<TModel> GetData<TModel>(int count, int page)
+        {
+            return this.placesService
+                .GetAll()
+                 .ProjectTo<PlaceViewModel>(this.Config) as IQueryable<TModel>;
         }
     }
 }

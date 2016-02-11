@@ -541,6 +541,8 @@
     <Content Include="Areas\EventMaker\Views\Shared\EditorTemplates\String.cshtml" />
     <Content Include="Areas\EventMaker\Views\Shared\EditorTemplates\Double.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\EventMaker\Places\Create\images.js" />
+    <Content Include="Scripts\EventMaker\Places\Create\maps.js" />
     <Content Include="Scripts\Events\EventsDetails.js" />
     <Content Include="Scripts\Home\index.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
