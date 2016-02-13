@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
+
     <link href="~/Content/KAdminTheme/styles/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/KAdminTheme/styles/animate.css" rel="stylesheet" />
     <link href="~/Content/KAdminTheme/styles/font-awesome.min.css" rel="stylesheet" />
@@ -11,11 +12,12 @@
     <link href="~/Content/KAdminTheme/styles/main.css" rel="stylesheet" />
     <link href="~/Content/KAdminTheme/styles/style-responsive.css" rel="stylesheet" />
     <link href="~/Content/KAdminTheme/styles/pace.css" rel="stylesheet" />
+    @Styles.Render("~/styleBundles/toastr")
     @RenderSection("styles", required: false)
     @Styles.Render("~/styleBundles/css")
 </head>
 <body>
-    <div>
+       <div>
 
         <!--BEGIN BACK TO TOP-->
         <a id="totop" href="#"><i class="fa fa-angle-up"></i></a>
@@ -110,11 +112,12 @@
             <!--END PAGE WRAPPER-->
         </div>
     </div>
-
+    
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/toastr")
     <script src="~/Content/KAdminTheme/script/bootstrap-hover-dropdown.js"></script>
-
     @RenderSection("scripts", required: false)
+    @Html.Partial("~/Views/Shared/_Notification.cshtml")
 </body>
 </html>

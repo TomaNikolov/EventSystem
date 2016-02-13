@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/styleBundles/toastr")
     @Styles.Render("~/styleBundles/theme")
   @*  @Styles.Render("~/styleBundles/css")*@
     @* @Scripts.Render("~/bundles/modernizr")*@
@@ -82,7 +83,9 @@
     <script src="http://maps.google.com/maps/api/js?key=AIzaSyAllhFsNJRffftCMsKEMdQpRkCtKmIpL4c"></script>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/toastr")
     @Scripts.Render("~/bundles/theme")
     @RenderSection("scripts", required: false)
+    @Html.Partial("~/Views/Shared/_Notification.cshtml")
 </body>
 </html>

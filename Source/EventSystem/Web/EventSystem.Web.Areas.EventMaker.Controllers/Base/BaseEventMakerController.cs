@@ -16,11 +16,6 @@
             return this.View(result);
         }
 
-        public virtual ActionResult Details(int id)
-        {
-            return this.View();
-        }
-
         [NonAction]
         protected TModel GetModel<TModel, TEntity>(IAdministrationService<TEntity> adminService, int? id)
             where TModel : new()
