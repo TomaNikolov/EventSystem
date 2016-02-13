@@ -1,8 +1,8 @@
-﻿namespace EventSystem.Web
+﻿namespace EventSystem.Web.Config
 {
     using System;
 
-    using Data;
+    using EventSystem.Data;
     using EventSystem.Models;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.Owin;
@@ -10,10 +10,9 @@
     using Microsoft.Owin.Security.Cookies;
     using Owin;
 
-    public partial class Startup
+    public static class AuthConfig
     {
-        // For more information on configuring authentication, please visit http://go.microsoft.com/fwlink/?LinkId=301864
-        public void ConfigureAuth(IAppBuilder app)
+        public static void Initialize(IAppBuilder app)
         {
             // Configure the db context, user manager and signin manager to use a single instance per request
             app.CreatePerOwinContext(EventSystemDbContext.Create);
@@ -35,7 +34,7 @@
                         validateInterval: TimeSpan.FromMinutes(30),
                         regenerateIdentity: (manager, user) => user.GenerateUserIdentityAsync(manager))
                 }
-            });            
+            });
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
 
             // Enables the application to temporarily store user information when they are verifying the second factor in the two-factor authentication process.

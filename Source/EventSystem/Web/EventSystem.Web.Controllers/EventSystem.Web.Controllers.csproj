@@ -146,6 +146,10 @@
       <Project>{0603837d-c2cf-4f97-8981-c5e2e0a38836}</Project>
       <Name>EventSystem.Web.Infrastructure</Name>
     </ProjectReference>
+    <ProjectReference Include="..\EventSystem.Web.Config\EventSystem.Web.Config.csproj">
+      <Project>{483140e3-e7ef-4dcc-8cf1-9c4dc9004b6f}</Project>
+      <Name>EventSystem.Web.Config</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EventSystem.Web.Models\EventSystem.Web.Models.csproj">
       <Project>{e0b512c4-10df-4431-b0f7-a48f91446ac3}</Project>
       <Name>EventSystem.Web.Models</Name>
