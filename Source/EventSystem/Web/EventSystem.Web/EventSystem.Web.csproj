@@ -186,14 +186,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\AutoMapperConfig.cs" />
-    <Compile Include="App_Start\BundleConfig.cs" />
-    <Compile Include="App_Start\DbConfig.cs" />
-    <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\IdentityConfig.cs" />
-    <Compile Include="App_Start\NinjectConfig.cs" />
-    <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\EventMaker\EventMakerAreaRegistration.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -624,6 +616,10 @@
     <ProjectReference Include="..\EventSystem.Web.Areas.EventMaker.Controllers\EventSystem.Web.Areas.EventMaker.Controllers.csproj">
       <Project>{75047e96-bff8-4fe0-9cc9-e68a47661ee6}</Project>
       <Name>EventSystem.Web.Areas.EventMaker.Controllers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EventSystem.Web.Config\EventSystem.Web.Config.csproj">
+      <Project>{483140e3-e7ef-4dcc-8cf1-9c4dc9004b6f}</Project>
+      <Name>EventSystem.Web.Config</Name>
     </ProjectReference>
     <ProjectReference Include="..\EventSystem.Web.Controllers\EventSystem.Web.Controllers.csproj">
       <Project>{e58bd594-7f4a-4e9c-8e0f-6248a3a102b6}</Project>
