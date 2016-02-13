@@ -1,4 +1,4 @@
-﻿namespace EventSystem.Web
+﻿namespace EventSystem.Web.Config
 {
     using System.Web.Optimization;
 

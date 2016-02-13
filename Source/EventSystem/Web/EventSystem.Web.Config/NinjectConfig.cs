@@ -1,7 +1,7 @@
-[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(EventSystem.Web.App_Start.NinjectConfig), "Start")]
-[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(EventSystem.Web.App_Start.NinjectConfig), "Stop")]
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(EventSystem.Web.Config.NinjectConfig), "Start")]
+[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(EventSystem.Web.Config.NinjectConfig), "Stop")]
 
-namespace EventSystem.Web.App_Start
+namespace EventSystem.Web.Config
 {
     using System;
     using System.Linq;
