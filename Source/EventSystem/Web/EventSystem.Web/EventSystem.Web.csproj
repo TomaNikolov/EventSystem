@@ -500,6 +500,8 @@
     <Content Include="Content\Theme\js\modernizr.custom.86080.js" />
     <Content Include="Content\Theme\js\respond.min.js" />
     <Content Include="Content\Theme\js\smoothscroll.js" />
+    <Content Include="Content\toastr.css" />
+    <Content Include="Content\toastr.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -533,6 +535,9 @@
     <Content Include="Areas\EventMaker\Views\Shared\EditorTemplates\String.cshtml" />
     <Content Include="Areas\EventMaker\Views\Shared\EditorTemplates\Double.cshtml" />
     <Content Include="Areas\EventMaker\Views\Shared\_GridLayout.cshtml" />
+    <Content Include="Content\toastr.scss" />
+    <Content Include="Content\toastr.less" />
+    <Content Include="App_Code\NotificationBuilder.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\EventMaker\Places\Create\images.js" />
     <Content Include="Scripts\EventMaker\Places\Create\maps.js" />
@@ -548,6 +553,8 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\toastr.js" />
+    <Content Include="Scripts\toastr.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -584,6 +591,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Event\Details.cshtml" />
+    <Content Include="Views\Shared\_Notification.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

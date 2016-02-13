@@ -9,7 +9,8 @@
     using Infrastructure.Populators;
     using Models.Places;
     using Services.Contracts;
-
+    using Infrastructure.Notifications;
+    using Infrastructure.Extensions;
     public class PlacesController : BaseEventMakerController<PlaceViewModel>
     {
         private IPlacesService placesService;
@@ -46,10 +47,11 @@
         public ActionResult Create(PostPlaceViewModel model)
         {
             this.imagesService.SaveImages(model.Files);
-            return this.RedirectToAction("Details");
+            this.AddToastMessage("Congratulations", "You made it all the way here!", ToastType.Success);
+            return this.RedirectToAction("All");
         }
 
-        public ActionResult Detatils(int id)
+        public ActionResult Details(int id)
         {
             return this.View();
         }

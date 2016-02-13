@@ -110,9 +110,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constants\Assemblies.cs" />
+    <Compile Include="Constants\Notification.cs" />
+    <Compile Include="Extensions\ControllerExtensions.cs" />
     <Compile Include="MapperFactory.cs" />
     <Compile Include="Mappings\IHaveCustomMappings.cs" />
     <Compile Include="Mappings\IMapFrom.cs" />
+    <Compile Include="Notifications\ToastMessage.cs" />
+    <Compile Include="Notifications\Toastr.cs" />
+    <Compile Include="Notifications\ToastType.cs" />
     <Compile Include="Populators\BasePopulator.cs" />
     <Compile Include="Populators\PopulateCitiesAttribute.cs" />
     <Compile Include="Populators\PopulateCountriesAttribute.cs" />
