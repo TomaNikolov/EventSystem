@@ -2,6 +2,6 @@
 {
     public class Partials
     {
-        public const string _Notification.cshtml = "~/Views/Shared/_Notification.cshtml";
+        public const string _Notification = "~/Views/Shared/_Notification.cshtml";
     }
 }
