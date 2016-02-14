@@ -1,20 +1,29 @@
 ﻿namespace EventSystem.Web.Infrastructure.Populators
 {
+    using Services.Contracts;
     using System.Collections.Generic;
     using System.Linq;
     using System.Web.Mvc;
-    using AutoMapper.QueryableExtensions;
-    using EventSystem.Data.Common;
+
+    using Data.Common.Models;
     using EventSystem.Data.Common.Repositories;
+    using Extensions;
+    using Ninject;
 
     public class BasePopulator : ActionFilterAttribute
     {
-        //protected IEnumerable<SelectListItem> GetSelecTedList<TModel>(IDbRepository<TModel> repooitory) 
-        //    where TModel : class, IListedItem
-        //{
-        //    var config = MapperFactory.GetConfig();
-        //    var result = repooitory.All();
-        //    return result.ProjectTo<SelectListItem>(config).ToList();
-        //}
+        [Inject]
+        public ICacheService CacheService { private get; set; }
+
+        protected IEnumerable<SelectListItem> GetSelecTedList<T, TKey>(IDbRepository<T, TKey> repository, string itemName)
+            where T : BaseModel<TKey>, IListedItem
+        {
+            var result = this.CacheService.Get(
+                itemName,
+                () => repository.All().To<SelectListItem>().ToList(),
+                60 * 60);
+
+            return result;
+        }
     }
 }

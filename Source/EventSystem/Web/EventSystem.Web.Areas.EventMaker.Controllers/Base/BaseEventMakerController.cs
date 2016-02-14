@@ -2,6 +2,8 @@
 {
     using System.Linq;
     using System.Web.Mvc;
+
+    using Infrastructure;
     using Services.Contracts;
     using Web.Controllers.Base;
 
@@ -21,7 +23,9 @@
             where TModel : new()
             where TEntity : class
         {
-            return id.HasValue ? this.Config.CreateMapper().Map<TModel>(adminService.GetById(id)) : new TModel();
+            return id.HasValue ? MapperFactory.GetConfig()
+                                              .CreateMapper()
+                                              .Map<TModel>(adminService.GetById(id)) : new TModel();
         }
 
         [NonAction]

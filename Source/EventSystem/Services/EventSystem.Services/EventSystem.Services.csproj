@@ -41,8 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CacheService.cs" />
     <Compile Include="CitiesService.cs" />
     <Compile Include="Contracts\IAdministrationService.cs" />
+    <Compile Include="Contracts\ICacheService.cs" />
     <Compile Include="Contracts\ICitiesService.cs" />
     <Compile Include="Contracts\ICountriesService.cs" />
     <Compile Include="Contracts\IEventsService.cs" />

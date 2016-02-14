@@ -3,7 +3,6 @@
     using Ninject;
     using Ninject.Extensions.Conventions;
     using Ninject.Web.Common;
-
     using Services.Contracts;
 
     public class ServiceBindingsRegister : INinjectRegistry

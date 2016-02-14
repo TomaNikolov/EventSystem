@@ -11,6 +11,8 @@
     using Services.Contracts;
     using Infrastructure.Notifications;
     using Infrastructure.Extensions;
+    using System.Web.Mvc.Expressions;
+
     public class PlacesController : BaseEventMakerController<PlaceViewModel>
     {
         private IPlacesService placesService;
@@ -48,7 +50,7 @@
         {
             this.imagesService.SaveImages(model.Files);
             this.AddToastMessage("Congratulations", "You made it all the way here!", ToastType.Success);
-            return this.RedirectToAction("All");
+            return this.RedirectToAction(x => x.Details(2));
         }
 
         public ActionResult Details(int id)
@@ -60,7 +62,7 @@
         {
             return this.placesService
                 .GetAll()
-                 .ProjectTo<PlaceViewModel>(this.Config) as IQueryable<TModel>;
+                 .To<PlaceViewModel>() as IQueryable<TModel>;
         }
     }
 }
