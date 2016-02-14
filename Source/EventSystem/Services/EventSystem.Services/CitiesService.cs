@@ -9,9 +9,9 @@
 
     public class CitiesService : ICitiesService
     {
-        private IRepository<City> cities;
+        private IDbRepository<City> cities;
 
-        public CitiesService(IRepository<City> cities)
+        public CitiesService(IDbRepository<City> cities)
         {
             this.cities = cities;
         }

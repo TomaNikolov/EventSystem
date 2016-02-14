@@ -8,9 +8,9 @@
 
     public class CountriesService : ICountriesService
     {
-        private IRepository<Country> countries;
+        private IDbRepository<Country> countries;
 
-        public CountriesService(IRepository<Country> countries)
+        public CountriesService(IDbRepository<Country> countries)
         {
             this.countries = countries;
         }

@@ -1,7 +1,8 @@
 ﻿namespace EventSystem.Models
 {
-    public class DeliveryAdress
+    using EventSystem.Data.Common.Models;
+
+    public class DeliveryAdress : BaseModel<int>
     {
-        public int Id { get; set; }
     }
 }

@@ -1,9 +1,9 @@
 ﻿namespace EventSystem.Models
 {
-    public class Ticket
-    {
-        public int Id { get; set; }
+    using EventSystem.Data.Common.Models;
 
+    public class Ticket : BaseModel<int>
+    {
         public decimal Price { get; set; }
 
         public int Ammount { get; set; }

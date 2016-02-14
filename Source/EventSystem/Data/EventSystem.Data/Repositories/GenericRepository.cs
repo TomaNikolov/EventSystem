@@ -1,62 +1,68 @@
 ﻿namespace EventSystem.Data.Repositories
 {
+    using Common.Models;
     using System;
     using System.Data.Entity;
     using System.Linq;
     using System.Linq.Expressions;
 
-    public class GenericRepository<T> : IRepository<T>
-        where T : class
+    public class GenericRepository<T> : IDbRepository<T>
+      where T : BaseModel<int>
     {
-        private IEventSystemDbContext context;
-
-        private IDbSet<T> set;
-
-        public GenericRepository(IEventSystemDbContext context)
+        public GenericRepository(DbContext context)
         {
-            this.context = context;
-            this.set = context.Set<T>();
+            if (context == null)
+            {
+                throw new ArgumentException("An instance of DbContext is required to use this repository.", nameof(context));
+            }
+
+            this.Context = context;
+            this.DbSet = this.Context.Set<T>();
         }
+
+        private IDbSet<T> DbSet { get; }
+
+        private DbContext Context { get; }
 
         public IQueryable<T> All()
         {
-            return this.set;
+            return this.DbSet.Where(x => !x.IsDeleted);
         }
 
-        public IQueryable<T> Include(Expression<Func<T, object>> expression)
+        public IQueryable<T> AllWithDeleted()
         {
-            return this.set.Include(expression);
+            return this.DbSet;
+        }
+
+        public T GetById(int id)
+        {
+            return this.All().FirstOrDefault(x => x.Id == id);
         }
 
         public T GetById(object id)
         {
-            return this.set.Find(id);
+            return this.DbSet.Find(id);
         }
 
         public void Add(T entity)
         {
-            this.ChangeState(entity, EntityState.Added);
-        }
-
-        public void Update(T entity)
-        {
-            this.ChangeState(entity, EntityState.Modified);
+            this.DbSet.Add(entity);
         }
 
         public void Delete(T entity)
         {
-            this.ChangeState(entity, EntityState.Deleted);
+            entity.IsDeleted = true;
+            entity.DeletedOn = DateTime.Now;
         }
 
-        public int SaveChanges()
+        public void HardDelete(T entity)
         {
-            return this.SaveChanges();
+            this.DbSet.Remove(entity);
         }
 
-        private void ChangeState(T entity, EntityState state)
+        public void Save()
         {
-            var entry = this.context.Entry(entity);
-            entry.State = state;
+            this.Context.SaveChanges();
         }
     }
 }

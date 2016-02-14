@@ -8,9 +8,9 @@
 
     public class HomeService : IHomeService
     {
-        private IRepository<Event> events;
+        private IDbRepository<Event> events;
 
-        public HomeService(IRepository<Event> events)
+        public HomeService(IDbRepository<Event> events)
         {
             this.events = events;
         }

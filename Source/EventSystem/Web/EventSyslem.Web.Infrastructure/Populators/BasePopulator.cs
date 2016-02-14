@@ -9,12 +9,12 @@
 
     public class BasePopulator : ActionFilterAttribute
     {
-        protected IEnumerable<SelectListItem> GetSelecTedList<T>(IRepository<T> repooitory) 
-            where T : class, IListedItem
-        {
-            var config = MapperFactory.GetConfig();
-            var result = repooitory.All();
-            return result.ProjectTo<SelectListItem>(config).ToList();
-        }
+        //protected IEnumerable<SelectListItem> GetSelecTedList<TModel>(IDbRepository<TModel> repooitory) 
+        //    where TModel : class, IListedItem
+        //{
+        //    var config = MapperFactory.GetConfig();
+        //    var result = repooitory.All();
+        //    return result.ProjectTo<SelectListItem>(config).ToList();
+        //}
     }
 }

@@ -1,7 +1,8 @@
 ﻿namespace EventSystem.Models
 {
-    public class Reservation
+    using EventSystem.Data.Common.Models;
+
+    public class Reservation : BaseModel<int>
     {
-        public int Id { get; set; }
     }
 }
