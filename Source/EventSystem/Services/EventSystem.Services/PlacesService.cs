@@ -2,9 +2,10 @@
 {
     using System;
     using System.Linq;
-    using EventSystem.Data.Repositories;
-    using EventSystem.Models;
+
     using Contracts;
+    using Data.Common.Repositories;
+    using EventSystem.Models;
 
     public class PlacesService : IPlacesService
     {

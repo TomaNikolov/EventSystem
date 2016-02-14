@@ -2,7 +2,7 @@
 {
     using System.Linq;
 
-    using EventSystem.Data.Repositories;
+    using EventSystem.Data.Common.Repositories;
     using EventSystem.Models;
     using EventSystem.Services.Contracts;
 

@@ -1,16 +1,18 @@
 ﻿namespace EventSystem.Web.Infrastructure.Registries
 {
+    using System.Data.Entity;
+
     using Data;
-    using Data.Repositories;
+    using Data.Common.Repositories;
     using Ninject;
     using Ninject.Web.Common;
-    using System.Data.Entity;
+
     public class DataBindingsRegister : INinjectRegistry
     {
         public void Register(IKernel kernel)
         {
             kernel.Bind<DbContext>().To<EventSystemDbContext>().InRequestScope();
-            kernel.Bind(typeof(IDbRepository<>)).To(typeof(GenericRepository<>));
+            kernel.Bind(typeof(IDbRepository<>)).To(typeof(DbRepository<>));
         }
     }
 }

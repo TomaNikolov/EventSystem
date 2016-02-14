@@ -1,4 +1,4 @@
-﻿namespace EventSystem.Data.Common
+﻿namespace EventSystem.Data.Common.Models
 {
     public interface IListedItem
     {

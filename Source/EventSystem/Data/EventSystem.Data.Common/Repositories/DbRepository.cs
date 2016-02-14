@@ -1,15 +1,15 @@
-﻿namespace EventSystem.Data.Repositories
+﻿namespace EventSystem.Data.Common.Repositories
 {
-    using Common.Models;
     using System;
     using System.Data.Entity;
     using System.Linq;
-    using System.Linq.Expressions;
 
-    public class GenericRepository<T> : IDbRepository<T>
+    using Common.Models;
+
+    public class DbRepository<T> : IDbRepository<T>
       where T : BaseModel<int>
     {
-        public GenericRepository(DbContext context)
+        public DbRepository(DbContext context)
         {
             if (context == null)
             {

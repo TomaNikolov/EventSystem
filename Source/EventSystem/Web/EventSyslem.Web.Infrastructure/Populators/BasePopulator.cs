@@ -5,7 +5,7 @@
     using System.Web.Mvc;
     using AutoMapper.QueryableExtensions;
     using EventSystem.Data.Common;
-    using EventSystem.Data.Repositories;
+    using EventSystem.Data.Common.Repositories;
 
     public class BasePopulator : ActionFilterAttribute
     {

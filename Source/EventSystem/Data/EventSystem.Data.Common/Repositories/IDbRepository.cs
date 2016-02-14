@@ -1,9 +1,8 @@
-﻿namespace EventSystem.Data.Repositories
+﻿namespace EventSystem.Data.Common.Repositories
 {
-    using Common.Models;
-    using System;
     using System.Linq;
-    using System.Linq.Expressions;
+
+    using Common.Models;
 
     public interface IDbRepository<T> : IDbRepository<T, int>
         where T : BaseModel<int>

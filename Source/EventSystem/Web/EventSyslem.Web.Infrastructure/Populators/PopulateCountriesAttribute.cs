@@ -2,7 +2,7 @@
 {
     using System.Web.Mvc;
 
-    using Data.Repositories;
+    using Data.Common.Repositories;
     using Models;
     using Ninject;
 
