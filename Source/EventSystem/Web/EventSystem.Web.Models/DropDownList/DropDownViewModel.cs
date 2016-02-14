@@ -4,7 +4,7 @@
     using System.Web.Mvc;
 
     using AutoMapper;
-    using Data.Common;
+    using Data.Common.Models;
     using Infrastructure.Mappings;
 
     public class DropDownViewModel : IMapFrom<IListedItem>, IHaveCustomMappings

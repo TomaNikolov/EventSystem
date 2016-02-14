@@ -1,7 +1,8 @@
 ﻿namespace EventSystem.Models
 {
-    public class OrderItem
+    using EventSystem.Data.Common.Models;
+
+    public class OrderItem : BaseModel<int>
     {
-        public int Id { get; set; }
     }
 }

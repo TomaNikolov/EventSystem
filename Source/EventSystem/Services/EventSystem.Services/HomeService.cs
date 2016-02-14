@@ -2,15 +2,15 @@
 {
     using System.Linq;
 
-    using EventSystem.Data.Repositories;
+    using EventSystem.Data.Common.Repositories;
     using EventSystem.Models;
     using EventSystem.Services.Contracts;
 
     public class HomeService : IHomeService
     {
-        private IRepository<Event> events;
+        private IDbRepository<Event> events;
 
-        public HomeService(IRepository<Event> events)
+        public HomeService(IDbRepository<Event> events)
         {
             this.events = events;
         }

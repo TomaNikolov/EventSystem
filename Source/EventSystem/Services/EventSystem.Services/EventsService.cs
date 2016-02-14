@@ -2,15 +2,15 @@
 {
     using System.Linq;
 
-    using Data.Repositories;
+    using Data.Common.Repositories;
     using EventSystem.Services.Contracts;
     using Models;
 
     public class EventsService : IEventsService
     {
-        private IRepository<Event> events;
+        private IDbRepository<Event> events;
 
-        public EventsService(IRepository<Event> events)
+        public EventsService(IDbRepository<Event> events)
         {
             this.events = events;
         }

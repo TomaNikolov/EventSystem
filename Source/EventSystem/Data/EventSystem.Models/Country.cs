@@ -1,13 +1,11 @@
 ﻿namespace EventSystem.Models
 {
     using System.ComponentModel.DataAnnotations;
-    using Data.Common;
 
-    public class Country : IListedItem
+    using Data.Common.Models;
+
+    public class Country : BaseModel<int>, IListedItem
     {
-        [Key]
-        public int Id { get; set; }
-
         [Required]
         [MinLength(2)]
         [MaxLength(100)]

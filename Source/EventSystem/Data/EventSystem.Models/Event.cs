@@ -4,7 +4,9 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
-    public class Event
+    using Data.Common.Models;
+
+    public class Event : BaseModel<int>
     {
         private ICollection<Image> images;
         private ICollection<Ticket> tickets;
@@ -17,9 +19,6 @@
             this.Comments = new HashSet<Comment>();
         }
 
-        [Key]
-        public int Id { get; set; }
-
         [Required]
         [MinLength(10)]
         [MaxLength(500)]
@@ -31,8 +30,6 @@
         public string Description { get; set; }
 
         public DateTime EventStart { get; set; }
-
-        public DateTime CreatedOn { get; set; }
 
         public int PlaceId { get; set; }
 

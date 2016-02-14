@@ -1,19 +1,15 @@
 ﻿namespace EventSystem.Models
 {
-    using System;
     using System.ComponentModel.DataAnnotations;
 
-    public class Comment
-    {
-        [Key]
-        public int Id { get; set; }
+    using Data.Common.Models;
 
+    public class Comment : BaseModel<int>
+    {
         [Required]
         [MinLength(5)]
         [MaxLength(1000)]
         public string Content { get; set; }
-
-        public DateTime CreatedOn { get; set; }
 
         public int EventId { get; set; }
 

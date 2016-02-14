@@ -1,7 +1,8 @@
 ﻿namespace EventSystem.Models
 {
-    public class ShoppingCart
+    using EventSystem.Data.Common.Models;
+
+    public class ShoppingCart : BaseModel<int>
     {
-        public int Id { get; set; }
     }
 }

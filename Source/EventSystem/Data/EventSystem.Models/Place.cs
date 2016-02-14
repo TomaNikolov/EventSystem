@@ -2,11 +2,10 @@
 {
     using System.ComponentModel.DataAnnotations;
 
-    public class Place
-    {
-        [Key]
-        public int Id { get; set; }
+    using Data.Common.Models;
 
+    public class Place : BaseModel<int>, IListedItem
+    {
         [Required]
         [MaxLength(400)]
         public string Name { get; set; }

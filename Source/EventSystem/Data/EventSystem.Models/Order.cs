@@ -1,9 +1,10 @@
 ﻿namespace EventSystem.Models
 {
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
 
-    public class Order
+    using Data.Common.Models;
+
+    public class Order : BaseModel<int>
     {
         private ICollection<OrderItem> orderItems;
 
@@ -11,9 +12,6 @@
         {
             this.orderItems = new HashSet<OrderItem>();
         }
-
-        [Key]
-        public int Id { get; set; }
 
         public int DeliveryAdressId { get; set; }
 

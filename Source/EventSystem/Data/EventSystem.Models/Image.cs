@@ -2,11 +2,10 @@
 {
     using System.ComponentModel.DataAnnotations;
 
-    public class Image
-    {
-        [Key]
-        public int Id { get; set; }
+    using Data.Common.Models;
 
+    public class Image : BaseModel<int>
+    {
         /// [Required]
         /// [MaxLength(100)]
         public string Name { get; set; }

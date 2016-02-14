@@ -2,15 +2,16 @@
 {
     using System;
     using System.Linq;
-    using EventSystem.Data.Repositories;
-    using EventSystem.Models;
+
     using Contracts;
+    using Data.Common.Repositories;
+    using EventSystem.Models;
 
     public class PlacesService : IPlacesService
     {
-        private IRepository<Place> places;
+        private IDbRepository<Place> places;
 
-        public PlacesService(IRepository<Place> places)
+        public PlacesService(IDbRepository<Place> places)
         {
             this.places = places;
         }
