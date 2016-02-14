@@ -62,7 +62,7 @@
         {
             return this.placesService
                 .GetAll()
-                 .ProjectTo<PlaceViewModel>(this.Config) as IQueryable<TModel>;
+                 .To<PlaceViewModel>() as IQueryable<TModel>;
         }
     }
 }
