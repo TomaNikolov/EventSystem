@@ -1,10 +1,11 @@
-﻿@model  EventSystem.Web.Models.Places.PostPlaceViewModel
+﻿@using EventSystem.Web.Infrastructure.Constants
+@model  EventSystem.Web.Models.Places.PostPlaceViewModel
 @{
     ViewBag.Title = "Create New Place";
 }
 <div id="generalTabContent" class="tab-content">
     <div id="tab-edit" class="tab-pane fade in active">
-        @using (Html.BeginForm("Create", "Places", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        @using (Html.BeginForm(Views.Create, "Places", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             <div class="row">
                 <div class="form-group">

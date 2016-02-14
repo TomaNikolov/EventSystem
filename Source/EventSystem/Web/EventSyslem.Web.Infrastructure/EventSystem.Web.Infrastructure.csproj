@@ -111,6 +111,8 @@
   <ItemGroup>
     <Compile Include="Constants\Assemblies.cs" />
     <Compile Include="Constants\Notification.cs" />
+    <Compile Include="Constants\Partials.cs" />
+    <Compile Include="Constants\Views.cs" />
     <Compile Include="Extensions\ControllerExtensions.cs" />
     <Compile Include="MapperFactory.cs" />
     <Compile Include="Mappings\IHaveCustomMappings.cs" />
