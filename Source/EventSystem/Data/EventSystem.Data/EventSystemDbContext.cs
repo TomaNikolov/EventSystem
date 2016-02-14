@@ -8,7 +8,7 @@
     using Models;
     using Common.Models;
 
-    public class EventSystemDbContext : IdentityDbContext<User>, IEventSystemDbContext
+    public class EventSystemDbContext : IdentityDbContext<User>
     {
         public EventSystemDbContext()
             : base("EventSystemDb")
