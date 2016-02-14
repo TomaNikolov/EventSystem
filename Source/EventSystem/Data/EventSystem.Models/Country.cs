@@ -2,7 +2,6 @@
 {
     using System.ComponentModel.DataAnnotations;
 
-    using Data.Common;
     using Data.Common.Models;
 
     public class Country : BaseModel<int>, IListedItem

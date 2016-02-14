@@ -5,7 +5,7 @@
     using System.Linq;
 
     using Common.Models;
-
+    using System.Linq.Expressions;
     public class DbRepository<T> : IDbRepository<T>
       where T : BaseModel<int>
     {
@@ -34,6 +34,11 @@
             return this.DbSet;
         }
 
+        public IQueryable<T> Include(Expression<Func<T, object>> expression)
+        {
+            return this.DbSet.Include(expression);
+        }
+
         public T GetById(int id)
         {
             return this.All().FirstOrDefault(x => x.Id == id);
@@ -52,7 +57,7 @@
         public void Delete(T entity)
         {
             entity.IsDeleted = true;
-            entity.DeletedOn = DateTime.Now;
+            entity.DeletedOn = DateTime.UtcNow;
         }
 
         public void HardDelete(T entity)

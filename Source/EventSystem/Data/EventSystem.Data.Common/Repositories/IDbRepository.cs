@@ -3,7 +3,8 @@
     using System.Linq;
 
     using Common.Models;
-
+    using System.Linq.Expressions;
+    using System;
     public interface IDbRepository<T> : IDbRepository<T, int>
         where T : BaseModel<int>
     {
@@ -15,6 +16,8 @@
         IQueryable<T> All();
 
         IQueryable<T> AllWithDeleted();
+
+        IQueryable<T> Include(Expression<Func<T, object>> expression);
 
         T GetById(TKey id);
 
