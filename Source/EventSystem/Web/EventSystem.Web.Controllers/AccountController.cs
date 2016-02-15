@@ -72,6 +72,15 @@
                 return this.View(model);
             }
 
+            if (model.Email.Contains("@"))
+            {
+                var user = this.UserManager.FindByEmail(model.Email);
+                if (user != null)
+                {
+                    model.Email = user.UserName;
+                }
+            }
+
             var result = await this.SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
