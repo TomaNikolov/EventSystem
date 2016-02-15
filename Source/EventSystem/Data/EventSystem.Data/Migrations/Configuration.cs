@@ -26,11 +26,11 @@ namespace EventSystem.Data.Migrations
 
             var users = new List<User>();
 
-            if (!context.Roles.Any(r => r.Name == "admin"))
+            if (!context.Roles.Any(r => r.Name == "Admin"))
             {
                 var store = new RoleStore<IdentityRole>(context);
                 var manager = new RoleManager<IdentityRole>(store);
-                var role = new IdentityRole { Name = "admin" };
+                var role = new IdentityRole { Name = "Admin" };
 
                 manager.Create(role);
             }
@@ -55,7 +55,7 @@ namespace EventSystem.Data.Migrations
                 };
 
                 var se = manager.Create(admin, "admin");
-                manager.AddToRole(admin.Id, "admin");
+                manager.AddToRole(admin.Id, "Admin");
 
                 for (int i = 1; i <= 5; i++)
                 {
