@@ -2,8 +2,8 @@
 {
     using System.Linq;
     using System.Web.Mvc;
-
-    using AutoMapper.QueryableExtensions;
+    using System.Web.Mvc.Expressions;
+   
     using Base;
     using EventSystem.Models;
     using Infrastructure.Populators;
@@ -11,8 +11,7 @@
     using Services.Contracts;
     using Infrastructure.Notifications;
     using Infrastructure.Extensions;
-    using System.Web.Mvc.Expressions;
-
+  
     public class PlacesController : BaseEventMakerController<PlaceViewModel>
     {
         private IPlacesService placesService;

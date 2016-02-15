@@ -1,4 +1,5 @@
 ﻿body {
+    height: 100%;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -12,44 +13,70 @@
     white-space: normal;
 }
 
-button, input, optgroup, select, textarea, #map-control{
+button, input, optgroup, select, textarea, #map-control {
     margin-bottom: 20px;
 }
 
 #event-info {
-  background-color: #ecedef;
-  background-image: url("/Content/Theme/images/footer-bg.jpg");
-  background-position: center bottom;
-  background-size: cover;
-  background-repeat:no-repeat;
-  position: relative;
-  padding: 95px 0 90px;
-  overflow: hidden;
+    background-color: #ecedef;
+    background-image: url("/Content/Theme/images/footer-bg.jpg");
+    background-position: center bottom;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    padding: 95px 0 90px;
+    overflow: hidden;
 }
 
-#event-info .item img {
-    display: inline-block;
-    width: 300px;
-    height:auto;
-    border-radius: 5px;
-    background-color: #c5c8ce;
-    padding: 2px;
-    margin-bottom: 30px;
-}
+    #event-info .item img {
+        display: inline-block;
+        width: 300px;
+        height: auto;
+        border-radius: 5px;
+        background-color: #c5c8ce;
+        padding: 2px;
+        margin-bottom: 30px;
+    }
 
 .fileUpload {
     position: relative;
     overflow: hidden;
     margin: 10px;
 }
-.fileUpload input.upload {
+
+    .fileUpload input.upload {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 0;
+        padding: 0;
+        font-size: 20px;
+        cursor: pointer;
+        opacity: 0;
+        filter: alpha(opacity=0);
+    }
+
+.footer {
     position: absolute;
-    top: 0;
     right: 0;
-    margin: 0;
-    padding: 0;
-    font-size: 20px;
-    cursor: pointer;
-    opacity: 0;
-    filter: alpha(opacity=0);
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    background-color: #efefef;
+    text-align: center;
+}
+
+/*Register*/
+#form-content {
+    padding-top: 60px;
+}
+
+#contact-section h2, label {
+    text-transform: inherit;
+    color: #373737;
+}
+
+/*Login*/
+#socialLoginForm {
+    padding-top: 60px;
 }

@@ -4,12 +4,14 @@
     using System.Threading.Tasks;
     using System.Web;
     using System.Web.Mvc;
+    using System.Web.Mvc.Expressions;
 
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin.Security;
     using Models.Manage;
-
+    using Infrastructure.Notifications;
+    using Infrastructure.Extensions;
     [Authorize]
     public class ManageController : Controller
     {
@@ -243,7 +245,8 @@
                     await this.SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                 }
 
-                return this.RedirectToAction("Index", new { Message = ManageMessageId.ChangePasswordSuccess });
+                this.AddToastMessage("Congratulations", "Your password has been changed.", ToastType.Success);
+                return this.RedirectToAction<HomeController>(c => c.Index());
             }
 
             this.AddErrors(result);
