@@ -7,6 +7,7 @@
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
+        [UIHint("String")]
         public string Email { get; set; }
 
         [Required]
