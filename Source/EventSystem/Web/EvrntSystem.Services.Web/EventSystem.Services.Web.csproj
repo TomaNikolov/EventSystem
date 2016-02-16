@@ -7,8 +7,8 @@
     <ProjectGuid>{0EC84C81-24B7-42C2-B3AA-9AB19CF0C0A9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EvrntSystem.Services.Web</RootNamespace>
-    <AssemblyName>EvrntSystem.Services.Web</AssemblyName>
+    <RootNamespace>EventSystem.Services.Web</RootNamespace>
+    <AssemblyName>EventSystem.Services.Web</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -60,6 +61,10 @@
     <ProjectReference Include="..\..\Services\EventSystem.Services\EventSystem.Services.csproj">
       <Project>{90ce85a0-08af-46cd-9fad-52a0834e6627}</Project>
       <Name>EventSystem.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EventSystem.Web.Models\EventSystem.Web.Models.csproj">
+      <Project>{e0b512c4-10df-4431-b0f7-a48f91446ac3}</Project>
+      <Name>EventSystem.Web.Models</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,19 +1,20 @@
 ﻿namespace EventSystem.Web.Controllers
 {
-    using Services.Contracts;
+    using Services.Web.Contracts;
     using System.Web.Mvc;
 
     public class OrderController : Controller
     {
-        private IHomeService homeService;
+        private IShoppingCartService shoppingCartService;
 
-        public OrderController(IHomeService homeService)
+        public OrderController(IShoppingCartService shoppingCartService)
         {
-            this.homeService = homeService;
+            this.shoppingCartService = shoppingCartService;
         }
 
         public ActionResult Cart()
         {
+            var model = this.
             return this.View();
         }
     }
