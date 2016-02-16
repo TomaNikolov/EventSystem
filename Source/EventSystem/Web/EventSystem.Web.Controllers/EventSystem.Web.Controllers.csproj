@@ -131,6 +131,7 @@
     <Compile Include="EventController.cs" />
     <Compile Include="HomeController.cs" />
     <Compile Include="ManageController.cs" />
+    <Compile Include="OrderController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
