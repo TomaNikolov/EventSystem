@@ -27,7 +27,7 @@
 
         public ICollection<Image> Images { get; set; }
 
-        public ICollection<Ticket> Tickets { get; set; }
+        public ICollection<TicketViewModel> Tickets { get; set; }
 
         public ICollection<Comment> Comments { get; set; }
 

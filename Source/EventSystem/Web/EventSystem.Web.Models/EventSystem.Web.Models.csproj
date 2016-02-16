@@ -133,6 +133,7 @@
     <Compile Include="Account\VerifyCodeViewModel.cs" />
     <Compile Include="DropDownList\DropDownViewModel.cs" />
     <Compile Include="Events\EventDetailsViewModel.cs" />
+    <Compile Include="Events\TicketViewModel.cs" />
     <Compile Include="Home\HomeViewModel.cs" />
     <Compile Include="Manage\AddPhoneNumberViewModel.cs" />
     <Compile Include="Manage\ChangePasswordViewModel.cs" />

@@ -27,6 +27,7 @@
             if (shopingCart == null)
             {
                 shopingCart = new ShoppingCartViewModel();
+                HttpContext.Current.Session[CartSessionKey] = shopingCart;
             }
 
             return (ShoppingCartViewModel)shopingCart;
