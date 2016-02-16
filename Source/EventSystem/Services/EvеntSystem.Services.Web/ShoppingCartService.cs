@@ -1,10 +1,10 @@
 ﻿namespace EventSystem.Services.Web
 {
+    using System.Linq;
     using System.Web;
 
     using EventSystem.Web.Models.Orders;
     using EventSystem.Services.Web.Contracts;
-    using System.Linq;
 
     public class ShoppingCartService : IShoppingCartService
     {

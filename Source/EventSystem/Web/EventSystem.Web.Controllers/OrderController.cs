@@ -14,8 +14,8 @@
 
         public ActionResult Cart()
         {
-            var model = this.
-            return this.View();
+            var model = this.shoppingCartService.GetShopingCart();
+            return this.View(model);
         }
     }
 }

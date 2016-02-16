@@ -46,6 +46,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\..\Data\EventSystem.Data.Common\EventSystem.Data.Common.csproj">
       <Project>{fea5894d-b9f8-45dd-9b8b-0f77afe7903f}</Project>
       <Name>EventSystem.Data.Common</Name>
@@ -58,11 +61,7 @@
       <Project>{525880e0-bf2b-48ab-993e-ab99cbee8aa3}</Project>
       <Name>EventSystem.Models</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Services\EventSystem.Services\EventSystem.Services.csproj">
-      <Project>{90ce85a0-08af-46cd-9fad-52a0834e6627}</Project>
-      <Name>EventSystem.Services</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\EventSystem.Web.Models\EventSystem.Web.Models.csproj">
+    <ProjectReference Include="..\..\Web\EventSystem.Web.Models\EventSystem.Web.Models.csproj">
       <Project>{e0b512c4-10df-4431-b0f7-a48f91446ac3}</Project>
       <Name>EventSystem.Web.Models</Name>
     </ProjectReference>

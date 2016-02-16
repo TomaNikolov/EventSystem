@@ -1,9 +1,8 @@
 ﻿namespace EventSystem.Services.Web.Contracts
 {
-    using EventSystem.Services.Contracts;
     using EventSystem.Web.Models.Orders;
 
-    public interface IShoppingCartService : IService
+    public interface IShoppingCartService 
     {
         ShoppingCartViewModel GetShopingCart();
 

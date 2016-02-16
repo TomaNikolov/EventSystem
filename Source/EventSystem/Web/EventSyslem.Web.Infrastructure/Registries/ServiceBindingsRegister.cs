@@ -13,6 +13,12 @@
                 .SelectAllClasses()
                 .BindAllInterfaces()
                 .Configure(b => b.InRequestScope()));
+
+            kernel.Bind(k => k.From(Constants.Assemblies.WebServices)
+            .SelectAllClasses()
+            .BindDefaultInterfaces()
+            .Configure(b => b.InRequestScope()));
+                
         }
     }
 }
