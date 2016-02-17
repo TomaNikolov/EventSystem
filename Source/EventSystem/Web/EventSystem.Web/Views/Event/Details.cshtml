@@ -75,13 +75,13 @@
                             <div class="row">
                                 @foreach (var item in Model.Images)
                                 {
-                                    <div class="col-sm-4">
-                                        <div class="single-event">
-                                            <img class="img-responsive" src="@item.ThumbnailPath" alt="event-image">
-                                            <h4>Chester Bennington</h4>
-                                            <h5>Vocal</h5>
-                                        </div>
+                                <div class="col-sm-4">
+                                    <div class="single-event">
+                                        <img class="img-responsive" src="@item.ThumbnailPath" alt="event-image">
+                                        <h4>Chester Bennington</h4>
+                                        <h5>Vocal</h5>
                                     </div>
+                                </div>
                                 }
                                 <div class="col-sm-4">
                                     <div class="single-event">
@@ -137,6 +137,48 @@
 
     </div>
 </section><!--/#about-->
+
+<section id="twitter">
+    <div id="twitter-feed" class="carousel slide" data-interval="false">
+        <div class="twit">
+            <img class="img-responsive" src="~/Content/Theme/images/twit.png" alt="twit">
+        </div>
+        <div class="col-md-7 col-md-offset-4">
+            <table id="ticket-purchase" class="table table-striped table-hover ">
+                <thead>
+                    <tr>
+
+                        <th>Ticket</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Order</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Tickets)
+                    {
+                        <tr  class="active">
+                            <td>Regular</td>
+                            <td>@item.Price</td>
+                            <td >
+                                <select data-id="@item.Id">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </td>
+                            <td><button data-id="@item.Id" class="btn  btn-sm">Purchase</button></td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</section><!--/#twitter-feed-->
 
 <section id="contact">
     <div id="map" data-lat="@Model.Place.Latitude" , data-long="@Model.Place.Longitude">
@@ -197,4 +239,15 @@
 <!--/#contact-->
 @section scripts {
     <script src="~/Scripts/Events/EventsDetails.js"></script>
+    <script>
+        var $ticketPurchase = $('#ticket-purchase');
+        $ticketPurchase.on('click', 'button', function () {
+            var $this = $(this);
+            var id = $this.attr('data-id');
+            var quantity = $ticketPurchase.find('select[data-id=' + id + ']').val();
+            $.post('/order/addToShoppingCart', { id: id, quantity: quantity }, function (data) {
+                console.log(data);
+            })
+        })
+    </script>
 }

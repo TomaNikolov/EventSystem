@@ -133,6 +133,7 @@
     <Compile Include="Account\VerifyCodeViewModel.cs" />
     <Compile Include="DropDownList\DropDownViewModel.cs" />
     <Compile Include="Events\EventDetailsViewModel.cs" />
+    <Compile Include="Events\TicketViewModel.cs" />
     <Compile Include="Home\HomeViewModel.cs" />
     <Compile Include="Manage\AddPhoneNumberViewModel.cs" />
     <Compile Include="Manage\ChangePasswordViewModel.cs" />
@@ -142,6 +143,8 @@
     <Compile Include="Manage\ManageLoginsViewModel.cs" />
     <Compile Include="Manage\SetPasswordViewModel.cs" />
     <Compile Include="Manage\VerifyPhoneNumberViewModel.cs" />
+    <Compile Include="Orders\OrderedTicketViewModel.cs" />
+    <Compile Include="Orders\ShoppingCartViewModel.cs" />
     <Compile Include="Places\PlaceViewModel.cs" />
     <Compile Include="Places\PostPlaceViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -163,11 +166,6 @@
       <Project>{0603837d-c2cf-4f97-8981-c5e2e0a38836}</Project>
       <Name>EventSystem.Web.Infrastructure</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Analyzer Include="..\..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\Newtonsoft.Json.dll" />
-    <Analyzer Include="..\..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
-    <Analyzer Include="..\..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
