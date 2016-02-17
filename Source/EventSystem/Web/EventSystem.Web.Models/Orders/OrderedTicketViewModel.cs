@@ -9,7 +9,6 @@
     {
         public OrderedTicketViewModel()
         {
-            this.Id = Guid.NewGuid().ToString();
         }
 
         public string Id { get; set; }
@@ -32,7 +31,8 @@
                 .ForMember(d => d.StartDate, opt => opt.MapFrom(s => s.Event.EventStart))
                 .ForMember(d => d.EventId, opt => opt.MapFrom(s => s.Event.Id))
                 .ForMember(d => d.EventTitle, opt => opt.MapFrom(s => s.Event.Title))
-                .ForMember(d => d.PlaceName, opt => opt.MapFrom(s => s.Event.Place.Name));
+                .ForMember(d => d.PlaceName, opt => opt.MapFrom(s => s.Event.Place.Name))
+                .ForMember(d => d.Id, opt => opt.MapFrom(s => Guid.NewGuid().ToString()));
         }
     }
 }

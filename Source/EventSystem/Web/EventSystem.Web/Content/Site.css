@@ -97,6 +97,34 @@ button, input, optgroup, select, textarea, #map-control {
     width: 100%;
 }
 
-table{
+table, h2, div, p, span{
     color: #373737;
+}
+
+.main-nav a span.badge{
+    position: absolute;
+    top: 23px;
+    left: 40px;
+    padding: 3px 6px;
+    color: #ffffff;
+}
+
+.main-nav.fixed-menu a span.badge{
+    position: absolute;
+    top: 8px;
+    left: 42px;
+    padding: 3px 6px;
+    color: #ffffff;
+}
+
+.badge-green, .label-green{
+        background-color: #488c6c
+}
+
+.badge-red, .label-red {
+    background-color: red;
+}
+
+a i{
+    font-size: 25px
 }

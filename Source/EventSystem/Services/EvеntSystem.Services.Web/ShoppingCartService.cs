@@ -5,7 +5,7 @@
 
     using EventSystem.Web.Models.Orders;
     using EventSystem.Services.Web.Contracts;
-
+  
     public class ShoppingCartService : IShoppingCartService
     {
         private const string CartSessionKey = "Cart";
@@ -20,6 +20,11 @@
             this.GetShopingCart().OrderedTickets.Clear();
         }
 
+        public int GetItemsCount()
+        {
+            return this.GetShopingCart().OrderedTickets.Count;
+        }
+
         public ShoppingCartViewModel GetShopingCart()
         {
             var shopingCart = HttpContext.Current.Session[CartSessionKey];
@@ -31,6 +36,11 @@
             }
 
             return (ShoppingCartViewModel)shopingCart;
+        }
+
+        public decimal GetTotalPrice()
+        {
+            return this.GetShopingCart().OrderedTickets.Sum(x => x.Quantity * x.Price);
         }
 
         public void RemoveTicket(string id)

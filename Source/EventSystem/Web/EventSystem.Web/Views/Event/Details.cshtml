@@ -58,7 +58,7 @@
             </div>
         </div>
         <div class="cart">
-            <a href="#"><i class="fa fa-shopping-cart"></i> <span>Purchase Tickets</span></a>
+            <a href="/Order/Cart"><span class="badge badge-orange">7</span><i class="fa fa-shopping-cart"></i>  <span> Tickets</span></a>
         </div>
     </div>
 </section><!--/#explore-->
@@ -246,7 +246,14 @@
             var id = $this.attr('data-id');
             var quantity = $ticketPurchase.find('select[data-id=' + id + ']').val();
             $.post('/order/addToShoppingCart', { id: id, quantity: quantity }, function (data) {
-                console.log(data);
+                var badgeContainer = $('[data-id="\shopping-cart\"]')
+                $('span[data-id="\shopping-cart-badge\"]').remove()
+                var badge = $('<span />')
+                    .attr('class', 'badge badge-red')
+                    .attr('data-id', 'shopping-cart-badge')
+                    .text(data.ItemsCount)
+
+                badgeContainer.append(badge);
             })
         })
     </script>
