@@ -1,13 +1,14 @@
 ﻿namespace EventSystem.Web.Controllers
 {
+    using System.Linq;
     using System.Web.Mvc;
 
+    using Infrastructure.Constants;
     using Infrastructure.Extensions;
     using Models.Orders;
     using Services.Contracts;
     using Services.Web.Contracts;
-    using System.Linq;
-    using Infrastructure.Constants;
+
     public class OrderController : Controller
     {
         private IShoppingCartService shoppingCartService;
@@ -52,8 +53,9 @@
         {
             this.shoppingCartService.RemoveTicket(id);
             var count = this.shoppingCartService.GetItemsCount();
+            var totalPrice = this.shoppingCartService.GetTotalPrice();
 
-            return this.Json(new { ItemsCount = count });
+            return this.Json(new { ItemsCount = count, TotalPrice = totalPrice });
         }
     }
 }

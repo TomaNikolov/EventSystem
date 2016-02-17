@@ -13,5 +13,7 @@
         void Clear();
 
         int GetItemsCount();
+
+        decimal GetTotalPrice();
     }
 }

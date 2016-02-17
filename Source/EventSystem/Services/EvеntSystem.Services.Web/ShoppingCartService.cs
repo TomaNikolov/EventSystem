@@ -5,6 +5,7 @@
 
     using EventSystem.Web.Models.Orders;
     using EventSystem.Services.Web.Contracts;
+    using System;
 
     public class ShoppingCartService : IShoppingCartService
     {
@@ -36,6 +37,11 @@
             }
 
             return (ShoppingCartViewModel)shopingCart;
+        }
+
+        public decimal GetTotalPrice()
+        {
+            return this.GetShopingCart().OrderedTickets.Sum(x => x.Quantity * x.Price);
         }
 
         public void RemoveTicket(string id)

@@ -97,7 +97,7 @@ button, input, optgroup, select, textarea, #map-control {
     width: 100%;
 }
 
-table{
+table, h2, div, p, span{
     color: #373737;
 }
 
