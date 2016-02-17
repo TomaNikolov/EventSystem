@@ -7,6 +7,7 @@
     using Services.Contracts;
     using Services.Web.Contracts;
     using System.Linq;
+    using Infrastructure.Constants;
     public class OrderController : Controller
     {
         private IShoppingCartService shoppingCartService;
@@ -22,6 +23,15 @@
         {
             var model = this.shoppingCartService.GetShopingCart();
             return this.View(model);
+        }
+
+        public ActionResult GetShoppingCartCount()
+        {
+            var count = this.shoppingCartService
+                .GetShopingCart()
+                .OrderedTickets.Count;
+
+            return this.PartialView(Partials._ShoppingCartCount, count);
         }
 
         [HttpPost]
