@@ -27,9 +27,7 @@
 
         public ActionResult GetShoppingCartItemsCount()
         {
-            var count = this.shoppingCartService
-                .GetShopingCart()
-                .OrderedTickets.Count;
+            var count = this.shoppingCartService.GetItemsCount();
 
             return this.PartialView(Partials._ShoppingCartCount, count);
         }
@@ -44,10 +42,16 @@
             orderedTicket.Quantity = quantity;
 
             this.shoppingCartService.AddTicket(orderedTicket);
+            var count = this.shoppingCartService.GetItemsCount();
 
-            var count = this.shoppingCartService
-               .GetShopingCart()
-               .OrderedTickets.Count;
+            return this.Json(new { ItemsCount = count });
+        }
+
+        [HttpPost]
+        public ActionResult RemoveFromShoppingCart(string id)
+        {
+            this.shoppingCartService.RemoveTicket(id);
+            var count = this.shoppingCartService.GetItemsCount();
 
             return this.Json(new { ItemsCount = count });
         }

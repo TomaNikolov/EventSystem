@@ -2,7 +2,7 @@
 {
     using EventSystem.Web.Models.Orders;
 
-    public interface IShoppingCartService 
+    public interface IShoppingCartService
     {
         ShoppingCartViewModel GetShopingCart();
 
@@ -11,5 +11,7 @@
         void RemoveTicket(string Id);
 
         void Clear();
+
+        int GetItemsCount();
     }
 }

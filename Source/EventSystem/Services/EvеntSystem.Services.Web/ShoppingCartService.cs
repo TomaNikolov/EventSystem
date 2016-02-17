@@ -20,6 +20,11 @@
             this.GetShopingCart().OrderedTickets.Clear();
         }
 
+        public int GetItemsCount()
+        {
+            return this.GetShopingCart().OrderedTickets.Count;
+        }
+
         public ShoppingCartViewModel GetShopingCart()
         {
             var shopingCart = HttpContext.Current.Session[CartSessionKey];
