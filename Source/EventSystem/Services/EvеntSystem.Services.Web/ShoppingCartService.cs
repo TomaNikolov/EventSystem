@@ -5,8 +5,7 @@
 
     using EventSystem.Web.Models.Orders;
     using EventSystem.Services.Web.Contracts;
-    using System;
-
+  
     public class ShoppingCartService : IShoppingCartService
     {
         private const string CartSessionKey = "Cart";

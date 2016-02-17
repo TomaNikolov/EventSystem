@@ -1,7 +1,9 @@
 ﻿namespace EventSystem.Web.Controllers
 {
+    using System;
     using System.Linq;
     using System.Web.Mvc;
+    using System.Web.Mvc.Expressions;
 
     using Infrastructure.Constants;
     using Infrastructure.Extensions;
@@ -57,5 +59,39 @@
 
             return this.Json(new { ItemsCount = count, TotalPrice = totalPrice });
         }
+
+        [Authorize]
+        public ActionResult SelectAddress()
+        {
+            return this.View();
+        }
+
+        [HttpPost]
+        [Authorize]
+        public ActionResult SelectAddress(int id)
+        {
+            //Add the adress to the order 
+            //Add the adress to the user
+            //save pending order to the data base 
+            return this.RedirectToAction(x => x.ConfirmOrder(1));
+        }
+
+        [Authorize]
+        public ActionResult ConfirmOrder(int id)
+        {
+            return this.View();
+        }
+
+        [HttpPost]
+        [Authorize]
+        public ActionResult CheckOut(int id)
+        {
+            //Save Order to data base 
+            //Clear Shopping cart
+            //Add notification
+            //Add success message
+
+            return this.RedirectToAction<HomeController>(x => x.Index());
+        }     
     }
 }
