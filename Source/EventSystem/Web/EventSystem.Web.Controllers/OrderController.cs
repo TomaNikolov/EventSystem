@@ -25,7 +25,7 @@
             return this.View(model);
         }
 
-        public ActionResult GetShoppingCartCount()
+        public ActionResult GetShoppingCartItemsCount()
         {
             var count = this.shoppingCartService
                 .GetShopingCart()
@@ -45,7 +45,11 @@
 
             this.shoppingCartService.AddTicket(orderedTicket);
 
-            return this.Json(new { });
+            var count = this.shoppingCartService
+               .GetShopingCart()
+               .OrderedTickets.Count;
+
+            return this.Json(new { ItemsCount = count });
         }
     }
 }

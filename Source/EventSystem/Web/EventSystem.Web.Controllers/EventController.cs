@@ -1,6 +1,5 @@
 ﻿namespace EventSystem.Web.Controllers
 {
-    using AutoMapper;
     using EventSystem.Models;
     using Infrastructure;
     using Models.Events;

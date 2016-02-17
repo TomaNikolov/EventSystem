@@ -246,6 +246,14 @@
             var id = $this.attr('data-id');
             var quantity = $ticketPurchase.find('select[data-id=' + id + ']').val();
             $.post('/order/addToShoppingCart', { id: id, quantity: quantity }, function (data) {
+                var badgeContainer = $('a[data-id="shopping-cart"]')
+                badgeContainer.remove('span')
+                var badge = $('span')
+                    .attr('class', 'badge badge-red')
+                    .text(data.ItemsCount)
+              
+                badgeContainer.append(badge);
+
                 console.log(data);
             })
         })
