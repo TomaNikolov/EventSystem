@@ -10,24 +10,8 @@
             @Html.AntiForgeryToken()
             @Html.ValidationSummary("", new { @class = "text-danger" })
             <div class="row">
-                <div class="form-group">
-                    <div class="col-md-2 col-md-offset-2">
-                        @Html.LabelFor(x => x.CountryId)
-                    </div>
-                    <div class="col-md-6">
-                        @Html.DropDownListFor(m => m.CountryId, ViewBag.Countries as IEnumerable<SelectListItem>, new { @class = "form-control" })
-                    </div>
-                </div>
-
-                <div class="form-group ">
-                    <div class="col-md-2 col-md-offset-2">
-                        @Html.LabelFor(x => x.CityId)
-                    </div>
-                    <div class="col-md-6">
-                        @Html.DropDownListFor(m => m.CityId, ViewBag.Cities as IEnumerable<SelectListItem>, new { @class = "form-control" })
-                    </div>
-                </div>
-
+                @Html.EditorFor(m => m.CountryId)
+                @Html.EditorFor(m => m.CityId)
                 @Html.EditorFor(m => m.Street)
 
                 <div id="map-control" class="form-group">
@@ -55,10 +39,12 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-md-2 col-md-offset-2">
                 <label for="">Images</label>
             </div>
             <hr />
+
             <div class="row">
                 <div class="form-group col-md-offset-4">
                     <div class="fileUpload btn btn-primary col-md-2">
@@ -82,6 +68,7 @@
                     </div>
                 </div>
             </div>
+
                 <div class="row">
                     <div class="form-group">
                         <div class="col-md-8 col-md-offset-2">

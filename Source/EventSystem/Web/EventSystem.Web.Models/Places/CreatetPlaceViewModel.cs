@@ -13,9 +13,11 @@
         public string Name { get; set; }
 
         [Display(Name = "Country")]
+        [UIHint("CountryDropDown")]
         public int CountryId { get; set; }
 
         [Display(Name = "City")]
+        [UIHint("CitiesDropDownList")]
         public int CityId { get; set; }
 
         public IEnumerable<HttpPostedFileBase> Files { get; set; }

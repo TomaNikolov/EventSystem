@@ -123,6 +123,7 @@
     <Compile Include="Notifications\Toastr.cs" />
     <Compile Include="Notifications\ToastType.cs" />
     <Compile Include="Populators\BasePopulator.cs" />
+    <Compile Include="Populators\PopulateCategoriesAttribute.cs" />
     <Compile Include="Populators\PopulateCitiesAttribute.cs" />
     <Compile Include="Populators\PopulateCountriesAttribute.cs" />
     <Compile Include="Populators\PopulatePlacesAttribute.cs" />

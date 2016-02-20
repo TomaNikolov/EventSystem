@@ -15,7 +15,7 @@
 
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            filterContext.Controller.ViewBag.Countries = base.GetSelecTedList(this.PLacesRepository, Places);
+            filterContext.Controller.ViewBag.Places = base.GetSelecTedList(this.PLacesRepository, Places);
             base.OnActionExecuting(filterContext);
         }
     }
