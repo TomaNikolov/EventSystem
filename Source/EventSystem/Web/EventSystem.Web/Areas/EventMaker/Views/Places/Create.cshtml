@@ -1,11 +1,15 @@
-﻿@using EventSystem.Web.Infrastructure.Constants
+﻿@using System.Web.Mvc.Expressions
+@using EventSystem.Web.Areas.EventMaker.Controllers
+
 @model  EventSystem.Web.Models.Places.CreatetPlaceViewModel
+
 @{
     ViewBag.Title = "Create New Place";
 }
+
 <div id="generalTabContent" class="tab-content">
     <div id="tab-edit" class="tab-pane fade in active">
-        @using (Html.BeginForm(Views.Create, "Places", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        @using (Html.BeginForm<PlacesController>(c => c.Create(), FormMethod.Post, null, new { enctype = "multipart/form-data" }))
         {
             @Html.AntiForgeryToken()
             @Html.ValidationSummary("", new { @class = "text-danger" })
@@ -29,59 +33,37 @@
                 @Html.EditorFor(m => m.Longitude)
                 @Html.EditorFor(m => m.Latitude)
                 @Html.EditorFor(m => m.Name)
-
-                <div class="form-group">
-                    <div class="col-md-2 col-md-offset-2">
-                        @Html.LabelFor(x => x.Description)
-                    </div>
-                    <div class="col-md-6">
-                        @Html.TextAreaFor(m => m.Description, new { @class = "form-control" })
-                    </div>
-                </div>
+                @Html.EditorFor(m => m.Description)
             </div>
 
             <div class="col-md-2 col-md-offset-2">
                 <label for="">Images</label>
             </div>
             <hr />
-
             <div class="row">
-                <div class="form-group col-md-offset-4">
-                    <div class="fileUpload btn btn-primary col-md-2">
-                        <i class="fa fa-upload"></i>&nbsp;<span>Upload</span>
-                        <input type="file" name="Files[0]" id="file1" class="upload" />
-                    </div>
-                    <div class="text-center mbl col-md-4">
-                        <img id="blah2" src="#" alt="your image" class="img-responsive" />
+                <div class="form-group">
+                    <div class="col-md-8 col-md-offset-2 pull-right">
+                        <a id="add-image" class="btn btn-red">Add Image</a>
                     </div>
                 </div>
             </div>
 
+           @Html.EditorFor(m => m.Files)
+
             <div class="row">
-                <div class="form-group col-md-offset-4">
-                    <div class="fileUpload btn btn-primary col-md-2">
-                        <i class="fa fa-upload"></i>&nbsp;<span>Upload</span>
-                        <input type="file" name="Files[1]" id="file2" class="upload" />
-                    </div>
-                    <div class="text-center mbl col-md-4">
-                        <img id="blah" src="#" alt="your image" class="img-responsive" />
+                <div class="form-group">
+                    <div class="col-md-8 col-md-offset-2">
+                        <button type="submit" class="btn btn-green btn-block">Create</button>
                     </div>
                 </div>
             </div>
-
-                <div class="row">
-                    <div class="form-group">
-                        <div class="col-md-8 col-md-offset-2">
-                            <button type="submit" class="btn btn-green btn-block">Create</button>
-                        </div>
-                    </div>
-                </div>
         }
 
     </div>
 </div>
 
 @section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
     <script src="http://maps.google.com/maps/api/js?key=AIzaSyAllhFsNJRffftCMsKEMdQpRkCtKmIpL4c"></script>
     <script src="~/Scripts/EventMaker/Places/Create/maps.js"></script>
     <script src="~/Scripts/EventMaker/Places/Create/Images.js"></script>

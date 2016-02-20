@@ -13,13 +13,14 @@
         public string Name { get; set; }
 
         [Display(Name = "Country")]
-        [UIHint("CountryDropDown")]
+        [UIHint("CountriesDropDown")]
         public int CountryId { get; set; }
 
         [Display(Name = "City")]
         [UIHint("CitiesDropDownList")]
         public int CityId { get; set; }
 
+        [UIHint("FileUpload")]
         public IEnumerable<HttpPostedFileBase> Files { get; set; }
 
         [Required]
@@ -32,6 +33,7 @@
         public double Longitude { get; set; }
 
         [DataType(DataType.MultilineText)]
+        [UIHint("TextArea")]
         public string Description { get; set; }
     }
 }
