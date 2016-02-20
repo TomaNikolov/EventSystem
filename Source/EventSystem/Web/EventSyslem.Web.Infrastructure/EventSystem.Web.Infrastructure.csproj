@@ -125,6 +125,7 @@
     <Compile Include="Populators\BasePopulator.cs" />
     <Compile Include="Populators\PopulateCitiesAttribute.cs" />
     <Compile Include="Populators\PopulateCountriesAttribute.cs" />
+    <Compile Include="Populators\PopulatePlacesAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Registries\DataBindingsRegister.cs" />
     <Compile Include="Registries\INinjectRegistry.cs" />

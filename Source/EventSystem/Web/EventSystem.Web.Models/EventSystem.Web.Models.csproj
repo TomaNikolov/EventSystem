@@ -132,7 +132,9 @@
     <Compile Include="Account\SendCodeViewModel.cs" />
     <Compile Include="Account\VerifyCodeViewModel.cs" />
     <Compile Include="DropDownList\DropDownViewModel.cs" />
+    <Compile Include="Events\CreateEventViewModel.cs" />
     <Compile Include="Events\EventDetailsViewModel.cs" />
+    <Compile Include="Events\EventViewModel.cs" />
     <Compile Include="Events\TicketViewModel.cs" />
     <Compile Include="Home\HomeViewModel.cs" />
     <Compile Include="Manage\AddPhoneNumberViewModel.cs" />
@@ -146,7 +148,7 @@
     <Compile Include="Orders\OrderedTicketViewModel.cs" />
     <Compile Include="Orders\ShoppingCartViewModel.cs" />
     <Compile Include="Places\PlaceViewModel.cs" />
-    <Compile Include="Places\PostPlaceViewModel.cs" />
+    <Compile Include="Places\CreatetPlaceViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,5 +1,6 @@
 ﻿namespace EventSystem.Services
 {
+    using System;
     using System.Linq;
 
     using Data.Common.Repositories;
@@ -15,9 +16,19 @@
             this.events = events;
         }
 
+        public IQueryable<Event> GetAll()
+        {
+            return this.events.All();
+        }
+
         public IQueryable<Event> GetAllEvents()
         {
             return this.events.All();
+        }
+
+        public Event GetById(object id)
+        {
+            return this.events.GetById(id);
         }
 
         public Event GetById(int id)
@@ -25,6 +36,11 @@
             return this.events
                 .Include(e => e.Tickets)
                 .FirstOrDefault(e => e.Id == id);
+        }
+
+        public IQueryable<Event> GetByPage(int count, int skip)
+        {
+            throw new NotImplementedException();
         }
     }
 }
