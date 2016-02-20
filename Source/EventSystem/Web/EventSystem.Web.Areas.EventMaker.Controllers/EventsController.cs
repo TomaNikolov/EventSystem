@@ -43,6 +43,7 @@
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(CreateEventViewModel model)
         {
           //  this.imagesService.SaveImages(model.Files);

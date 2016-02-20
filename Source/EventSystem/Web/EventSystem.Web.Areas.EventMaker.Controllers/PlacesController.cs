@@ -45,6 +45,7 @@
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(CreatetPlaceViewModel model)
         {
             this.imagesService.SaveImages(model.Files);
