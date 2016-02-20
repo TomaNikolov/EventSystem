@@ -543,6 +543,16 @@
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
     <Content Include="App_Code\NotificationBuilder.cshtml" />
+    <Content Include="Areas\EventMaker\Views\Events\All.cshtml" />
+    <Content Include="Areas\EventMaker\Views\Events\Create.cshtml" />
+    <Content Include="Areas\EventMaker\Views\Events\Edite.cshtml" />
+    <Content Include="Areas\EventMaker\Views\Events\Delete.cshtml" />
+    <Content Include="Areas\EventMaker\Views\Shared\EditorTemplates\CountriesDropDown.cshtml" />
+    <Content Include="Areas\EventMaker\Views\Shared\EditorTemplates\CitiesDropDownList.cshtml" />
+    <Content Include="Areas\EventMaker\Views\Shared\EditorTemplates\CategoriesDropDown.cshtml" />
+    <Content Include="Areas\EventMaker\Views\Shared\EditorTemplates\PlacesDropDown.cshtml" />
+    <Content Include="Areas\EventMaker\Views\Shared\EditorTemplates\TextArea.cshtml" />
+    <Content Include="Areas\EventMaker\Views\Shared\EditorTemplates\FileUpload.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\EventMaker\Places\Create\images.js" />
     <Content Include="Scripts\EventMaker\Places\Create\maps.js" />

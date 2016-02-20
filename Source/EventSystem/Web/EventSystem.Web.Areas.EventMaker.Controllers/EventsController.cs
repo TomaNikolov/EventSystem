@@ -3,52 +3,50 @@
     using System.Linq;
     using System.Web.Mvc;
     using System.Web.Mvc.Expressions;
-   
-    using Base;
-    using EventSystem.Models;
+
+    using EventSystem.Web.Areas.EventMaker.Controllers.Base;
     using Infrastructure.Populators;
-    using Models.Places;
+    using Models.Events;
     using Services.Contracts;
-    using Infrastructure.Notifications;
     using Infrastructure.Extensions;
-  
-    public class PlacesController : BaseEventMakerController<PlaceViewModel>
+    using Infrastructure.Notifications;
+    using EventSystem.Models;
+
+    public class EventsController : BaseEventMakerController<EventViewModel>
     {
-        private IPlacesService placesService;
+        private readonly IEventsService eventssService;
 
         private IImagesService imagesService;
 
-        public PlacesController(IPlacesService placesService, IImagesService imagesService)
+        public EventsController(IEventsService eventssService, IImagesService imagesService)
         {
-            this.placesService = placesService;
+            this.eventssService = eventssService;
             this.imagesService = imagesService;
         }
 
         [HttpGet]
-        [PopulateCities]
-        [PopulateCountries]
+        [PopulatePlaces]
         public ActionResult Create()
         {
-            var model = this.GetModel<CreatetPlaceViewModel, Place>(this.placesService, null);
+            var model = this.GetModel<CreateEventViewModel, Event>(this.eventssService, null);
 
             return this.View(model);
         }
 
         [HttpGet]
-        [PopulateCities]
-        [PopulateCountries]
+        [PopulatePlaces]
         public ActionResult Edit(int id)
         {
-            var model = this.GetModel<CreatetPlaceViewModel, Place>(this.placesService, id);
+            var model = this.GetModel<CreateEventViewModel, Event>(this.eventssService, id);
 
             return this.View(model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(CreatetPlaceViewModel model)
+        public ActionResult Create(CreateEventViewModel model)
         {
-            this.imagesService.SaveImages(model.Files);
+          //  this.imagesService.SaveImages(model.Files);
             this.AddToastMessage("Congratulations", "You made it all the way here!", ToastType.Success);
             return this.RedirectToAction(x => x.Details(2));
         }
@@ -60,9 +58,9 @@
 
         protected override IQueryable<TModel> GetData<TModel>(int count, int page)
         {
-            return this.placesService
-                .GetAll()
-                 .To<PlaceViewModel>() as IQueryable<TModel>;
+            return this.eventssService
+               .GetAll()
+                .To<EventViewModel>() as IQueryable<TModel>;
         }
     }
 }

@@ -1,6 +1,5 @@
 ﻿namespace EventSystem.Web.Models.Places
 {
-    using System;
     using AutoMapper;
     using EventSystem.Models;
     using EventSystem.Web.Infrastructure.Mappings;

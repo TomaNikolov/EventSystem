@@ -21,4 +21,16 @@
     });
 
     $('.img-responsive').hide();
+
+    $('#add-image').on('click', function () {
+        $('div[data-id=\"image-file-uploade\"]')
+            .first()
+            .clone(true)
+            .appendTo('#image-container')
+    });
+
+    $('div[data-id=\"remove\"]').on('click', function () {
+        $(this).parent('div[data-id=\"image-file-uploade\"]')
+               .remove();
+    });
 }());
