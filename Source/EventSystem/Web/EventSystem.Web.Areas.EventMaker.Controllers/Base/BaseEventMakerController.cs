@@ -15,7 +15,6 @@
         public virtual ActionResult All(string orderBy, string search, int page = 1)
         {
             page = page < 1 ? 1 : page;
-            var count = 5;
             var model = new PagableAndSortbleViewModel<T>();
             model.Data = this.GetData<T>(page, orderBy, search)
                 .ToList();

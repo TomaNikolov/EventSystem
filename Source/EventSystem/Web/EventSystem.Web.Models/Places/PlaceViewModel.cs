@@ -3,9 +3,8 @@
     using AutoMapper;
     using EventSystem.Models;
     using EventSystem.Web.Infrastructure.Mappings;
-    using PagingAndSorting;
 
-    public class PlaceViewModel :  IMapFrom<Place>, IHaveCustomMappings
+    public class PlaceViewModel : IMapFrom<Place>, IHaveCustomMappings
     {
         public int Id { get; set; }
 
