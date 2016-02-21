@@ -1,6 +1,7 @@
 ﻿namespace EventSystem.Services
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
 
     using Contracts;
@@ -13,9 +14,12 @@
 
         private IDbRepository<Place> places;
 
-        public PlacesService(IDbRepository<Place> places)
+        private IDbRepository<Image> images;
+
+        public PlacesService(IDbRepository<Place> places, IDbRepository<Image> images)
         {
             this.places = places;
+            this.images = images;
         }
 
         public IQueryable<Place> GetAll()
@@ -50,6 +54,27 @@
         public int GetAllPage(int page, string orderBy, string search)
         {
             return (int)Math.Ceiling((double)this.GetByPage(page, orderBy, search).Count() / PageSize);
+        }
+
+        public int Create(string name, string description, int countryId, int cityId, double Latitude, double Longitude, string Street, ICollection<int> ImageIds)
+        {
+            var images = this.images.All().Where(x => ImageIds.Contains(x.Id)).ToList();
+            var place = new Place()
+            {
+                Name = name,
+                Description = description,
+                CountryId = countryId,
+                CityId = cityId,
+                Longitude = Longitude,
+                Latitude = Latitude,
+                Street = Street,
+                Images = images
+            };
+
+            this.places.Add(place);
+            this.places.Save();
+
+            return place.Id;
         }
     }
 }

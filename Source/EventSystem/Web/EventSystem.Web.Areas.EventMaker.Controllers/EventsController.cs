@@ -12,6 +12,7 @@
     using Infrastructure.Notifications;
     using EventSystem.Models;
     using System;
+    using Services.Web.Contracts;
 
     public class EventsController : BaseEventMakerController<EventViewModel>
     {
@@ -59,7 +60,6 @@
 
         protected override IQueryable<TModel> GetData<TModel>(int page, string orderBy, string search)
         {
-            ViewBag.ControllerName = "Events";
             return this.eventssService
               .GetByPage(page, orderBy, search)
                .To<EventViewModel>() as IQueryable<TModel>;

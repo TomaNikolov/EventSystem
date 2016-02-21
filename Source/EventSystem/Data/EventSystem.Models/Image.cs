@@ -6,9 +6,11 @@
 
     public class Image : BaseModel<int>
     {
-        /// [Required]
-        /// [MaxLength(100)]
+        [MaxLength(100)]
         public string Name { get; set; }
+
+        [MaxLength(100)]
+        public string FileExtension { get; set; }
 
         [Required]
         [MaxLength(100)]
@@ -17,9 +19,5 @@
         [Required]
         [MaxLength(100)]
         public string ThumbnailPath { get; set; }
-
-        public int EventId { get; set; }
-
-        public virtual Event Event { get; set; }
     }
 }

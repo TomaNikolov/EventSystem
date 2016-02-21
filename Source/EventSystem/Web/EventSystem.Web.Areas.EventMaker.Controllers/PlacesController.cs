@@ -11,7 +11,7 @@
     using Services.Contracts;
     using Infrastructure.Notifications;
     using Infrastructure.Extensions;
-    using System;
+    using Services.Web.Contracts;
 
     public class PlacesController : BaseEventMakerController<PlaceViewModel>
     {
@@ -49,9 +49,10 @@
         [ValidateAntiForgeryToken]
         public ActionResult Create(CreatetPlaceViewModel model)
         {
-            this.imagesService.SaveImages(model.Files);
+           var imageIds =  this.imagesService.SaveImages(model.Name, model.Files);
+            var placeId = this.placesService.Create(model.Name, model.Description, model.CountryId, model.CityId, model.Latitude, model.Longitude, model.Street, imageIds);
             this.AddToastMessage("Congratulations", "You made it all the way here!", ToastType.Success);
-            return this.RedirectToAction(x => x.Details(2));
+            return this.RedirectToAction(x => x.Details(placeId));
         }
 
         public ActionResult Details(int id)
@@ -61,7 +62,6 @@
 
         protected override IQueryable<TModel> GetData<TModel>(int page, string orderBy, string search)
         {
-            ViewBag.ControllerName = "Places";
             return this.placesService
                 .GetByPage(page, orderBy, search)
                  .To<PlaceViewModel>() as IQueryable<TModel>;
