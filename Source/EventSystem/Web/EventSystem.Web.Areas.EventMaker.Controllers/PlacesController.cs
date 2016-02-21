@@ -6,13 +6,14 @@
 
     using Base;
     using EventSystem.Models;
+    using Infrastructure.Constants;
+    using Infrastructure.Extensions;
+    using Infrastructure.Notifications;
     using Infrastructure.Populators;
     using Models.Places;
     using Services.Contracts;
-    using Infrastructure.Notifications;
-    using Infrastructure.Extensions;
     using Services.Web.Contracts;
-
+  
     public class PlacesController : BaseEventMakerController<PlaceViewModel>
     {
         private IPlacesService placesService;
@@ -49,9 +50,16 @@
         [ValidateAntiForgeryToken]
         public ActionResult Create(CreatetPlaceViewModel model)
         {
-           var imageIds =  this.imagesService.SaveImages(model.Name, model.Files);
+            if(!this.ModelState.IsValid)
+            {
+                return this.View(model);
+            }
+
+            var imageIds = this.imagesService.SaveImages(model.Name, model.Files);
             var placeId = this.placesService.Create(model.Name, model.Description, model.CountryId, model.CityId, model.Latitude, model.Longitude, model.Street, imageIds);
-            this.AddToastMessage("Congratulations", "You made it all the way here!", ToastType.Success);
+
+            this.AddToastMessage(Messages.Congratulations, Messages.PlaceCreateMessage, ToastType.Success);
+
             return this.RedirectToAction(x => x.Details(placeId));
         }
 
