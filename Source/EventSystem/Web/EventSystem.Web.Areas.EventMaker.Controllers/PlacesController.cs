@@ -3,7 +3,7 @@
     using System.Linq;
     using System.Web.Mvc;
     using System.Web.Mvc.Expressions;
-   
+
     using Base;
     using EventSystem.Models;
     using Infrastructure.Populators;
@@ -11,7 +11,8 @@
     using Services.Contracts;
     using Infrastructure.Notifications;
     using Infrastructure.Extensions;
-  
+    using System;
+
     public class PlacesController : BaseEventMakerController<PlaceViewModel>
     {
         private IPlacesService placesService;
@@ -58,11 +59,17 @@
             return this.View();
         }
 
-        protected override IQueryable<TModel> GetData<TModel>(int count, int page)
+        protected override IQueryable<TModel> GetData<TModel>(int page, string orderBy, string search)
         {
+            ViewBag.ControllerName = "Places";
             return this.placesService
-                .GetAll()
+                .GetByPage(page, orderBy, search)
                  .To<PlaceViewModel>() as IQueryable<TModel>;
+        }
+
+        protected override int GetAllPage<TModel>(int page, string orderBy, string search)
+        {
+            return this.placesService.GetAllPage(page, orderBy, search);
         }
     }
 }

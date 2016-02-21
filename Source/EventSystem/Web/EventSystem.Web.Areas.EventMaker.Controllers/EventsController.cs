@@ -11,6 +11,7 @@
     using Infrastructure.Extensions;
     using Infrastructure.Notifications;
     using EventSystem.Models;
+    using System;
 
     public class EventsController : BaseEventMakerController<EventViewModel>
     {
@@ -56,11 +57,17 @@
             return this.View();
         }
 
-        protected override IQueryable<TModel> GetData<TModel>(int count, int page)
+        protected override IQueryable<TModel> GetData<TModel>(int page, string orderBy, string search)
         {
+            ViewBag.ControllerName = "Events";
             return this.eventssService
-               .GetAll()
-                .To<EventViewModel>() as IQueryable<TModel>;
+              .GetByPage(page, orderBy, search)
+               .To<EventViewModel>() as IQueryable<TModel>;
+        }
+
+        protected override int GetAllPage<TModel>(int page, string orderBy, string search)
+        {
+            return this.eventssService.GetAllPage(page, orderBy, search);
         }
     }
 }

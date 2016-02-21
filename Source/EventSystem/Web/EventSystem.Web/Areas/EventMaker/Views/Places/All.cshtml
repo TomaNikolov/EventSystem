@@ -1,13 +1,13 @@
 ﻿@using System.Web.Mvc.Expressions;
 @using EventSystem.Web.Infrastructure.Constants
-@model IEnumerable<EventSystem.Web.Models.Places.PlaceViewModel>
+@model EventSystem.Web.Models.PagingAndSorting.PagableAndSortbleViewModel<EventSystem.Web.Models.Places.PlaceViewModel>
 @{
     Layout = "~/Areas/EventMaker/Views/Shared/_GridLayout.cshtml";
     ViewBag.Title = "All Places";
 }
 
 
-@foreach (var place in Model)
+@foreach (var place in Model.Data)
 {
     <tr class="tbl-item">
         <!--<img/>-->
@@ -27,6 +27,7 @@
 }
 gi
 @section gridFooter{
-   @* @Html.ActionLink("Create new place", c => c.Create(), null, null);*@
+   
     @Html.ActionLink("Create new place", Views.Create, null, new { @class = "btn btn-green pull-right" })
+
 }
