@@ -1,11 +1,19 @@
 ﻿namespace EventSystem.Models
 {
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
     using Data.Common.Models;
 
     public class Place : BaseModel<int>, IListedItem
     {
+        private ICollection<Image> images;
+
+        public Place()
+        {
+            this.images = new HashSet<Image>();
+        }
+
         [Required]
         [MaxLength(400)]
         public string Name { get; set; }
@@ -26,5 +34,11 @@
         public double Latitude { get; set; }
 
         public double Longitude { get; set; }
+
+        public virtual ICollection<Image> Images
+        {
+            get { return this.images; }
+            set { this.images = value; }
+        }
     }
 }

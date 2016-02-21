@@ -1,7 +1,116 @@
-﻿
+﻿@using System.Web.Mvc.Expressions;
+@using EventSystem.Web.Infrastructure.Constants
+@model EventSystem.Web.Models.PagingAndSorting.PagableAndSortbleViewModel<EventSystem.Web.Models.Events.EventViewModel>
 @{
-    ViewBag.Title = "All";
+    ViewBag.Title = "All Places";
 }
 
-<h2>All</h2>
 
+@section styles{
+    <link href="~/Content/KAdminTheme/styles/jplist-custom.css" rel="stylesheet" />
+    <link href="~/Content/KAdminTheme/styles/jquery.news-ticker.css" rel="stylesheet" />
+}
+
+<div>
+    <div id="tab-general">
+        <div class="row mbl">
+            <div class="col-lg-12">
+
+                <div class="col-md-12">
+                    <div id="area-chart-spline" style="width: 100%; height: 300px; display: none;">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-lg-12">
+                <div class="page-content">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="panel">
+                                <div class="panel-body">
+                                    <div id="grid-layout-table-1" class="box jplist">
+                                        <div class="jplist-ios-button"><i class="fa fa-sort"></i>jPList Actions</div>
+                                        <div class="jplist-panel box panel-top">
+
+                                            @using (Html.BeginForm("All", (string)ViewBag.ControllerName, FormMethod.Get))
+                                            {
+                                                <div class="text-filter-box">
+                                                    <div class="input-group">
+                                                        @*TODO More Order by params*@
+                                                        <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                                                        @Html.DropDownListFor(m => m.OrderBy, new List<SelectListItem>() { new SelectListItem() { Text = "", Value = "" }, new SelectListItem() { Text = "Date Created", Value = "CreatedOn" }, new SelectListItem() { Text = "SomeThink Else", Value = "NotCreatedOn" } }, new { @class = "form-control" })
+                                                    </div>
+                                                </div>
+                                                <div class="text-filter-box">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                                                        @Html.TextBoxFor(m => m.Search, new { @class = "form-control", placeholder = "Filter by Title" })
+                                                    </div>
+                                                </div>
+                                                <button type="submit" class="jplist-reset-btn btn btn-default">Find <i class="fa fa-search"></i></button>
+                                                <button type="reset" class="jplist-reset-btn btn btn-default">Reset<i class="fa fa-share mls"></i></button>
+                                            }
+
+                                            <div class="box text-shadow">
+                                                <tasble class="demo-tbl">
+                                                    <!--<item>1</item>-->
+                                                    @foreach (var item in Model.Data)
+                                                    {
+                                                        <tr class="tbl-item">
+                                                            <!--<img/>-->
+                                                            <td class="img"><img src="~/Content/KAdminTheme/images/thumbs/arch-1.jpg" /></td>
+                                                            <!--<data></data>-->
+                                                            <td class="td-block">
+                                                                <p class="date">@item.Title</p>
+                                                                <p class="title">@Html.ActionLink(item.Title, Views.Edit, new { id = item.Id })</p>
+                                                                @*<p class="desc">@place.Description</p>*@
+                                                                <p class="desc">
+                                                                    A calendar is a system of organizing days for social, religious, commercial, or administrative purposes. This is done by giving names to periods of time, typically days, weeks, months, and years. The name given to each day is known as a date. Periods in a calendar (such as years and months) are usually, though not necessarily,
+                                                                    synchronized with the cycle of the sun or the moon.
+                                                                </p>
+                                                                <p class="like">5 Likes</p>
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                </tasble>
+                                            </div>
+                                            <div class="jplist-panel box panel-bottom">
+
+                                                <ul class="pagination">
+                                                    <li>
+                                                        @(Html.ActionLink<PlacesController>("First", c => c.All(Model.OrderBy, Model.Search, 1)))
+                                                    </li>
+                                                    @for (int i = 1; i <= Model.AllPage; i++)
+                                                    {
+                                                        var cssClass = string.Empty;
+                                                        if (Model.Page == i)
+                                                        {
+                                                            cssClass = "active";
+                                                        }
+
+                                                        <li class="@cssClass">
+                                                            @(Html.ActionLink<PlacesController>(i.ToString(), c => c.All(Model.OrderBy, Model.Search, i)))
+                                                        </li>
+                                                    }
+                                                    <li>
+                                                        @(Html.ActionLink<PlacesController>("Last", c => c.All(Model.OrderBy, Model.Search, Model.AllPage)))
+                                                    </li>
+                                                </ul>
+
+                                                <div>
+                                                    @(Html.ActionLink<PlacesController>("Create new place", c => c.Create(), null, new { @class = "btn btn-green pull-right" }))
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>

@@ -539,7 +539,6 @@
     <Content Include="App_Code\MyHelpers.cshtml" />
     <Content Include="Areas\EventMaker\Views\Shared\EditorTemplates\String.cshtml" />
     <Content Include="Areas\EventMaker\Views\Shared\EditorTemplates\Double.cshtml" />
-    <Content Include="Areas\EventMaker\Views\Shared\_GridLayout.cshtml" />
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
     <Content Include="App_Code\NotificationBuilder.cshtml" />

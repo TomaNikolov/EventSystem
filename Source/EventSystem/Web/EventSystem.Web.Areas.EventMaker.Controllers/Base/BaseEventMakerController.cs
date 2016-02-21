@@ -6,17 +6,26 @@
     using Infrastructure;
     using Services.Contracts;
     using Web.Controllers.Base;
+    using Models.PagingAndSorting;
+    using System;
 
     public abstract class BaseEventMakerController<T> : BaseController
         where T : class
     {
-        public virtual ActionResult All(int count = 10, int page = 1)
+        public virtual ActionResult All(string orderBy, string search, int page = 1)
         {
-            var result = this.GetData<T>(count, page)
+            page = page < 1 ? 1 : page;
+            var model = new PagableAndSortbleViewModel<T>();
+            model.Data = this.GetData<T>(page, orderBy, search)
                 .ToList();
 
-            return this.View(result);
-        }
+            model.Page = page;
+            model.Search = search;
+            model.OrderBy = orderBy;
+            model.AllPage = this.GetAllPage<T>(page, orderBy, search);
+
+            return this.View(model);
+        }   
 
         [NonAction]
         protected TModel GetModel<TModel, TEntity>(IAdministrationService<TEntity> adminService, int? id)
@@ -29,7 +38,11 @@
         }
 
         [NonAction]
-        protected abstract IQueryable<TModel> GetData<TModel>(int count, int page)
+        protected abstract IQueryable<TModel> GetData<TModel>(int page, string orderBy, string search)
             where TModel : class;
+
+        [NonAction]
+        protected abstract int GetAllPage<TModel>(int page, string orderBy, string search)
+           where TModel : class;
     }
 }

@@ -9,6 +9,8 @@
 
     public class EventsService : IEventsService
     {
+        private const int PageSize = 5;
+
         private IDbRepository<Event> events;
 
         public EventsService(IDbRepository<Event> events)
@@ -26,6 +28,11 @@
             return this.events.All();
         }
 
+        public int GetAllPage(int page, string orderBy, string search)
+        {
+            return (int)Math.Ceiling((double)this.GetByPage(page, orderBy, search).Count() / PageSize);
+        }
+
         public Event GetById(object id)
         {
             return this.events.GetById(id);
@@ -38,9 +45,23 @@
                 .FirstOrDefault(e => e.Id == id);
         }
 
-        public IQueryable<Event> GetByPage(int count, int skip)
+        public IQueryable<Event> GetByPage(int page, string orderBy, string search)
         {
-            throw new NotImplementedException();
+            IQueryable<Event> result = this.events.All().OrderBy(x => x.CreatedOn);
+
+            if (!string.IsNullOrEmpty(search))
+            {
+                result = result.Where(x => x.Title.ToLower().Contains(search.ToLower()) || x.Description.ToLower().Contains(search.ToLower()));
+            }
+
+            if (string.IsNullOrEmpty(orderBy))
+            {
+                //TODO
+            }
+
+            return result
+                .Skip(PageSize * (page - 1))
+                .Take(PageSize);
         }
     }
 }

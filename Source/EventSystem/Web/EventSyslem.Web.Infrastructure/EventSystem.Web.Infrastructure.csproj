@@ -110,6 +110,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constants\Assemblies.cs" />
+    <Compile Include="Constants\Messages.cs" />
     <Compile Include="Constants\Notification.cs" />
     <Compile Include="Constants\Partials.cs" />
     <Compile Include="Constants\Roles.cs" />

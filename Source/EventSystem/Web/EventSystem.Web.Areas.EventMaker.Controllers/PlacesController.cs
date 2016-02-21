@@ -3,14 +3,16 @@
     using System.Linq;
     using System.Web.Mvc;
     using System.Web.Mvc.Expressions;
-   
+
     using Base;
     using EventSystem.Models;
+    using Infrastructure.Constants;
+    using Infrastructure.Extensions;
+    using Infrastructure.Notifications;
     using Infrastructure.Populators;
     using Models.Places;
     using Services.Contracts;
-    using Infrastructure.Notifications;
-    using Infrastructure.Extensions;
+    using Services.Web.Contracts;
   
     public class PlacesController : BaseEventMakerController<PlaceViewModel>
     {
@@ -48,9 +50,17 @@
         [ValidateAntiForgeryToken]
         public ActionResult Create(CreatetPlaceViewModel model)
         {
-            this.imagesService.SaveImages(model.Files);
-            this.AddToastMessage("Congratulations", "You made it all the way here!", ToastType.Success);
-            return this.RedirectToAction(x => x.Details(2));
+            if(!this.ModelState.IsValid)
+            {
+                return this.View(model);
+            }
+
+            var imageIds = this.imagesService.SaveImages(model.Name, model.Files);
+            var placeId = this.placesService.Create(model.Name, model.Description, model.CountryId, model.CityId, model.Latitude, model.Longitude, model.Street, imageIds);
+
+            this.AddToastMessage(Messages.Congratulations, Messages.PlaceCreateMessage, ToastType.Success);
+
+            return this.RedirectToAction(x => x.Details(placeId));
         }
 
         public ActionResult Details(int id)
@@ -58,11 +68,16 @@
             return this.View();
         }
 
-        protected override IQueryable<TModel> GetData<TModel>(int count, int page)
+        protected override IQueryable<TModel> GetData<TModel>(int page, string orderBy, string search)
         {
             return this.placesService
-                .GetAll()
+                .GetByPage(page, orderBy, search)
                  .To<PlaceViewModel>() as IQueryable<TModel>;
+        }
+
+        protected override int GetAllPage<TModel>(int page, string orderBy, string search)
+        {
+            return this.placesService.GetAllPage(page, orderBy, search);
         }
     }
 }
