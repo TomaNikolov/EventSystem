@@ -7,8 +7,9 @@
     using Services.Contracts;
     using Web.Controllers.Base;
     using Models.PagingAndSorting;
-    using System;
+    using Infrastructure.Constants;
 
+    [Authorize(Roles = Roles.EventMaker)]
     public abstract class BaseEventMakerController<T> : BaseController
         where T : class
     {
