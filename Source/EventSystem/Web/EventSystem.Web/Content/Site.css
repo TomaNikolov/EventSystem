@@ -128,3 +128,8 @@ table, h2, div, p, span{
 a i{
     font-size: 25px
 }
+
+/*Event Details*/
+#event-detatils #explore .container h1, h2, p{
+    color : white;
+}

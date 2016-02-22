@@ -1,0 +1,13 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    <div class="form-group">
+        <div class="col-md-8">
+            <input type="text" name="addComment" placeholder="Add comment" class="form-control" />
+        </div>
+        <div class="col-md-3 col-md-offset-1">
+            <button type="submit" class="btn ">Post</button>
+        </div>
+    </div>
+}
+

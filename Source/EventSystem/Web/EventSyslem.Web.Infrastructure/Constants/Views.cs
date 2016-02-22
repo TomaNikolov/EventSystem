@@ -12,6 +12,6 @@
 
         public const string Detatils = "Detatils";
 
-        public const string Errors = "Errors";
+        public const string Errors = "Error";
     }
 }

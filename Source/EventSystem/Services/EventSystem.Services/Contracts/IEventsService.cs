@@ -5,7 +5,7 @@
 
     public interface IEventsService : IAdministrationService<Event>
     {
-        Event GetById(int id);
+        IQueryable<Event> GetById(int id);
 
         IQueryable<Event> GetAll();
 
