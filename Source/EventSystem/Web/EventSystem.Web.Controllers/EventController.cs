@@ -1,16 +1,15 @@
 ﻿namespace EventSystem.Web.Controllers
 {
+    using System.Linq;
     using System.Web.Mvc;
 
     using Base;
-    using EventSystem.Models;
-    using Infrastructure;
-    using Models.Events;
-    using Services.Contracts;
-    using Models.PagingAndSorting;
     using Infrastructure.Extensions;
-    using System.Linq;
     using Infrastructure.Populators;
+    using Models.Events;
+    using Models.PagingAndSorting;
+    using Services.Contracts;
+  
     public class EventController : BaseController
     {
         private IEventsService eventService;
@@ -22,13 +21,11 @@
 
         public ActionResult Details(int id)
         {
-            var events = this.eventService.GetById(id);
-            var viewModel = MapperFactory
-                .GetConfig()
-                .CreateMapper()
-                .Map<Event, EventDetailsViewModel>(events);
+            var model = this.eventService.GetById(id)
+               .To<EventDetailsViewModel>()
+               .FirstOrDefault();
 
-            return this.View(viewModel);
+            return this.View(model);
         }
 
         [PopulatePlaces]

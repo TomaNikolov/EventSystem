@@ -615,9 +615,11 @@
     <Content Include="Views\Shared\EditorTemplates\CategoriesDropDown.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\PlacesDropDown.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\OrderByDropDown.cshtml" />
+    <Content Include="Views\Event\_PosrComment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

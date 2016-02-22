@@ -1,8 +1,11 @@
 ﻿namespace EventSystem.Web.Models.Places
 {
+    using System.Collections.Generic;
+
     using AutoMapper;
     using EventSystem.Models;
     using EventSystem.Web.Infrastructure.Mappings;
+    using Images;
 
     public class PlaceViewModel : IMapFrom<Place>, IHaveCustomMappings
     {
@@ -21,6 +24,8 @@
         public double Longitude { get; set; }
 
         public string Description { get; set; }
+
+        public ICollection<ImageViewModel> Images { get; set; }
 
         public void CreateMappings(IMapperConfiguration configuration)
         {

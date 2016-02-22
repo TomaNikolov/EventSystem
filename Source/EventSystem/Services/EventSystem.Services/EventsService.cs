@@ -29,9 +29,10 @@
             return this.events.All();
         }
 
-        public Event GetById(object id)
+        public IQueryable<Event> GetById(int id)
         {
-            return this.events.GetById(id);
+            return this.events.Include(x => x.Place.Images)
+                .Where(x => x.Id == id);
         }
 
         public IQueryable<Event> GetTop()
@@ -48,11 +49,9 @@
                .Take(PageSize);
         }
 
-        public Event GetById(int id)
+        public Event GetById(object id)
         {
-            return this.events
-                .Include(e => e.Tickets)
-                .FirstOrDefault(e => e.Id == id);
+            return this.events.GetById(id);
         }
 
         public int GetAllPage(int page, string orderBy, string search)
@@ -114,6 +113,6 @@
             }
 
             return result;
-        }      
+        }
     }
 }

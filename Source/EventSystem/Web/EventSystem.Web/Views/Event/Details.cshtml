@@ -3,38 +3,50 @@
     ViewBag.Title = "Index";
 }
 
-<section id="event-info">
-    <div id="twitter-feed" class="carousel slide" data-interval="false">
-        <div class="row">
-            <div class="col-sm-5 col-sm-offset-1">
-                <div class="text-center carousel-inner center-block">
-                    @{var count = 0;
-                        foreach (var item in Model.Images)
-                        {
-                            var className = count == 0 ? "item active" : "item";
-                            count++;
-                            <div class="@className">
-                                <img class="img-responsive" src="@item.Path" alt="">
-                            </div>
-                        }
-                    }
-                </div>
-                <a class="twitter-control-left" href="#twitter-feed" data-slide="prev"><i class="fa fa-angle-left"></i></a>
-                <a class="twitter-control-right" href="#twitter-feed" data-slide="next"><i class="fa fa-angle-right"></i></a>
-            </div>
+<section id="home">
+    <div id="main-slider" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            @for (int i = 0; i < Model.Images.Count; i++)
+            {
+                var className = i == 0 ? "class=\"active\"" : string.Empty;
+
+                <li data-target="#main-slider" data-slide-to="@i" @className></li>
+            }
+        </ol>
+
+        <div class="carousel-inner">
+            @{var count = 0;
+                foreach (var item in Model.Images)
+                {
+                    var className = count == 0 ? "item active" : "item";
+                    count++;
+
+                    <div class="@className">
+                        <img class="img-responsive" src="@item.Path" alt="slider">
+                       
+                    </div>
+                }
+            }
+        </div>
+        <div class="carousel-caption">
+            <h2>@Model.Title</h2>
+            <h4>Start: @Model.EventStart.ToString("HH:mm MMM dd yyyy")</h4>
+            <h4>@Model.Place.Name, @Model.Place.City.Name </h4>
         </div>
     </div>
-</section><!--/#twitter-feed-->
+</section>
+<!--/#home-->
 
-<section id="explore">
-    <div class="container">
-        <div class="row">
-            <div class="watch">
-                <img class="img-responsive" src="~/Content/Theme/images/watch.png" alt="">
-            </div>
-            <div class="col-md-4 col-md-offset-2 col-sm-5">
-                <h2>Place : @Model.Place.Name</h2>
-                <h2>Date: @Model.EventStart</h2>
+<div id="event-detatils">
+    <section id="explore">
+        <div class="container">
+            <div class="row">
+                <div class="watch">
+                    <img class="img-responsive" src="~/Content/Theme/images/watch.png" alt="">
+                </div>
+                <div class="col-md-4 col-md-offset-2 col-sm-5">
+                    <h2>Place : @Model.Place.Name</h2>
+                    <h2>Date: @Model.EventStart.ToString("HH:mm MMM dd yyyy")</h2>
             </div>
             <div class="col-sm-7 col-md-6">
                 <ul id="countdown" data-time="@Model.EventStart">
@@ -58,72 +70,44 @@
             </div>
         </div>
         <div class="cart">
-            <a href="/Order/Cart"><span class="badge badge-orange">7</span><i class="fa fa-shopping-cart"></i>  <span> Tickets</span></a>
+            <a href="/Order/Cart"><i class="fa fa-shopping-cart"></i>  <span> Tickets</span></a>
         </div>
     </div>
 </section><!--/#explore-->
 <section id="event">
     <div class="container">
         <div class="row">
+           
             <div class="col-sm-12 col-md-9">
+                <div class="=row">
+                    <h2 class="text-center">Description</h2>
+                  <p>@Model.Description</p>
+                </div>
+
                 <div id="event-carousel" class="carousel slide" data-interval="false">
-                    <h2 class="heading">@Model.Title</h2>
-                    <a class="even-control-left" href="#event-carousel" data-slide="prev"><i class="fa fa-angle-left"></i></a>
-                    <a class="even-control-right" href="#event-carousel" data-slide="next"><i class="fa fa-angle-right"></i></a>
-                    <div class="carousel-inner">
-                        <div class="item active">
-                            <div class="row">
-                                @foreach (var item in Model.Images)
-                                {
-                                <div class="col-sm-4">
-                                    <div class="single-event">
-                                        <img class="img-responsive" src="@item.ThumbnailPath" alt="event-image">
-                                        <h4>Chester Bennington</h4>
-                                        <h5>Vocal</h5>
-                                    </div>
-                                </div>
-                                }
-                                <div class="col-sm-4">
-                                    <div class="single-event">
-                                        <img class="img-responsive" src="~/Content/Theme/images/event/event3.jpg" alt="event-image">
-                                        <h4>Rob Bourdon</h4>
-                                        <h5>drums</h5>
-                                    </div>
-                                </div>
+                    <h2 class="text-center">Place</h2>
+                    @foreach (var image in Model.Place.Images)
+                    {
+                        <div class="col-sm-4">
+                            <div class="single-event">
+                                <img class="img-responsive" src="@image.ThumbnailPath" alt="event-image">
                             </div>
                         </div>
-                        <div class="item">
-                            <div class="row">
-                                <div class="col-sm-4">
-                                    <div class="single-event">
-                                        <img class="img-responsive" src="~/Content/Theme/images/event/event1.jpg" alt="event-image">
-                                        <h4>Chester Bennington</h4>
-                                        <h5>Vocal</h5>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="single-event">
-                                        <img class="img-responsive" src="~/Content/Theme/images/event/event2.jpg" alt="event-image">
-                                        <h4>Mike Shinoda</h4>
-                                        <h5>vocals, rhythm guitar</h5>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="single-event">
-                                        <img class="img-responsive" src="~/Content/Theme/images/event/event3.jpg" alt="event-image">
-                                        <h4>Rob Bourdon</h4>
-                                        <h5>drums</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    }
+                    <div class="row">
+                        <p>Place: @Model.Place.Name</p>
+                        <p>Address: @Model.Place.City.Name, @Model.Place.Street</p>
+                    @*    <p>@Model.Place.Country.Name</p>*@
+                        <h2> @Model.Place.Description</h2>
                     </div>
                 </div>
             </div>
+
             <div class="guitar">
                 <img class="img-responsive" src="~/Content/Theme/images/guitar.png" alt="guitar">
             </div>
         </div>
+       
     </div>
 </section><!--/#event-->
 <section id="about">
@@ -131,10 +115,20 @@
         <img class="img-responsive" src="~/Content/Theme/images/guitar2.jpg" alt="guitar">
     </div>
     <div class="about-content">
-        <h2>About Evento</h2>
-        <p>@Model.Description</p>
-        <a href="#" class="btn btn-primary">View Date & Place <i class="fa fa-angle-right"></i></a>
+        <h2 class="text-center">Comments</h2>
+        @{ var counter = 0;
+            foreach (var comment in Model.Comments)
+            {
+                var className = counter % 2 == 0 ? "" : "blockquote-reverse";
+                counter++;
 
+            <blockquote class="@className">
+                <p>@comment.Content</p>
+                <small>@comment.UserName <cite title="Source Title">@comment.CreatedOn.ToString("HH:mm MMM dd yyyy")</cite></small>
+            </blockquote>
+            }
+        }
+      @Html.Partial(Partials._PosrComment)
     </div>
 </section><!--/#about-->
 
@@ -157,10 +151,10 @@
                 <tbody>
                     @foreach (var item in Model.Tickets)
                     {
-                        <tr  class="active">
+                        <tr class="active">
                             <td>Regular</td>
                             <td>@item.Price</td>
-                            <td >
+                            <td>
                                 <select data-id="@item.Id">
                                     <option value="1">1</option>
                                     <option value="2">2</option>
@@ -237,6 +231,8 @@
     </div>
 </section>
 <!--/#contact-->
+</div>
+
 @section scripts {
     <script src="~/Scripts/Events/EventsDetails.js"></script>
     <script>
