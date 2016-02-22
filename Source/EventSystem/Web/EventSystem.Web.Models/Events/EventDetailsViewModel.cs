@@ -4,8 +4,11 @@
     using System.Collections.Generic;
 
     using AutoMapper;
+    using Comments;
     using EventSystem.Models;
+    using Images;
     using Infrastructure.Mappings;
+    using Tickets;
 
     public class EventDetailsViewModel : IMapFrom<Event>, IHaveCustomMappings
     {
@@ -25,11 +28,11 @@
 
         public string UserName { get; set; }
 
-        public ICollection<Image> Images { get; set; }
+        public ICollection<ImageViewModel> Images { get; set; }
 
         public ICollection<TicketViewModel> Tickets { get; set; }
 
-        public ICollection<Comment> Comments { get; set; }
+        public ICollection<CommentViewModel> Comments { get; set; }
 
         public void CreateMappings(IMapperConfiguration configuration)
         {

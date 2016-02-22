@@ -34,6 +34,20 @@
             return this.events.GetById(id);
         }
 
+        public IQueryable<Event> GetTop()
+        {
+            return this.events.All()
+                .OrderBy(x => x.EventStart)
+                .Take(PageSize);
+        }
+
+        public IQueryable<Event> GetNew()
+        {
+            return this.events.All()
+               .OrderBy(x => x.CreatedOn)
+               .Take(PageSize);
+        }
+
         public Event GetById(int id)
         {
             return this.events
@@ -100,6 +114,6 @@
             }
 
             return result;
-        }
+        }      
     }
 }

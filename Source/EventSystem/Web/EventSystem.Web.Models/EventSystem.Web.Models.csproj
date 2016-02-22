@@ -132,12 +132,14 @@
     <Compile Include="Account\ResetPasswordViewModel.cs" />
     <Compile Include="Account\SendCodeViewModel.cs" />
     <Compile Include="Account\VerifyCodeViewModel.cs" />
+    <Compile Include="Comments\CommentViewModel.cs" />
     <Compile Include="DropDownList\DropDownViewModel.cs" />
     <Compile Include="Events\CreateEventViewModel.cs" />
     <Compile Include="Events\EventDetailsViewModel.cs" />
     <Compile Include="Events\EventsSearchViewModel.cs" />
     <Compile Include="Events\EventViewModel.cs" />
-    <Compile Include="Events\TicketViewModel.cs" />
+    <Compile Include="Images\ImageViewModel.cs" />
+    <Compile Include="Tickets\TicketViewModel.cs" />
     <Compile Include="Home\HomeViewModel.cs" />
     <Compile Include="Manage\AddPhoneNumberViewModel.cs" />
     <Compile Include="Manage\ChangePasswordViewModel.cs" />
