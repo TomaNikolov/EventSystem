@@ -1,7 +1,7 @@
-﻿namespace EventSystem.Web.Models.Events
+﻿namespace EventSystem.Web.Models.Tickets
 {
     using EventSystem.Models;
-    using EventSystem.Web.Infrastructure.Mappings;
+    using Infrastructure.Mappings;
 
     public class TicketViewModel : IMapFrom<Ticket>
     {
