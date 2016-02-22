@@ -1,9 +1,8 @@
-﻿namespace EventSystem.Models
+﻿namespace EventSystem.Web.Models.Orders
 {
-    using EventSystem.Data.Common.Models;
     using System.ComponentModel.DataAnnotations;
 
-    public class DeliveryAdress : BaseModel<int>
+    public class CreateDeliveryAddressViewModel
     {
         [Required]
         [MaxLength(100)]
@@ -19,18 +18,18 @@
 
         [Required]
         [MaxLength(100)]
+        [Display(Name ="Phone Code")]
         public string PostCode { get; set; }
 
+        [Phone]
         [Required]
         [MaxLength(100)]
+        [DataType(DataType.PhoneNumber)]
         public string Phone { get; set; }
 
         [Required]
         [MaxLength(100)]
+        [EmailAddress]
         public string Email { get; set; }
-
-        public string UserId { get; set; }
-
-        public virtual User User { get; set; }
     }
 }

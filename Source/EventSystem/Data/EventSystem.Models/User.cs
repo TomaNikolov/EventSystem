@@ -23,6 +23,17 @@
             this.places = new HashSet<Place>();
         }
 
+        public bool IsDeleted { get; set; }
+
+
+        public DateTime? DeletedOn { get; set; }
+
+
+        public DateTime CreatedOn { get; set; }
+
+
+        public DateTime? ModifiedOn { get; set; }
+
         public virtual ICollection<DeliveryAdress> DeliveryAdresses
         {
             get { return this.deliveryAdresses; }
@@ -40,18 +51,6 @@
             get { return this.events; }
             set { this.events = value; }
         }
-
-        public bool IsDeleted { get; set; }
-       
-
-        public DateTime? DeletedOn { get; set; }
-
-
-        public DateTime CreatedOn { get; set; }
-
-
-        public DateTime? ModifiedOn { get; set; }
-
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
         {
