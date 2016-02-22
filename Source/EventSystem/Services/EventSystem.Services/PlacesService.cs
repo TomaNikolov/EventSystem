@@ -32,30 +32,6 @@
             return this.places.GetById(id);
         }
 
-        public IQueryable<Place> GetByPage(int page, string orderBy, string search)
-        {
-            IQueryable<Place> result = this.places.All().OrderBy(x => x.CreatedOn);
-
-            if (!string.IsNullOrEmpty(search))
-            {
-                result = result.Where(x => x.Name.ToLower().Contains(search.ToLower()) || x.Description.ToLower().Contains(search.ToLower()));
-            }
-
-            if (!string.IsNullOrEmpty(orderBy))
-            {
-                //TODO
-            }
-
-            return result
-                .Skip(PageSize * (page - 1))
-                .Take(PageSize);
-        }
-
-        public int GetAllPage(int page, string orderBy, string search)
-        {
-            return (int)Math.Ceiling((double)this.GetByPage(page, orderBy, search).Count() / PageSize);
-        }
-
         public int Create(string name, string description, int countryId, int cityId, double Latitude, double Longitude, string Street, ICollection<int> ImageIds)
         {
             var images = this.images.All().Where(x => ImageIds.Contains(x.Id)).ToList();
@@ -75,6 +51,35 @@
             this.places.Save();
 
             return place.Id;
+        }
+
+        public IQueryable<Place> GetByPage(int page, string orderBy, string search)
+        {
+            return this.GetQuery(orderBy, search)
+                       .Skip(PageSize * (page - 1))
+                       .Take(PageSize);
+        }
+
+        public int GetAllPage(int page, string orderBy, string search)
+        {
+            return (int)Math.Ceiling((double)this.GetQuery(orderBy, search).Count() / PageSize);
+        }
+
+        private IQueryable<Place> GetQuery(string orderBy, string search)
+        {
+            IQueryable<Place> result = this.places.All().OrderBy(x => x.CreatedOn);
+
+            if (!string.IsNullOrEmpty(search))
+            {
+                result = result.Where(x => x.Name.ToLower().Contains(search.ToLower()) || x.Description.ToLower().Contains(search.ToLower()));
+            }
+
+            if (!string.IsNullOrEmpty(orderBy))
+            {
+                //TODO
+            }
+
+            return result;
         }
     }
 }
