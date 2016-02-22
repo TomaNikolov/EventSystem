@@ -42,8 +42,13 @@
                                                         @Html.TextBoxFor(m => m.Search, new { @class = "form-control", placeholder = "Filter by Title" })
                                                     </div>
                                                 </div>
-                                                <button type="submit" class="jplist-reset-btn btn btn-default">Find <i class="fa fa-search"></i></button>
-                                                <button type="reset" class="jplist-reset-btn btn btn-default">Reset<i class="fa fa-share mls"></i></button>
+                                                @Html.EditorFor(m => m.Country)
+                                                @Html.EditorFor(m => m.City)
+                                                @Html.EditorFor(m => m.Place)
+                                                @Html.EditorFor(m => m.Category)
+
+                                                <button type="submit" class="btn btn-default">Find <i class="fa fa-search"></i></button>
+                                                <button type="reset" id="reset" class="btn btn-default">Reset<i class="fa fa-share mls"></i></button>
                                             }
 
                                             <div class="box text-shadow">
@@ -104,3 +109,4 @@
             </div>
         </div>
     </div>
+   

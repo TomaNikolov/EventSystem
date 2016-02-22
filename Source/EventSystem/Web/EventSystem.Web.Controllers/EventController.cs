@@ -10,6 +10,7 @@
     using Models.PagingAndSorting;
     using Infrastructure.Extensions;
     using System.Linq;
+    using Infrastructure.Populators;
     public class EventController : BaseController
     {
         private IEventsService eventService;
@@ -30,6 +31,10 @@
             return this.View(viewModel);
         }
 
+        [PopulatePlaces]
+        [PopulateCities]
+        [PopulateCountries]
+        [PopulateCategories]
         public ActionResult Search(string orderBy, string search, string place, string catogory, string country, string city, int page = 1)
         {
             page = page < 1 ? 1 : page;

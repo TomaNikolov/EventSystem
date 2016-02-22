@@ -612,6 +612,10 @@
     <Content Include="Views\Shared\_ShoppingCartCount.cshtml" />
     <Content Include="Views\Account\EventManagerRegister.cshtml" />
     <Content Include="Views\Event\Search.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\CitiesDropDown.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\CountriesDropDown.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\CategoriesDropDown.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\PlacesDropDown.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
