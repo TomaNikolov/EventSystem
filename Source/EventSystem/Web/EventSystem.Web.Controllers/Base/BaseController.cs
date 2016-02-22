@@ -1,5 +1,6 @@
 ﻿namespace EventSystem.Web.Controllers.Base
 {
+    using Infrastructure.Constants;
     using System.Web;
     using System.Web.Mvc;
 
@@ -26,7 +27,7 @@
             {
                 var controllerName = ControllerContext.RouteData.Values["controller"].ToString();
                 var actionName = ControllerContext.RouteData.Values["action"].ToString();
-                this.View("Errors", new HandleErrorInfo(filterContext.Exception, controllerName, actionName)).ExecuteResult(this.ControllerContext);
+                this.View(Views.Errors, new HandleErrorInfo(filterContext.Exception, controllerName, actionName)).ExecuteResult(this.ControllerContext);
             }
 
             filterContext.ExceptionHandled = true;

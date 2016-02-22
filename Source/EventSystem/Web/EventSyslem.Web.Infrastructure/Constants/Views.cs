@@ -11,5 +11,7 @@
         public const string Edit = "Edit";
 
         public const string Detatils = "Detatils";
+
+        public const string Errors = "Errors";
     }
 }
