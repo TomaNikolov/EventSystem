@@ -1,5 +1,6 @@
 ﻿namespace EventSystem.Web.Controllers
 {
+    using System;
     using System.Linq;
     using System.Web.Mvc;
 
@@ -8,25 +9,28 @@
     using Models.Events;
     using Models.Home;
     using Services.Contracts;
-   
+
     public class HomeController : BaseController
     {
-        private IHomeService homeService;
+        private IEventsService eventsService;
 
-        public HomeController(IHomeService homeService)
+        public HomeController(IEventsService eventsService)
         {
-            this.homeService = homeService;
+            this.eventsService = eventsService;
         }
 
         public ActionResult Index()
         {
-            var homeViewModel = new HomeViewModel();
+            var model = new HomeViewModel();
 
-            homeViewModel.TopEvents = this.homeService.GetTop(5)
+            model.TopEvents = this.eventsService.GetTop()
                .To<EventDetailsViewModel>()
                .ToList();
 
-            return this.View(homeViewModel);
+            model.NewEvents = this.eventsService.GetNew()
+                 .To<EventDetailsViewModel>()
+               .ToList();
+            return this.View(model);
         }
     }
 }
