@@ -7,5 +7,7 @@
     public class HomeViewModel 
     {
         public ICollection<EventDetailsViewModel> TopEvents { get; set; }
+
+        public ICollection<EventDetailsViewModel> NewEvents { get; set; }
     }
 }
