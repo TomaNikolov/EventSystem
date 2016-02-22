@@ -5,14 +5,15 @@
 
     public static class IEnumerableExtensions
     {
-        public static IEnumerable<SelectListItem> ForPublicEventsDropDown(this IEnumerable<SelectListItem> selectList)
+        public static IEnumerable<SelectListItem> ForPublicEventsDropDown(this IEnumerable<SelectListItem> selectListItems)
         {
-            foreach (var item in selectList)
+           
+            foreach (var item in selectListItems)
             {
                 item.Value = item.Text;
             }
 
-            return selectList;
+            return selectListItems;
         }
     }
 }

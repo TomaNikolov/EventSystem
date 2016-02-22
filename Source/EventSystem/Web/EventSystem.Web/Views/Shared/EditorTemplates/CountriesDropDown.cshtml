@@ -4,6 +4,6 @@
         @Html.LabelFor(m => m)
     </div>
     <div class="col-md-6">
-        @Html.DropDownListFor(m => m, (ViewBag.Countries as IEnumerable<SelectListItem>).ForPublicEventsDropDown(), new { @class = "form-control" })
+        @Html.DropDownListFor(m => m, (ViewBag.Countries as IEnumerable<SelectListItem>).ForPublicEventsDropDown(), "-please select-", new { @class = "form-control" })
     </div>
 </div>
