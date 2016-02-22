@@ -7,6 +7,7 @@
         [Required]
         [Phone]
         [DataType(DataType.PhoneNumber)]
+        [UIHint("String")]
         public string PhoneNumber { get; set; }
     }
 }

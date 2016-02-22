@@ -7,7 +7,9 @@
     using Infrastructure;
     using Models.Events;
     using Services.Contracts;
-
+    using Models.PagingAndSorting;
+    using Infrastructure.Extensions;
+    using System.Linq;
     public class EventController : BaseController
     {
         private IEventsService eventService;
@@ -26,6 +28,21 @@
                 .Map<Event, EventDetailsViewModel>(events);
 
             return this.View(viewModel);
+        }
+
+        public ActionResult Search(string orderBy, string search, string place, string catogory, string country, string city, int page = 1)
+        {
+            page = page < 1 ? 1 : page;
+
+            var model = new EventsPagableAndSortbleViewModel<EventsSearchViewModel>();
+            model.Data = this.eventService.GetByPage(page, orderBy, search, place, catogory, country, city)
+            .To<EventsSearchViewModel>()
+            .ToList();
+
+            model.AllPage = this.eventService.GetAllPage(page, orderBy, search, place, catogory, country, city);
+            model.BindData(orderBy, search, place, catogory, country, city, page);
+
+            return this.View(model);
         }
     }
 }

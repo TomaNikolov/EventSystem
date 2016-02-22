@@ -10,6 +10,7 @@
     public class EventsService : IEventsService
     {
         private const int PageSize = 5;
+        private const string EmptyString = "";
 
         private IDbRepository<Event> events;
 
@@ -28,11 +29,6 @@
             return this.events.All();
         }
 
-        public int GetAllPage(int page, string orderBy, string search)
-        {
-            return (int)Math.Ceiling((double)this.GetByPage(page, orderBy, search).Count() / PageSize);
-        }
-
         public Event GetById(object id)
         {
             return this.events.GetById(id);
@@ -45,7 +41,31 @@
                 .FirstOrDefault(e => e.Id == id);
         }
 
+        public int GetAllPage(int page, string orderBy, string search)
+        {
+            return (int)Math.Ceiling((double)this.GetQuery(orderBy, search).Count() / PageSize);
+        }
+
+        public int GetAllPage(int page, string orderby, string search, string place, string catogory, string country, string city)
+        {
+            return (int)Math.Ceiling((double)this.GetQuery(orderby, search, place, catogory, country, city).Count() / PageSize);
+        }
+
+        public IQueryable<Event> GetByPage(int page, string orderby, string search, string place, string catogory, string country, string city)
+        {
+            return this.GetQuery(orderby, search, place, catogory, country, city)
+                       .Skip(PageSize * (page - 1))
+                       .Take(PageSize);
+        }
+
         public IQueryable<Event> GetByPage(int page, string orderBy, string search)
+        {
+            return this.GetQuery(orderBy, search)
+                       .Skip(PageSize * (page - 1))
+                       .Take(PageSize);
+        }
+
+        public IQueryable<Event> GetQuery(string orderby, string search, string place = EmptyString, string catogory = EmptyString, string country = EmptyString, string city = EmptyString)
         {
             IQueryable<Event> result = this.events.All().OrderBy(x => x.CreatedOn);
 
@@ -54,14 +74,32 @@
                 result = result.Where(x => x.Title.ToLower().Contains(search.ToLower()) || x.Description.ToLower().Contains(search.ToLower()));
             }
 
-            if (string.IsNullOrEmpty(orderBy))
+            if (!string.IsNullOrEmpty(orderby))
             {
                 //TODO
             }
 
-            return result
-                .Skip(PageSize * (page - 1))
-                .Take(PageSize);
+            if (!string.IsNullOrEmpty(place))
+            {
+                result = result.Where(x => x.Place.Name.ToLower().Contains(place.ToLower()));
+            }
+
+            if (!string.IsNullOrEmpty(catogory))
+            {
+                result = result.Where(x => x.Category.Name.ToLower().Contains(catogory.ToLower()));
+            }
+
+            if (!string.IsNullOrEmpty(country))
+            {
+                result = result.Where(x => x.Place.Country.Name.ToLower().Contains(country.ToLower()));
+            }
+
+            if (!string.IsNullOrEmpty(city))
+            {
+                result = result.Where(x => x.Place.City.Name.ToLower().Contains(city.ToLower()));
+            }
+
+            return result;
         }
     }
 }

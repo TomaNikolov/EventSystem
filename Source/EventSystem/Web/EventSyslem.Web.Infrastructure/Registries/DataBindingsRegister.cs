@@ -6,7 +6,7 @@
     using Data.Common.Repositories;
     using Ninject;
     using Ninject.Web.Common;
-    using Models;
+
     public class DataBindingsRegister : INinjectRegistry
     {
         public void Register(IKernel kernel)
