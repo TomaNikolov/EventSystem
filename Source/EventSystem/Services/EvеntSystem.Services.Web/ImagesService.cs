@@ -1,18 +1,16 @@
 ﻿namespace EventSystem.Services.Web
 {
     using System;
-    using System.Drawing;
     using System.Collections.Generic;
     using System.IO;
     using System.Web;
 
     using Contracts;
     using Data.Common.Repositories;
-    using Models;
    
     public class ImagesService : IImagesService
     {
-        private const string RooDirectory = "~/App_Data/";
+        private const string RooDirectory = "/Images/";
 
         private const string Thumbnail = "-thumbnail";
 
@@ -25,7 +23,7 @@
 
         public ICollection<int> SaveImages(string name, IEnumerable<HttpPostedFileBase> files)
         {
-            var rootDir = HttpContext.Current.Server.MapPath(RooDirectory);
+            var rootDir = HttpContext.Current.Server.MapPath( "~" + RooDirectory);
             var dir = Directory.CreateDirectory(Path.Combine(rootDir, name));
             var imageIds = new List<int>();
 
@@ -62,7 +60,7 @@
             return memoryStream.ToArray();
         }
 
-        public byte[] CreateImageThumbnail(byte[] image, int width = 200, int height = 200)
+        public byte[] CreateImageThumbnail(byte[] image, int width = 263, int height = 231)
         {
             using (var stream = new MemoryStream(image))
             {
