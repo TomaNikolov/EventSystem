@@ -19,6 +19,7 @@ namespace EventSystem.Data.Migrations
 
         protected override void Seed(EventSystemDbContext context)
         {
+
             if (context.Events.Any())
             {
                 return;
@@ -30,9 +31,11 @@ namespace EventSystem.Data.Migrations
             {
                 var store = new RoleStore<IdentityRole>(context);
                 var manager = new RoleManager<IdentityRole>(store);
-                var role = new IdentityRole { Name = "Admin" };
+                var adminRole = new IdentityRole { Name = "Admin" };
+                var eventManagerRole = new IdentityRole { Name = "EventMaker" };
 
-                manager.Create(role);
+                manager.Create(adminRole);
+                manager.Create(eventManagerRole);
             }
 
             if (!context.Users.Any(u => u.UserName == "admin"))

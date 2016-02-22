@@ -551,6 +551,7 @@
     <Content Include="Areas\EventMaker\Views\Shared\EditorTemplates\PlacesDropDown.cshtml" />
     <Content Include="Areas\EventMaker\Views\Shared\EditorTemplates\TextArea.cshtml" />
     <Content Include="Areas\EventMaker\Views\Shared\EditorTemplates\FileUpload.cshtml" />
+    <Content Include="Areas\EventMaker\Views\Home\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\EventMaker\Places\Create\images.js" />
     <Content Include="Scripts\EventMaker\Places\Create\maps.js" />
@@ -609,6 +610,7 @@
     <Content Include="Views\Shared\EditorTemplates\Password.cshtml" />
     <Content Include="Views\Order\Cart.cshtml" />
     <Content Include="Views\Shared\_ShoppingCartCount.cshtml" />
+    <Content Include="Views\Account\EventManagerRegister.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

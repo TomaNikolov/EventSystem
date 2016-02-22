@@ -128,6 +128,7 @@
   <ItemGroup>
     <Compile Include="Base\BaseEventMakerController.cs" />
     <Compile Include="EventsController.cs" />
+    <Compile Include="HomeController.cs" />
     <Compile Include="PlacesController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

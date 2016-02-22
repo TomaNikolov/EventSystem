@@ -9,15 +9,17 @@
     {
         IQueryable<T> All();
 
+        IQueryable<T> AllWithDeleted();
+
         IQueryable<T> Include(Expression<Func<T, object>> expression);
-
-        T GetById(TKey id);
-
+      
         T GetById(object id);
 
         void Add(T entity);
 
         void Delete(T entity);
+
+        void HardDelete(T entity);
 
         void Save();
     }

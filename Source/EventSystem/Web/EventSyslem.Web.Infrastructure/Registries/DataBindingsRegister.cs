@@ -6,13 +6,14 @@
     using Data.Common.Repositories;
     using Ninject;
     using Ninject.Web.Common;
-
+    using Models;
     public class DataBindingsRegister : INinjectRegistry
     {
         public void Register(IKernel kernel)
         {
             kernel.Bind<DbContext>().To<EventSystemDbContext>().InRequestScope();
             kernel.Bind(typeof(IDbRepository<>)).To(typeof(DbRepository<>));
+            kernel.Bind(typeof(IDbGenericRepository<,>)).To(typeof(DbGenericRepository<,>));
         }
     }
 }

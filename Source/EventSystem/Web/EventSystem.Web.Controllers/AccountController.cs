@@ -4,6 +4,7 @@
     using System.Threading.Tasks;
     using System.Web;
     using System.Web.Mvc;
+    using System.Web.Mvc.Expressions;
 
     using Base;
     using EventSystem.Models;
@@ -11,21 +12,27 @@
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin.Security;
     using Models.Account;
-   
+    using Services.Contracts;
+    using Infrastructure.Constants;
+
     [Authorize]
     public class AccountController : BaseController
     {
         private ApplicationSignInManager signInManager;
         private ApplicationUserManager userManager;
+        private IUsersService usersService;
 
-        public AccountController()
+        public AccountController(IUsersService usersService)
         {
+            this.usersService = usersService;
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManage, IUsersService usersService)
+           : this(usersService)
         {
             this.UserManager = userManager;
             this.SignInManager = signInManager;
+
         }
 
         public ApplicationSignInManager SignInManager
@@ -139,6 +146,30 @@
                     this.ModelState.AddModelError(string.Empty, "Invalid code.");
                     return this.View(model);
             }
+        }
+
+        [HttpGet]
+        public ActionResult EventManagerRegister()
+        {
+            return this.View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EventManagerRegister(EventManagerRegisterViewModel model)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(model);
+            }
+
+            var userId = this.User.Identity.GetUserId();
+
+            this.usersService.AddPhone(userId, model.PhoneNumber);
+
+            var result = this.UserManager.AddToRole(userId, Roles.EventMaker);
+
+            return this.RedirectToAction<HomeController>(c => c.Index());
         }
 
         // GET: /Account/Register

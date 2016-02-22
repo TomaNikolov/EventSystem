@@ -1,0 +1,32 @@
+﻿@model EventManagerRegisterViewModel
+@{
+    ViewBag.Title = "Register as event managar";
+}
+<section id="contact">
+    <div class="contact-section" id="main-content">
+        <div id="contact-section">
+            <div id="form-content" class="col-md-6 col-md-offset-3">
+                @using (Html.BeginForm("EventManagerRegister", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                    @Html.AntiForgeryToken()
+                    <h2>Create a new event managar account.</h2>
+                    <hr />
+                    @Html.ValidationSummary("", new { @class = "text-danger" })
+
+                    @Html.EditorFor(m => m.PhoneNumber)
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" class="btn btn-primary pull-right" value="Register" />
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+<script src="~/Scripts/Account/autoResizeDiv.js"></script>
+}

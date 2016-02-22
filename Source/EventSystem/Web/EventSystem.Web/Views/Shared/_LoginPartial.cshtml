@@ -7,6 +7,10 @@
         @Html.AntiForgeryToken()
 
         <ul class="nav navbar-nav">
+            @if (User.IsInRole("EventMaker"))
+            {
+                <li>@(Html.ActionLink<EventSystem.Web.Areas.EventMaker.Controllers.HomeController>("Events Manage", c => c.Index()))</li>
+            }
             <li>
                 @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
             </li>

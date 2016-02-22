@@ -7,7 +7,10 @@
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
 
-    public class User : IdentityUser
+    using Data.Common.Models;
+    using System;
+
+    public class User : IdentityUser, IHavePrimaryKey<string>, IAuditInfo, IDeletableEntity
     {
         private ICollection<DeliveryAdress> deliveryAdresses;
         private ICollection<Event> events;
@@ -37,6 +40,18 @@
             get { return this.events; }
             set { this.events = value; }
         }
+
+        public bool IsDeleted { get; set; }
+       
+
+        public DateTime? DeletedOn { get; set; }
+
+
+        public DateTime CreatedOn { get; set; }
+
+
+        public DateTime? ModifiedOn { get; set; }
+
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
         {

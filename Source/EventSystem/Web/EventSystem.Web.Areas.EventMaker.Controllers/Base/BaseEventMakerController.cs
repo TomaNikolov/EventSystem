@@ -10,7 +10,7 @@
     using Infrastructure.Constants;
 
     [Authorize(Roles = Roles.EventMaker)]
-    public abstract class BaseEventMakerController<T> : BaseController
+    public abstract class BaseEventMakerController<T> :BaseController
         where T : class
     {
         public virtual ActionResult All(string orderBy, string search, int page = 1)
