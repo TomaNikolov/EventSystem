@@ -523,7 +523,6 @@
     <Content Include="Areas\EventMaker\Views\web.config" />
     <Content Include="Areas\EventMaker\Views\_ViewStart.cshtml" />
     <Content Include="Areas\EventMaker\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\EventMaker\Views\Home\Index.cshtml" />
     <Content Include="Areas\EventMaker\Views\Places\Create.cshtml" />
     <Content Include="Areas\EventMaker\Views\Places\Edit.cshtml" />
     <Content Include="Areas\EventMaker\Views\Places\Details.cshtml" />

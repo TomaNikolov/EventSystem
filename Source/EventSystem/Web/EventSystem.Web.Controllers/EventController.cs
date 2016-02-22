@@ -1,12 +1,14 @@
 ﻿namespace EventSystem.Web.Controllers
 {
+    using System.Web.Mvc;
+
+    using Base;
     using EventSystem.Models;
     using Infrastructure;
     using Models.Events;
     using Services.Contracts;
-    using System.Web.Mvc;
 
-    public class EventController : Controller
+    public class EventController : BaseController
     {
         private IEventsService eventService;
 

@@ -2,16 +2,18 @@
 {
     using System.Linq;
     using System.Threading.Tasks;
+    using System.Web;
     using System.Web.Mvc;
+
+    using Base;
     using EventSystem.Models;
     using Microsoft.AspNet.Identity;
-    using Microsoft.Owin.Security;
     using Microsoft.AspNet.Identity.Owin;
-    using System.Web;
+    using Microsoft.Owin.Security;
     using Models.Account;
-
+   
     [Authorize]
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         private ApplicationSignInManager signInManager;
         private ApplicationUserManager userManager;

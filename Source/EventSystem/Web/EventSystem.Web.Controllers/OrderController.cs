@@ -1,17 +1,17 @@
 ﻿namespace EventSystem.Web.Controllers
 {
-    using System;
     using System.Linq;
     using System.Web.Mvc;
     using System.Web.Mvc.Expressions;
 
+    using Base;
     using Infrastructure.Constants;
     using Infrastructure.Extensions;
     using Models.Orders;
     using Services.Contracts;
     using Services.Web.Contracts;
-
-    public class OrderController : Controller
+   
+    public class OrderController : BaseController
     {
         private IShoppingCartService shoppingCartService;
         private ITicketsService ticketsService;
