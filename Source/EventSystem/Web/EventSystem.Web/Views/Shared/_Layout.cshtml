@@ -38,9 +38,7 @@
                     <div class="collapse navbar-collapse">
                         <ul class="nav navbar-nav navbar-right">
                             <li class="scroll">@(Html.ActionLink<HomeController>("Home", c => c.Index()))</li>
-                            <li class="scroll">@(Html.ActionLink<HomeController>("About", c => c.About()))</li>
-                            <li class="scroll"><a href="#event">Event</a></li>
-                            <li><a class="no-scroll" href="#" target="_blank">PURCHASE TICKETS</a></li>
+                            <li class="scroll">@Html.ActionLink("Search For Events", "Search", "Event")</li>
                             @Html.Partial(Partials._LoginPartial)
                             <li><a href="/Order/Cart" data-id="shopping-cart">@(Html.Action<OrderController>(c => c.GetShoppingCartItemsCount())) <i class="fa fa-shopping-cart"></i></a> </li>
                         </ul>
