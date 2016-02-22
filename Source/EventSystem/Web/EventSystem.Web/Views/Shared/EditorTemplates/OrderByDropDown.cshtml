@@ -1,0 +1,15 @@
+﻿@model string
+<div class="form-group">
+    <div class="col-md-2 col-md-offset-2">
+        @Html.LabelFor(m => m)
+    </div>
+    <div class="col-md-6">
+        @Html.DropDownListFor(m => m, new List<SelectListItem>()
+                                                { new SelectListItem() { Text = "Start date asc", Value = "Start date asc" },
+                                                new SelectListItem() { Text = "Price dsc", Value = "Price dsc" } ,
+                                                new SelectListItem() { Text = "Price asc", Value = "Price asc" } ,
+                                                new SelectListItem() { Text = "Price dsc", Value = "Price dsc" } },
+                                                "-please select-",
+                                                new { @class = "form-control" })
+    </div>
+</div>

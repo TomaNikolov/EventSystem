@@ -7,9 +7,10 @@
     using Services.Contracts;
     using Web.Controllers.Base;
     using Models.PagingAndSorting;
-    using System;
+    using Infrastructure.Constants;
 
-    public abstract class BaseEventMakerController<T> : BaseController
+    [Authorize(Roles = Roles.EventMaker)]
+    public abstract class BaseEventMakerController<T> :BaseController
         where T : class
     {
         public virtual ActionResult All(string orderBy, string search, int page = 1)

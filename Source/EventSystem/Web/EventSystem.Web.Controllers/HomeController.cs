@@ -1,13 +1,15 @@
 ﻿namespace EventSystem.Web.Controllers
 {
+    using System.Linq;
+    using System.Web.Mvc;
+
+    using Base;
     using Infrastructure.Extensions;
     using Models.Events;
     using Models.Home;
     using Services.Contracts;
-    using System.Linq;
-    using System.Web.Mvc;
-
-    public class HomeController : Controller
+   
+    public class HomeController : BaseController
     {
         private IHomeService homeService;
 

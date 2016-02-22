@@ -122,6 +122,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account\EventManagerRegisterViewModel.cs" />
     <Compile Include="Account\ExternalLoginConfirmationViewModel.cs" />
     <Compile Include="Account\ExternalLoginListViewModel.cs" />
     <Compile Include="Account\ForgotPasswordViewModel.cs" />
@@ -134,6 +135,7 @@
     <Compile Include="DropDownList\DropDownViewModel.cs" />
     <Compile Include="Events\CreateEventViewModel.cs" />
     <Compile Include="Events\EventDetailsViewModel.cs" />
+    <Compile Include="Events\EventsSearchViewModel.cs" />
     <Compile Include="Events\EventViewModel.cs" />
     <Compile Include="Events\TicketViewModel.cs" />
     <Compile Include="Home\HomeViewModel.cs" />
@@ -147,6 +149,7 @@
     <Compile Include="Manage\VerifyPhoneNumberViewModel.cs" />
     <Compile Include="Orders\OrderedTicketViewModel.cs" />
     <Compile Include="Orders\ShoppingCartViewModel.cs" />
+    <Compile Include="PagingAndSorting\EventsPagableAndSortbleViewModel.cs" />
     <Compile Include="PagingAndSorting\IPagableAndSortble.cs" />
     <Compile Include="PagingAndSorting\PagableAndSortbleViewModel.cs" />
     <Compile Include="Places\PlaceViewModel.cs" />

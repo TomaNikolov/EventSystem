@@ -9,8 +9,10 @@
 
         IQueryable<Event> GetAll();
 
-        IQueryable<Event> GetByPage(int page, string orderBy, string search);
-
         int GetAllPage(int page, string orderBy, string search);
+
+        IQueryable<Event> GetByPage(int page, string orderby, string search, string place, string catogory, string country, string city);
+
+        int GetAllPage(int page, string orderby, string search, string place, string catogory, string country, string city);
     }
 }

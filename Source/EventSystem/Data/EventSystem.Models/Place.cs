@@ -29,6 +29,11 @@
 
         public virtual City City { get; set; }
 
+
+        public string UserId { get; set; }
+
+        public virtual User User { get; set; }
+
         public string Street { get; set; }
 
         public double Latitude { get; set; }

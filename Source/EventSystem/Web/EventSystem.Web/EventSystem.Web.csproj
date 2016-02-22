@@ -523,7 +523,6 @@
     <Content Include="Areas\EventMaker\Views\web.config" />
     <Content Include="Areas\EventMaker\Views\_ViewStart.cshtml" />
     <Content Include="Areas\EventMaker\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\EventMaker\Views\Home\Index.cshtml" />
     <Content Include="Areas\EventMaker\Views\Places\Create.cshtml" />
     <Content Include="Areas\EventMaker\Views\Places\Edit.cshtml" />
     <Content Include="Areas\EventMaker\Views\Places\Details.cshtml" />
@@ -552,6 +551,7 @@
     <Content Include="Areas\EventMaker\Views\Shared\EditorTemplates\PlacesDropDown.cshtml" />
     <Content Include="Areas\EventMaker\Views\Shared\EditorTemplates\TextArea.cshtml" />
     <Content Include="Areas\EventMaker\Views\Shared\EditorTemplates\FileUpload.cshtml" />
+    <Content Include="Areas\EventMaker\Views\Home\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\EventMaker\Places\Create\images.js" />
     <Content Include="Scripts\EventMaker\Places\Create\maps.js" />
@@ -610,6 +610,13 @@
     <Content Include="Views\Shared\EditorTemplates\Password.cshtml" />
     <Content Include="Views\Order\Cart.cshtml" />
     <Content Include="Views\Shared\_ShoppingCartCount.cshtml" />
+    <Content Include="Views\Account\EventManagerRegister.cshtml" />
+    <Content Include="Views\Event\Search.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\CitiesDropDown.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\CountriesDropDown.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\CategoriesDropDown.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\PlacesDropDown.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\OrderByDropDown.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

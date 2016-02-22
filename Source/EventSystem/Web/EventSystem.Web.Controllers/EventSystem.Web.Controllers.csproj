@@ -127,6 +127,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountController.cs" />
+    <Compile Include="Base\BaseAuthorizationController.cs" />
     <Compile Include="Base\BaseController.cs" />
     <Compile Include="EventController.cs" />
     <Compile Include="HomeController.cs" />
@@ -135,6 +136,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Data\EventSystem.Data.Common\EventSystem.Data.Common.csproj">
+      <Project>{fea5894d-b9f8-45dd-9b8b-0f77afe7903f}</Project>
+      <Name>EventSystem.Data.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Data\EventSystem.Data\EventSystem.Data.csproj">
       <Project>{2a86fea0-000e-4c4c-b539-67f8cde6a22e}</Project>
       <Name>EventSystem.Data</Name>
