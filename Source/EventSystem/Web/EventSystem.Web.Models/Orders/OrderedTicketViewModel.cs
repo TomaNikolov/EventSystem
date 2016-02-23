@@ -13,6 +13,8 @@
 
         public string Id { get; set; }
 
+        public int TicketId { get; set; }
+
         public decimal Price { get; set; }
 
         public int Quantity { get; set; }
@@ -32,7 +34,10 @@
                 .ForMember(d => d.EventId, opt => opt.MapFrom(s => s.Event.Id))
                 .ForMember(d => d.EventTitle, opt => opt.MapFrom(s => s.Event.Title))
                 .ForMember(d => d.PlaceName, opt => opt.MapFrom(s => s.Event.Place.Name))
+                 .ForMember(d => d.TicketId, opt => opt.MapFrom(s => s.Id))
                 .ForMember(d => d.Id, opt => opt.MapFrom(s => Guid.NewGuid().ToString()));
+
+            configuration.CreateMap<OrderedTicketViewModel, OrderItem>();
         }
     }
 }

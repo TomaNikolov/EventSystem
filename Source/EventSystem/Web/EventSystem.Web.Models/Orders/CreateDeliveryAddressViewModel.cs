@@ -18,7 +18,8 @@
 
         [Required]
         [MaxLength(100)]
-        [Display(Name ="Phone Code")]
+        [Display(Name ="Post Code")]
+        [UIHint("String")]
         public string PostCode { get; set; }
 
         [Phone]
@@ -30,6 +31,7 @@
         [Required]
         [MaxLength(100)]
         [EmailAddress]
+        [UIHint("String")]
         public string Email { get; set; }
     }
 }
