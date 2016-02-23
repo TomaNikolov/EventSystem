@@ -3,7 +3,7 @@
     using EventSystem.Data.Common.Models;
     using System.ComponentModel.DataAnnotations;
 
-    public class DeliveryAdress : BaseModel<int>
+    public class DeliveryAddress : BaseModel<int>
     {
         [Required]
         [MaxLength(100)]

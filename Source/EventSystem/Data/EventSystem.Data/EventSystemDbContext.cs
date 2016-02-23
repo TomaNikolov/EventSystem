@@ -29,7 +29,7 @@
 
         public IDbSet<Image> Images { get; set; }
 
-        public IDbSet<DeliveryAdress> DeliveryAdresses { get; set; }
+        public IDbSet<DeliveryAddress> DeliveryAdresses { get; set; }
 
         public IDbSet<Order> Orders { get; set; }
 

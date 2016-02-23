@@ -11,12 +11,14 @@
         private ICollection<Image> images;
         private ICollection<Ticket> tickets;
         private ICollection<Comment> comments;
+        private ICollection<Notification> notifications;
 
         public Event()
         {
             this.images = new HashSet<Image>();
             this.tickets = new HashSet<Ticket>();
             this.Comments = new HashSet<Comment>();
+            this.notifications = new HashSet<Notification>();
         }
 
         [Required]
@@ -59,6 +61,12 @@
         {
             get { return this.comments; }
             set { this.comments = value; }
+        }
+
+        public ICollection<Notification> Notifications
+        {
+            get { return this.notifications; }
+            set { this.notifications = value; }
         }
     }
 }
