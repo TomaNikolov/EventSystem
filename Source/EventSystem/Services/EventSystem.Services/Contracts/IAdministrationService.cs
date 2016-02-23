@@ -5,8 +5,8 @@
     public interface IAdministrationService<T>
         where T : class
     {
-        IQueryable<T> GetByPage(int page, string orderBy, string search);
+        IQueryable<T> GetByPage(string userId, int page, string orderBy, string search);
 
-        T GetById(object id);
+        T GetById(string userId, object id);
     }
 }

@@ -11,16 +11,15 @@
     using Infrastructure.Extensions;
     using Infrastructure.Notifications;
     using EventSystem.Models;
-    using System;
     using Services.Web.Contracts;
 
     public class EventsController : BaseEventMakerController<EventViewModel>
     {
-        private readonly IEventsService eventssService;
-
+        private  IEventsService eventssService;
         private IImagesService imagesService;
 
-        public EventsController(IEventsService eventssService, IImagesService imagesService)
+        public EventsController(IEventsService eventssService, IImagesService imagesService, IUsersService usersService)
+            :base(usersService)
         {
             this.eventssService = eventssService;
             this.imagesService = imagesService;
@@ -61,13 +60,13 @@
         protected override IQueryable<TModel> GetData<TModel>(int page, string orderBy, string search)
         {
             return this.eventssService
-              .GetByPage(page, orderBy, search)
+              .GetByPage(this.CurrentUser.Id, page, orderBy, search)
                .To<EventViewModel>() as IQueryable<TModel>;
         }
 
         protected override int GetAllPage<TModel>(int page, string orderBy, string search)
         {
-            return this.eventssService.GetAllPage(page, orderBy, search);
+            return this.eventssService.GetAllPage(this.CurrentUser.Id, page, orderBy, search);
         }
     }
 }

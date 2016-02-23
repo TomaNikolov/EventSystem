@@ -7,8 +7,8 @@
     {
         IQueryable<Place> GetAll();
 
-        int GetAllPage(int page, string orderBy, string search);
+        int GetAllPage(string userId, int page, string orderBy, string search);
 
-        int Create(string name, string description, int countryId, int cityId, double Latitude, double Longitude, string Street, ICollection<int> ImageIds);
+        int Create(string userId, string name, string description, int countryId, int cityId, double Latitude, double Longitude, string Street, ICollection<int> ImageIds);
     }
 }

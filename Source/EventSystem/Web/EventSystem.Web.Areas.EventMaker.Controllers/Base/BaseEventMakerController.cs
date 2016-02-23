@@ -10,9 +10,15 @@
     using Infrastructure.Constants;
 
     [Authorize(Roles = Roles.EventMaker)]
-    public abstract class BaseEventMakerController<T> :BaseController
+    public abstract class BaseEventMakerController<T> : BaseAuthorizationController
         where T : class
     {
+        public BaseEventMakerController(IUsersService usersService)
+            : base(usersService)
+        {
+
+        }
+
         public virtual ActionResult All(string orderBy, string search, int page = 1)
         {
             page = page < 1 ? 1 : page;
@@ -26,7 +32,7 @@
             model.AllPage = this.GetAllPage<T>(page, orderBy, search);
 
             return this.View(model);
-        }   
+        }
 
         [NonAction]
         protected TModel GetModel<TModel, TEntity>(IAdministrationService<TEntity> adminService, int? id)
@@ -35,7 +41,7 @@
         {
             return id.HasValue ? MapperFactory.GetConfig()
                                               .CreateMapper()
-                                              .Map<TModel>(adminService.GetById(id)) : new TModel();
+                                              .Map<TModel>(adminService.GetById(this.CurrentUser.Id, id)) : new TModel();
         }
 
         [NonAction]
