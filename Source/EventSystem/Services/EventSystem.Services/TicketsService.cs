@@ -43,5 +43,12 @@
         {
             return this.tickets.All().Where(t => t.Id == id);
         }
+
+        public bool HasQuantity(int ticketId, int quantity)
+        {
+            var ticket = this.tickets.GetById(ticketId);
+
+            return ticket.Ammount - quantity >= 0;
+        }
     }
 }
