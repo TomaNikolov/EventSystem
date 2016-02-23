@@ -4,22 +4,33 @@
     using System.Web.Mvc;
     using System.Web.Mvc.Expressions;
 
+    using Microsoft.AspNet.Identity;
+
     using Base;
     using Infrastructure.Constants;
     using Infrastructure.Extensions;
     using Models.Orders;
     using Services.Contracts;
     using Services.Web.Contracts;
-   
+    using Infrastructure;
+    using EventSystem.Models;
+    using System.Collections.Generic;
     public class OrderController : BaseController
     {
         private IShoppingCartService shoppingCartService;
         private ITicketsService ticketsService;
+        private IDelliveryAddressesService delliveryAddressesService;
+        private IOrdersService ordersService;
 
-        public OrderController(IShoppingCartService shoppingCartService, ITicketsService ticketsService)
+        public OrderController(IShoppingCartService shoppingCartService, 
+                                ITicketsService ticketsService,
+                                IDelliveryAddressesService delliveryAddressesService, 
+                                IOrdersService ordersService)
         {
             this.shoppingCartService = shoppingCartService;
             this.ticketsService = ticketsService;
+            this.delliveryAddressesService = delliveryAddressesService;
+            this.ordersService = ordersService;
         }
 
         public ActionResult Cart()
@@ -76,6 +87,29 @@
             return this.RedirectToAction(x => x.ConfirmOrder(1));
         }
 
+        [HttpGet]
+        [Authorize]
+        public ActionResult CreateAddress()
+        {
+            return this.View();
+        }
+
+        [HttpPost]
+        [Authorize]
+        public ActionResult CreateAddress(CreateDeliveryAddressViewModel model)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(model);
+            }
+            var userId = this.User.Identity.GetUserId();
+            int id = this.delliveryAddressesService.Create(userId, model.Country, model.City, model.Street, model.PostCode, model.Email, model.Phone);
+
+            return this.RedirectToAction(x => x.ConfirmOrder(id));
+        }
+
+      
+
         [Authorize]
         public ActionResult ConfirmOrder(int id)
         {
@@ -84,12 +118,12 @@
 
         [HttpPost]
         [Authorize]
-        public ActionResult CheckOut(int id)
+        public ActionResult CheckOut(int addressId)
         {
-            //Save Order to data base 
-            //Clear Shopping cart
-            //Add notification
-            //Add success message
+            var userId = this.User.Identity.GetUserId();
+            var shoppngCart = this.shoppingCartService.GetShopingCart();
+            var tickets = this.Mapper.Map<ICollection<OrderItem>>(shoppngCart.OrderedTickets);
+            this.ordersService.Create(userId, addressId, tickets);
 
             return this.RedirectToAction<HomeController>(x => x.Index());
         }     
