@@ -14,9 +14,5 @@
 
         [Required]
         public int Quantity { get; set; }
-
-        public int EventId { get; set; }
-
-        public virtual Event Event { get; set; }
     }
 }
