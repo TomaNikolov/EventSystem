@@ -64,11 +64,13 @@
     <Compile Include="Contracts\ICacheService.cs" />
     <Compile Include="Contracts\ICitiesService.cs" />
     <Compile Include="Contracts\ICountriesService.cs" />
+    <Compile Include="Contracts\IDelliveryAddressesService.cs" />
     <Compile Include="Contracts\IEventsService.cs" />
     <Compile Include="Contracts\IPlacesService.cs" />
     <Compile Include="Contracts\IService.cs" />
     <Compile Include="Contracts\ITicketsService.cs" />
     <Compile Include="Contracts\IUsersService.cs" />
+    <Compile Include="DelliveryAddressesService.cs" />
     <Compile Include="PlacesService.cs" />
     <Compile Include="CountriesService.cs" />
     <Compile Include="EventsService.cs" />

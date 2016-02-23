@@ -61,7 +61,7 @@
     <Compile Include="City.cs" />
     <Compile Include="Comment.cs" />
     <Compile Include="Country.cs" />
-    <Compile Include="DeliveryAdress.cs" />
+    <Compile Include="DeliveryAddress.cs" />
     <Compile Include="Event.cs" />
     <Compile Include="Image.cs" />
     <Compile Include="Order.cs" />

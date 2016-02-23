@@ -12,13 +12,13 @@
 
     public class User : IdentityUser, IHavePrimaryKey<string>, IAuditInfo, IDeletableEntity
     {
-        private ICollection<DeliveryAdress> deliveryAdresses;
+        private ICollection<DeliveryAddress> deliveryAdresses;
         private ICollection<Event> events;
         private ICollection<Place> places;
 
         public User()
         {
-            this.deliveryAdresses = new HashSet<DeliveryAdress>();
+            this.deliveryAdresses = new HashSet<DeliveryAddress>();
             this.events = new HashSet<Event>();
             this.places = new HashSet<Place>();
         }
@@ -34,7 +34,7 @@
 
         public DateTime? ModifiedOn { get; set; }
 
-        public virtual ICollection<DeliveryAdress> DeliveryAdresses
+        public virtual ICollection<DeliveryAddress> DeliveryAdresses
         {
             get { return this.deliveryAdresses; }
             set { this.deliveryAdresses = value; }
