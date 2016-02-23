@@ -33,7 +33,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSystem.Data.Common", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSystem.Web.Config", "Web\EventSystem.Web.Config\EventSystem.Web.Config.csproj", "{483140E3-E7EF-4DCC-8CF1-9C4DC9004B6F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSystem.Services.Web", "Services\EvеntSystem.Services.Web\EventSystem.Services.Web.csproj", "{0EC84C81-24B7-42C2-B3AA-9AB19CF0C0A9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSystem.Services.Web", "Services\EventSystem.Services.Web\EventSystem.Services.Web.csproj", "{0EC84C81-24B7-42C2-B3AA-9AB19CF0C0A9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
