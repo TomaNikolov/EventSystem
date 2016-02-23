@@ -1,6 +1,7 @@
 ﻿namespace EventSystem.Services
 {
     using System;
+    using System.Linq;
     using Data.Common.Repositories;
     using EventSystem.Services.Contracts;
     using Models;
@@ -34,6 +35,12 @@
             this.deliveryAddresses.Save();
 
             return deliveryAddress.Id;
+        }
+
+        public IQueryable<DeliveryAddress> GetById(int id)
+        {
+            return this.deliveryAddresses.All()
+                .Where(d => d.Id == id);
         }
     }
 }

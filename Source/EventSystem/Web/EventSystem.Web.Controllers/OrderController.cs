@@ -103,6 +103,7 @@
             {
                 return this.View(model);
             }
+
             var userId = this.User.Identity.GetUserId();
             int id = this.delliveryAddressesService.Create(userId, model.Country, model.City, model.Street, model.PostCode, model.Email, model.Phone);
 
@@ -114,6 +115,12 @@
         [Authorize]
         public ActionResult ConfirmOrder(int id)
         {
+            var model = new ConfirmOrderViewModel();
+            model.ShoppingCart = this.shoppingCartService.GetShopingCart();
+            model.DeliveryAddress = this.delliveryAddressesService
+                .GetById(id)
+                .To<DeliveryAddressViewModel>()
+                .FirstOrDefault();
             return this.View();
         }
 
