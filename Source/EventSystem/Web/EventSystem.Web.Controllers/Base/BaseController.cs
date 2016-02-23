@@ -1,11 +1,21 @@
 ﻿namespace EventSystem.Web.Controllers.Base
 {
+    using AutoMapper;
+    using Infrastructure;
     using Infrastructure.Constants;
     using System.Web;
     using System.Web.Mvc;
 
     public class BaseController : Controller
     {
+        protected IMapper Mapper
+        {
+            get
+            {
+                return MapperFactory.GetConfig().CreateMapper();
+            }
+        }
+
         protected override void OnException(ExceptionContext filterContext)
         {
             //if (filterContext.ExceptionHandled)

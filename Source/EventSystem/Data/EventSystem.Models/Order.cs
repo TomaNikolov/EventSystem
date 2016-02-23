@@ -15,7 +15,7 @@
 
         public int DeliveryAdressId { get; set; }
 
-        public virtual DeliveryAdress DeliveryAdress { get; set; }
+        public virtual DeliveryAddress DeliveryAdress { get; set; }
 
         public string UserId { get; set; }
 

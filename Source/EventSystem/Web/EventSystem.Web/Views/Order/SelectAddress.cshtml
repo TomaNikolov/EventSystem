@@ -1,0 +1,72 @@
+﻿@model IEnumerable<DeliveryAddressViewModel>
+@{
+    ViewBag.Title = "Select Address";
+}
+
+<h2>SelectAddress</h2>
+
+<section id="twitter">
+    <div id="main-content" class="shoppin-cart">
+        <div id="twitter-feed">
+            <div class="row">
+
+                <div id="form-content" class="col-md-8 col-md-offset-2">
+                    <h2>Select address</h2>
+                    <hr />
+                    @if (Model.Any())
+                    {
+                        <table id="ticket-purchase" class="table table-striped table-hover ">
+                            <thead>
+                                <tr class="danger">
+
+                                    <th>City</th>
+                                    <th>Street</th>
+                                    <th>Post Code</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                        <tr class="active">
+                                            <td> @item.City </td>
+                                            <td>@item.Street </td>
+                                            <td>@item.PostCode </td>
+                                            <td>@item.Email </td>
+                                            <td>@item.Phone</td>
+                                            <td>@(Html.ActionLink<OrderController>("Select",c => c.ConfirmOrder(item.Id), null, new { @class= "btn bnt-primary" }))</td>
+                                        </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    }
+                    else
+                    {
+                        <div class="text-center">
+                            <p>
+                                You dont have any addresses, pleease create one!
+                            </p>
+                        </div>
+                    }
+                    <hr />
+                   
+                    <div class="row">
+                        <div class="col-md-2 pull-right">
+                            <div>
+                                @(Html.ActionLink<OrderController>("Create new address", c => c.CreateAddress(), null, new { @class = "btn btn-primary" }))
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!--/#twitter-feed-->
+
+@section scripts{
+    <script src="~/Scripts/Account/autoResizeDiv.js"></script>
+}
+

@@ -5,10 +5,18 @@
 
     using EventSystem.Web.Models.Orders;
     using EventSystem.Services.Web.Contracts;
-  
+    using Services.Contracts;
+
     public class ShoppingCartService : IShoppingCartService
     {
         private const string CartSessionKey = "Cart";
+
+        private ITicketsService ticketsService;
+
+        public ShoppingCartService(ITicketsService ticketsService)
+        {
+            this.ticketsService = ticketsService;
+        }
 
         public void AddTicket(OrderedTicketViewModel orderdTicket)
         {
@@ -52,6 +60,19 @@
             if (itemToRemove != null)
             {
                 shoppingCart.OrderedTickets.Remove(itemToRemove);
+            }
+        }
+
+        public void RemoveTicketFormCart()
+        {
+            var shoppingCart = this.GetShopingCart();
+
+            foreach (var ticket in shoppingCart.OrderedTickets)
+            {
+                if(!this.ticketsService.HasQuantity(ticket.TicketId, ticket.Quantity))
+                {
+                    shoppingCart.OrderedTickets.Remove(ticket);
+                }
             }
         }
     }

@@ -12,18 +12,29 @@
 
     public class User : IdentityUser, IHavePrimaryKey<string>, IAuditInfo, IDeletableEntity
     {
-        private ICollection<DeliveryAdress> deliveryAdresses;
+        private ICollection<DeliveryAddress> deliveryAdresses;
         private ICollection<Event> events;
         private ICollection<Place> places;
 
         public User()
         {
-            this.deliveryAdresses = new HashSet<DeliveryAdress>();
+            this.deliveryAdresses = new HashSet<DeliveryAddress>();
             this.events = new HashSet<Event>();
             this.places = new HashSet<Place>();
         }
 
-        public virtual ICollection<DeliveryAdress> DeliveryAdresses
+        public bool IsDeleted { get; set; }
+
+
+        public DateTime? DeletedOn { get; set; }
+
+
+        public DateTime CreatedOn { get; set; }
+
+
+        public DateTime? ModifiedOn { get; set; }
+
+        public virtual ICollection<DeliveryAddress> DeliveryAdresses
         {
             get { return this.deliveryAdresses; }
             set { this.deliveryAdresses = value; }
@@ -40,18 +51,6 @@
             get { return this.events; }
             set { this.events = value; }
         }
-
-        public bool IsDeleted { get; set; }
-       
-
-        public DateTime? DeletedOn { get; set; }
-
-
-        public DateTime CreatedOn { get; set; }
-
-
-        public DateTime? ModifiedOn { get; set; }
-
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
         {

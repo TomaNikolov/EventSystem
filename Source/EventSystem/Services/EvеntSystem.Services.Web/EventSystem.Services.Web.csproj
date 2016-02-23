@@ -68,6 +68,10 @@
       <Project>{e0b512c4-10df-4431-b0f7-a48f91446ac3}</Project>
       <Name>EventSystem.Web.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\EventSystem.Services\EventSystem.Services.csproj">
+      <Project>{90ce85a0-08af-46cd-9fad-52a0834e6627}</Project>
+      <Name>EventSystem.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -15,5 +15,6 @@
         int GetItemsCount();
 
         decimal GetTotalPrice();
+        void RemoveTicketFormCart();
     }
 }

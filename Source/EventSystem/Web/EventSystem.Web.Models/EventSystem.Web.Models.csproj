@@ -139,6 +139,10 @@
     <Compile Include="Events\EventsSearchViewModel.cs" />
     <Compile Include="Events\EventViewModel.cs" />
     <Compile Include="Images\ImageViewModel.cs" />
+    <Compile Include="Orders\ConfirmOrderViewModel.cs" />
+    <Compile Include="Orders\CreateDeliveryAddressViewModel.cs" />
+    <Compile Include="Orders\DeliveryAddressViewModel.cs" />
+    <Compile Include="Orders\FinishOrderViewModel.cs" />
     <Compile Include="Tickets\TicketViewModel.cs" />
     <Compile Include="Home\HomeViewModel.cs" />
     <Compile Include="Manage\AddPhoneNumberViewModel.cs" />
