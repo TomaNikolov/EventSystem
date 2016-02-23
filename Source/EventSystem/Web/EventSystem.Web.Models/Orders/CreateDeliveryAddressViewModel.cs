@@ -26,6 +26,7 @@
         [Required]
         [MaxLength(100)]
         [DataType(DataType.PhoneNumber)]
+        [UIHint("String")]
         public string Phone { get; set; }
 
         [Required]

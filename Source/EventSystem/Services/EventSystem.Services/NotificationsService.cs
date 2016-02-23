@@ -1,6 +1,5 @@
 ﻿namespace EventSystem.Services
 {
-    using System;
     using Data.Common.Repositories;
     using EventSystem.Services.Contracts;
     using Models;

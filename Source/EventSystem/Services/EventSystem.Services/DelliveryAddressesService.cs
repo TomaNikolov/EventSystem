@@ -42,5 +42,11 @@
             return this.deliveryAddresses.All()
                 .Where(d => d.Id == id);
         }
+
+        public IQueryable<DeliveryAddress> GetUserAdresses(string userId)
+        {
+            return this.deliveryAddresses.All()
+                 .Where(d => d.UserId == userId);
+        }
     }
 }

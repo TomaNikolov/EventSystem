@@ -37,7 +37,8 @@
                  .ForMember(d => d.TicketId, opt => opt.MapFrom(s => s.Id))
                 .ForMember(d => d.Id, opt => opt.MapFrom(s => Guid.NewGuid().ToString()));
 
-            configuration.CreateMap<OrderedTicketViewModel, OrderItem>();
+            configuration.CreateMap<OrderedTicketViewModel, OrderItem>()
+              .ForMember(d => d.Id, opt => opt.Ignore());
         }
     }
 }

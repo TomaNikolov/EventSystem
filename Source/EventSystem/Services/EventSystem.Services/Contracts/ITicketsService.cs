@@ -10,5 +10,9 @@
         IQueryable<Ticket> GetById(int id);
 
         bool BuyTickets(ICollection<OrderItem> tickets);
+
+        bool HasQuantity(int ticketId, int quantity);
+
+        void Create(ICollection<OrderItem> tickets);
     }
 }

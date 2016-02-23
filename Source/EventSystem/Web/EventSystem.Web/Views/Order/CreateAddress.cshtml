@@ -1,0 +1,42 @@
+﻿@model  CreateDeliveryAddressViewModel
+@{
+    ViewBag.Title = "Register";
+}
+<section id="contact" >
+    <div class="contact-section row" id="main-content">
+        <div id="contact-section">
+            <div id="form-content" class="col-md-6 col-md-offset-3">
+                @using (Html.BeginForm("CreateAddress", "Order", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                    @Html.AntiForgeryToken()
+                    <h2>Create a new adress.</h2>
+                    <hr />
+                    @Html.ValidationSummary("", new { @class = "text-danger" })
+
+                    @Html.EditorFor(m => m.Email)
+
+                    @Html.EditorFor(m => m.Phone)
+
+                    @Html.EditorFor(m => m.PostCode)
+
+                    @Html.EditorFor(m => m.Country)
+
+                    @Html.EditorFor(m => m.City)
+
+                    @Html.EditorFor(m => m.Street)
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" class="btn btn-primary pull-right" value="Add address" />
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/Account/autoResizeDiv.js"></script>
+}

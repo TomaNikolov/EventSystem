@@ -1,5 +1,6 @@
 ﻿namespace EventSystem.Services
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using Contracts;
@@ -9,10 +10,12 @@
     public class TicketsService : ITicketsService
     {
         private IDbRepository<Ticket> tickets;
+        private IDbRepository<OrderItem> orderItem;
 
-        public TicketsService(IDbRepository<Ticket> tickets)
+        public TicketsService(IDbRepository<Ticket> tickets, IDbRepository<OrderItem> orderItem)
         {
             this.tickets = tickets;
+            this.orderItem = orderItem;
         }
 
         public bool BuyTickets(ICollection<OrderItem> tickets)
@@ -37,6 +40,16 @@
             this.tickets.Save();
 
             return true;
+        }
+
+        public void Create(ICollection<OrderItem> tickets)
+        {
+            foreach (var item in tickets)
+            {
+                this.orderItem.Add(item);
+            }
+
+            this.orderItem.Save();
         }
 
         public IQueryable<Ticket> GetById(int id)

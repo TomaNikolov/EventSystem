@@ -130,6 +130,19 @@ a i{
 }
 
 /*Event Details*/
-#event-detatils #explore .container h1, h2, p{
+#event-detatils #explore .container h1{
     color : white;
+}
+
+#event-detatils #explore .container  h2{
+    color : white;
+}
+
+#event-detatils #explore .container p{
+    color : white;
+}
+
+/*Footer*/
+#footer p{
+    color: white
 }

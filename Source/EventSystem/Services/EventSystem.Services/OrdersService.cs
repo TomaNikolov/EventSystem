@@ -22,7 +22,9 @@
 
         public bool Create(string userId, int addressId, ICollection<OrderItem> tickets)
         {
-            if(!this.ticketsService.BuyTickets(tickets))
+            this.ticketsService.Create(tickets);
+
+            if (!this.ticketsService.BuyTickets(tickets))
             {
                 return false;
             }
@@ -36,7 +38,7 @@
 
             foreach (var ticket in tickets) 
             {
-                this.notificationsService.Create(ticket.EventId, NotificationType.TicketSold);
+                this.notificationsService.Create(ticket.Ticket.EventId, NotificationType.TicketSold);
             }
 
             this.orders.Add(order);

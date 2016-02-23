@@ -64,6 +64,8 @@
     <Compile Include="DeliveryAddress.cs" />
     <Compile Include="Event.cs" />
     <Compile Include="Image.cs" />
+    <Compile Include="Notification.cs" />
+    <Compile Include="NotificationType.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="OrderItem.cs" />
     <Compile Include="Place.cs" />

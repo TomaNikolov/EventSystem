@@ -1,5 +1,6 @@
 ﻿namespace EventSystem.Web.Controllers
 {
+    using System.Collections.Generic;
     using System.Linq;
     using System.Web.Mvc;
     using System.Web.Mvc.Expressions;
@@ -12,10 +13,9 @@
     using Models.Orders;
     using Services.Contracts;
     using Services.Web.Contracts;
-    using Infrastructure;
     using EventSystem.Models;
-    using System.Collections.Generic;
     using Infrastructure.Notifications;
+
     public class OrderController : BaseController
     {
         private IShoppingCartService shoppingCartService;
@@ -75,17 +75,12 @@
         [Authorize]
         public ActionResult SelectAddress()
         {
-            return this.View();
-        }
+            var userId = this.User.Identity.GetUserId();
+            var model = this.delliveryAddressesService.GetUserAdresses(userId)
+                .To<DeliveryAddressViewModel>()
+                .ToList();
 
-        [HttpPost]
-        [Authorize]
-        public ActionResult SelectAddress(int id)
-        {
-            //Add the adress to the order 
-            //Add the adress to the user
-            //save pending order to the data base 
-            return this.RedirectToAction(x => x.ConfirmOrder(1));
+            return this.View(model);
         }
 
         [HttpGet]
@@ -121,25 +116,47 @@
                 .GetById(id)
                 .To<DeliveryAddressViewModel>()
                 .FirstOrDefault();
-            return this.View();
+
+            if (!model.ShoppingCart.OrderedTickets.Any())
+            {
+                this.AddToastMessage(Messages.Sorry, Messages.NoItems, ToastType.Info);
+                return this.RedirectToAction<HomeController>(c => c.Index());
+            }
+
+            return this.View(model);
         }
 
         [HttpPost]
         [Authorize]
-        public ActionResult CheckOut(int addressId)
+        public ActionResult FinishOrder(FinishOrderViewModel model)
         {
+            if(!this.ModelState.IsValid)
+            {
+                this.AddToastMessage(Messages.Sorry, Messages.Propblem, ToastType.Error);
+                return this.RedirectToAction<HomeController>(x => x.Index());
+            }
+
             var userId = this.User.Identity.GetUserId();
             var shoppngCart = this.shoppingCartService.GetShopingCart();
             var tickets = this.Mapper.Map<ICollection<OrderItem>>(shoppngCart.OrderedTickets);
-            var status = this.ordersService.Create(userId, addressId, tickets);
 
-            if (!status)
+
+            if(!tickets.Any())
+            {
+                this.AddToastMessage(Messages.Sorry, Messages.NoItems, ToastType.Info);
+                return this.RedirectToAction<HomeController>(c => c.Index());
+            }
+
+            var hasTickets = this.ordersService.Create(userId, model.AddressId, tickets);
+
+            if (!hasTickets)
             {
                 this.shoppingCartService.RemoveTicketFormCart();
                 this.AddToastMessage(Messages.Sorry, Messages.SomeOfTheTicketsAreAlreadySold, ToastType.Error);
-                return this.RedirectToAction<OrderController>(c => c.Cart());
+                return this.RedirectToAction(c => c.Cart());
             }
 
+            this.shoppingCartService.Clear();
             this.AddToastMessage(Messages.Congratulations, Messages.OrderWasCreared, ToastType.Success);
             return this.RedirectToAction<HomeController>(x => x.Index());
         }
