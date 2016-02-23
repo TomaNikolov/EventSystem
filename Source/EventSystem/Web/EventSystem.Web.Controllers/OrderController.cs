@@ -15,6 +15,7 @@
     using Infrastructure;
     using EventSystem.Models;
     using System.Collections.Generic;
+    using Infrastructure.Notifications;
     public class OrderController : BaseController
     {
         private IShoppingCartService shoppingCartService;
@@ -22,9 +23,9 @@
         private IDelliveryAddressesService delliveryAddressesService;
         private IOrdersService ordersService;
 
-        public OrderController(IShoppingCartService shoppingCartService, 
+        public OrderController(IShoppingCartService shoppingCartService,
                                 ITicketsService ticketsService,
-                                IDelliveryAddressesService delliveryAddressesService, 
+                                IDelliveryAddressesService delliveryAddressesService,
                                 IOrdersService ordersService)
         {
             this.shoppingCartService = shoppingCartService;
@@ -108,7 +109,7 @@
             return this.RedirectToAction(x => x.ConfirmOrder(id));
         }
 
-      
+
 
         [Authorize]
         public ActionResult ConfirmOrder(int id)
@@ -123,9 +124,17 @@
             var userId = this.User.Identity.GetUserId();
             var shoppngCart = this.shoppingCartService.GetShopingCart();
             var tickets = this.Mapper.Map<ICollection<OrderItem>>(shoppngCart.OrderedTickets);
-            this.ordersService.Create(userId, addressId, tickets);
+            var status = this.ordersService.Create(userId, addressId, tickets);
 
+            if (!status)
+            {
+                this.shoppingCartService.RemoveTicketFormCart();
+                this.AddToastMessage(Messages.Sorry, Messages.SomeOfTheTicketsAreAlreadySold, ToastType.Error);
+                return this.RedirectToAction<OrderController>(c => c.Cart());
+            }
+
+            this.AddToastMessage(Messages.Congratulations, Messages.OrderWasCreared, ToastType.Success);
             return this.RedirectToAction<HomeController>(x => x.Index());
-        }     
+        }
     }
 }
