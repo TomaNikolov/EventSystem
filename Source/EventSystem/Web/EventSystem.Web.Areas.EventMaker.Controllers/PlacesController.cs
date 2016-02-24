@@ -20,7 +20,8 @@
 
         private IImagesService imagesService;
 
-        public PlacesController(IPlacesService placesService, IImagesService imagesService)
+        public PlacesController(IPlacesService placesService, IImagesService imagesService, IUsersService usersService)
+            :base(usersService)
         {
             this.placesService = placesService;
             this.imagesService = imagesService;
@@ -56,7 +57,7 @@
             }
 
             var imageIds = this.imagesService.SaveImages(model.Name, model.Files);
-            var placeId = this.placesService.Create(model.Name, model.Description, model.CountryId, model.CityId, model.Latitude, model.Longitude, model.Street, imageIds);
+            var placeId = this.placesService.Create(this.CurrentUser.Id, model.Name, model.Description, model.CountryId, model.CityId, model.Latitude, model.Longitude, model.Street, imageIds);
 
             this.AddToastMessage(Messages.Congratulations, Messages.PlaceCreateMessage, ToastType.Success);
 
@@ -71,13 +72,13 @@
         protected override IQueryable<TModel> GetData<TModel>(int page, string orderBy, string search)
         {
             return this.placesService
-                .GetByPage(page, orderBy, search)
+                .GetByPage(this.CurrentUser.Id, page, orderBy, search)
                  .To<PlaceViewModel>() as IQueryable<TModel>;
         }
 
         protected override int GetAllPage<TModel>(int page, string orderBy, string search)
         {
-            return this.placesService.GetAllPage(page, orderBy, search);
+            return this.placesService.GetAllPage(this.CurrentUser.Id, page, orderBy, search);
         }
     }
 }

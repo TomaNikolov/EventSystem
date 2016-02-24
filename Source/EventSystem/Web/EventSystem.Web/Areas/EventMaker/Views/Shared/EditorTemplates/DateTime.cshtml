@@ -1,0 +1,13 @@
+﻿@model DateTime
+    <div class="form-group">
+        <div class="col-md-2 col-md-offset-2">
+            @Html.LabelFor(m => m)
+        </div>
+        <div class='input-group date' id='datetimepicker1'>
+            <input type='text' class="form-control" />
+            @Html.TextBoxFor(m => m, new { @class = "form-control" })
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+        </div>
+    </div>

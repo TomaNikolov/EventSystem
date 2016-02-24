@@ -6,6 +6,5 @@
         NewOrder = 2,
         NewMessage = 3,
         NewComment = 4
-
     }
 }

@@ -31,7 +31,7 @@
                 var orderedTicket = tickets.FirstOrDefault(x => x.TicketId == ticketToBeSold.Id);
                 ticketToBeSold.Ammount -= orderedTicket.Quantity;
 
-                if(ticketToBeSold.Ammount < 0)
+                if (ticketToBeSold.Ammount < 0)
                 {
                     return false;
                 }
@@ -62,6 +62,21 @@
             var ticket = this.tickets.GetById(ticketId);
 
             return ticket.Ammount - quantity >= 0;
+        }
+
+        public int Create(decimal price, int ammount, int eventId)
+        {
+            var ticket = new Ticket()
+            {
+                Price = price,
+                Ammount = ammount,
+                EventId = eventId
+            };
+
+            this.tickets.Add(ticket);
+            this.tickets.Save();
+
+            return ticket.Id;
         }
     }
 }

@@ -3,8 +3,8 @@
     using System.Linq;
     using System.Web;
 
-    using EventSystem.Web.Models.Orders;
     using EventSystem.Services.Web.Contracts;
+    using EventSystem.Web.Models.Orders;
     using Services.Contracts;
 
     public class ShoppingCartService : IShoppingCartService
@@ -69,7 +69,7 @@
 
             foreach (var ticket in shoppingCart.OrderedTickets)
             {
-                if(!this.ticketsService.HasQuantity(ticket.TicketId, ticket.Quantity))
+                if (!this.ticketsService.HasQuantity(ticket.TicketId, ticket.Quantity))
                 {
                     shoppingCart.OrderedTickets.Remove(ticket);
                 }

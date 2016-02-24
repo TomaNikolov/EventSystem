@@ -1,14 +1,13 @@
 ﻿namespace EventSystem.Models
 {
+    using System;
     using System.Collections.Generic;
     using System.Security.Claims;
     using System.Threading.Tasks;
 
+    using Data.Common.Models;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
-
-    using Data.Common.Models;
-    using System;
 
     public class User : IdentityUser, IHavePrimaryKey<string>, IAuditInfo, IDeletableEntity
     {
@@ -25,12 +24,9 @@
 
         public bool IsDeleted { get; set; }
 
-
         public DateTime? DeletedOn { get; set; }
 
-
         public DateTime CreatedOn { get; set; }
-
 
         public DateTime? ModifiedOn { get; set; }
 

@@ -4,9 +4,9 @@
     using System.Data.Entity;
     using System.Linq;
 
+    using Common.Models;
     using Microsoft.AspNet.Identity.EntityFramework;
     using Models;
-    using Common.Models;
 
     public class EventSystemDbContext : IdentityDbContext<User>
     {

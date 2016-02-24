@@ -1,9 +1,12 @@
 ﻿namespace EventSystem.Web.Models.Events
 {
     using System;
+    using System.Collections.Generic;
+
     using AutoMapper;
     using EventSystem.Models;
     using EventSystem.Web.Infrastructure.Mappings;
+    using Images;
 
     public class EventViewModel : IMapFrom<Event>, IHaveCustomMappings
     {
@@ -18,6 +21,8 @@
         public string PlaceName { get; set; }
 
         public string CategoryName { get; set; }
+
+        public ICollection<ImageViewModel> Images { get; set; }
 
         public void CreateMappings(IMapperConfiguration configuration)
         {

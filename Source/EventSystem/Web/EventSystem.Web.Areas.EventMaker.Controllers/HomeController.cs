@@ -2,8 +2,16 @@
 {
     using System.Web.Mvc;
 
-    public class HomeController : Controller
+    using Services.Contracts;
+    using Web.Controllers.Base;
+
+    public class HomeController : BaseAuthorizationController
     {
+        public HomeController(IUsersService usersService)
+            :base(usersService)
+        {
+
+        }
         public ActionResult Index()
         {
             return this.View();

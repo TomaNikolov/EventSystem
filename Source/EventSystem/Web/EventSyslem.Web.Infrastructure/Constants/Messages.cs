@@ -6,6 +6,8 @@
 
         public const string PlaceCreateMessage = "New place was created!";
 
+        public const string EventCreateMessage = "New event was created!";
+
         public const string Sorry = "Sorry!";
 
         public const string SomeOfTheTicketsAreAlreadySold = "Some of the tickets are already sold!";

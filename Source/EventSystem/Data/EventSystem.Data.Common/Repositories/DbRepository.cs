@@ -9,7 +9,7 @@
       where T : BaseModel<int>
     {
         public DbRepository(DbContext context)
-            :base(context)
+            : base(context)
         {
         }
 

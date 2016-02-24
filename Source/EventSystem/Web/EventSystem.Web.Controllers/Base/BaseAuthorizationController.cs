@@ -9,25 +9,27 @@
     [Authorize]
     public class BaseAuthorizationController : BaseController
     {
-        private readonly IUsersService usersService;
+        private IUsersService usersService;
+        private User currentUser;
 
         public BaseAuthorizationController(IUsersService usersService)
         {
             this.usersService = usersService;
         }
 
-        protected User CurrentUser { get; private set; }
-
-        protected override System.IAsyncResult BeginExecute(System.Web.Routing.RequestContext requestContext, System.AsyncCallback callback, object state)
+        protected User CurrentUser
         {
-            if (CurrentUser == null && this.User.Identity.IsAuthenticated)
+            get
             {
-                var userId = this.User.Identity.GetUserId();
+                if (this.currentUser == null && this.User.Identity.IsAuthenticated)
+                {
+                    var userId = this.User.Identity.GetUserId();
 
-                this.CurrentUser = this.usersService.GetById(userId);
+                    this.currentUser = this.usersService.GetById(userId);
+                }
+
+                return this.currentUser;
             }
-
-            return base.BeginExecute(requestContext, callback, state);
         }
     }
 }

@@ -22,7 +22,14 @@
                     count++;
 
                     <div class="@className">
-                        <img class="img-responsive" src="@item.Images.FirstOrDefault().Path" alt="slider">
+                        @if (!item.Images.Any())
+                        {
+                            <img class="img-responsive" src="~/Content/Theme/images/slider/bg1.jpg" alt="slider">
+                        }
+                        else
+                        {
+                            <img class="img-responsive" src="@item.Images.FirstOrDefault().Path" alt="slider">
+                        }
                         <div class="carousel-caption">
                             <h2>@Html.ActionLink(item.Title, "Details", "Event", new { id = item.Id }, null)</h2>
                             <h4>Start: @item.EventStart.ToString("HH:mm MMM dd yyyy")</h4>
@@ -45,7 +52,15 @@
               {
                 <div class="row">
                     <div class="col-md-3">
-                        <img class="img-responsive" src="@item.Images.FirstOrDefault().ThumbnailPath" alt="event image">
+                        @if (!item.Images.Any())
+                        {
+                            <img class="img-responsive" src="~/Content/Theme/images/event/event1.jpg" alt="slider">
+                        }
+                        else
+                        {
+                            <img class="img-responsive" src="@item.Images.FirstOrDefault().ThumbnailPath" alt="event image">
+                        }
+                       
                     </div>
 
 
@@ -78,7 +93,14 @@
             {
                 <div class="row">
                     <div class="col-md-3">
-                        <img class="img-responsive" src="@item.Images.FirstOrDefault().ThumbnailPath" alt="event image">
+                        @if (!item.Images.Any())
+                        {
+                            <img class="img-responsive" src="~/Content/Theme/images/event/event1.jpg" alt="slider">
+                        }
+                        else
+                        {
+                            <img class="img-responsive" src="@item.Images.FirstOrDefault().ThumbnailPath" alt="event image">
+                        }
                     </div>
 
 

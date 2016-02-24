@@ -1,6 +1,7 @@
 ﻿namespace EventSystem.Services
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
 
     using Data.Common.Repositories;
@@ -13,18 +14,17 @@
         private const string EmptyString = "";
 
         private IDbRepository<Event> events;
+        private ITicketsService ticketsService;
+        private IDbRepository<Image> images;
 
-        public EventsService(IDbRepository<Event> events)
+        public EventsService(IDbRepository<Event> events, ITicketsService ticketsService, IDbRepository<Image> images)
         {
             this.events = events;
+            this.ticketsService = ticketsService;
+            this.images = images;
         }
 
         public IQueryable<Event> GetAll()
-        {
-            return this.events.All();
-        }
-
-        public IQueryable<Event> GetAllEvents()
         {
             return this.events.All();
         }
@@ -54,9 +54,15 @@
             return this.events.GetById(id);
         }
 
-        public int GetAllPage(int page, string orderBy, string search)
+        public Event GetById(string userId, object id)
         {
-            return (int)Math.Ceiling((double)this.GetQuery(orderBy, search).Count() / PageSize);
+            return this.events.All()
+                .Where(x => x.Id == (int)id && x.UserId == userId).FirstOrDefault();
+        }
+
+        public int GetAllPage(string userId, int page, string orderBy, string search)
+        {
+            return (int)Math.Ceiling((double)this.GetQuery(userId, orderBy, search).Where(e => e.UserId == userId).Count() / PageSize);
         }
 
         public int GetAllPage(int page, string orderby, string search, string place, string catogory, string country, string city)
@@ -71,9 +77,10 @@
                        .Take(PageSize);
         }
 
-        public IQueryable<Event> GetByPage(int page, string orderBy, string search)
+        public IQueryable<Event> GetByPage(string userId, int page, string orderBy, string search)
         {
-            return this.GetQuery(orderBy, search)
+            return this.GetQuery(userId, orderBy, search)
+                       .Where(e => e.UserId == userId)
                        .Skip(PageSize * (page - 1))
                        .Take(PageSize);
         }
@@ -89,7 +96,7 @@
 
             if (!string.IsNullOrEmpty(orderby))
             {
-                //TODO
+                ///TODO
             }
 
             if (!string.IsNullOrEmpty(place))
@@ -113,6 +120,32 @@
             }
 
             return result;
+        }
+
+        public int Create(string userId, string title, string description, DateTime eventStart, int categoryId, int placeId, ICollection<int> imageIds)
+        {
+            var images = this.images.All().Where(x => imageIds.Contains(x.Id)).ToList();
+
+            var newEvent = new Event()
+            {
+                Title = title,
+                Description = description,
+                EventStart = eventStart,
+                CategoryId = categoryId,
+                PlaceId = placeId,
+                UserId = userId,
+            };
+
+            this.events.Add(newEvent);
+            this.events.Save();
+
+            return newEvent.Id;
+        }
+
+        public IQueryable<Event> GetById(string userId, int id)
+        {
+            return this.events.All()
+                .Where(x => x.Id == id && x.UserId == userId);
         }
     }
 }

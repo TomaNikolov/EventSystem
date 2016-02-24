@@ -13,7 +13,6 @@
         private const int PageSize = 5;
 
         private IDbRepository<Place> places;
-
         private IDbRepository<Image> images;
 
         public PlacesService(IDbRepository<Place> places, IDbRepository<Image> images)
@@ -27,24 +26,25 @@
             return this.places.All();
         }
 
-        public Place GetById(object id)
+        public Place GetById(string userId, object id)
         {
             return this.places.GetById(id);
         }
 
-        public int Create(string name, string description, int countryId, int cityId, double Latitude, double Longitude, string Street, ICollection<int> ImageIds)
+        public int Create(string userId, string name, string description, int countryId, int cityId, double latitude, double longitude, string street, ICollection<int> imageIds)
         {
-            var images = this.images.All().Where(x => ImageIds.Contains(x.Id)).ToList();
+            var images = this.images.All().Where(x => imageIds.Contains(x.Id)).ToList();
             var place = new Place()
             {
                 Name = name,
                 Description = description,
                 CountryId = countryId,
                 CityId = cityId,
-                Longitude = Longitude,
-                Latitude = Latitude,
-                Street = Street,
-                Images = images
+                Longitude = longitude,
+                Latitude = latitude,
+                Street = street,
+                Images = images,
+                UserId = userId
             };
 
             this.places.Add(place);
@@ -53,21 +53,21 @@
             return place.Id;
         }
 
-        public IQueryable<Place> GetByPage(int page, string orderBy, string search)
+        public IQueryable<Place> GetByPage(string userId, int page, string orderBy, string search)
         {
-            return this.GetQuery(orderBy, search)
+            return this.GetQuery(userId, orderBy, search)
                        .Skip(PageSize * (page - 1))
                        .Take(PageSize);
         }
 
-        public int GetAllPage(int page, string orderBy, string search)
+        public int GetAllPage(string userId, int page, string orderBy, string search)
         {
-            return (int)Math.Ceiling((double)this.GetQuery(orderBy, search).Count() / PageSize);
+            return (int)Math.Ceiling((double)this.GetQuery(userId, orderBy, search).Count() / PageSize);
         }
 
-        private IQueryable<Place> GetQuery(string orderBy, string search)
+        private IQueryable<Place> GetQuery(string userId, string orderBy, string search)
         {
-            IQueryable<Place> result = this.places.All().OrderBy(x => x.CreatedOn);
+            IQueryable<Place> result = this.places.All().Where(x => x.UserId == userId).OrderBy(x => x.CreatedOn);
 
             if (!string.IsNullOrEmpty(search))
             {
@@ -76,7 +76,7 @@
 
             if (!string.IsNullOrEmpty(orderBy))
             {
-                //TODO
+                ///TODO
             }
 
             return result;

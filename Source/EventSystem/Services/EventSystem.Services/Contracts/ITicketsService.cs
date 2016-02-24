@@ -14,5 +14,7 @@
         bool HasQuantity(int ticketId, int quantity);
 
         void Create(ICollection<OrderItem> tickets);
+
+        int Create(decimal price, int ammount, int eventId);
     }
 }

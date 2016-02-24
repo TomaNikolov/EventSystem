@@ -1,5 +1,4 @@
 ﻿@using System.Web.Mvc.Expressions;
-@using EventSystem.Web.Infrastructure.Constants
 @model EventSystem.Web.Models.PagingAndSorting.PagableAndSortbleViewModel<EventSystem.Web.Models.Events.EventViewModel>
 @{
     ViewBag.Title = "All Places";
@@ -54,22 +53,23 @@
 
                                             <div class="box text-shadow">
                                                 <tasble class="demo-tbl">
-                                                    <!--<item>1</item>-->
                                                     @foreach (var item in Model.Data)
                                                     {
                                                         <tr class="tbl-item">
-                                                            <!--<img/>-->
-                                                            <td class="img"><img src="~/Content/KAdminTheme/images/thumbs/arch-1.jpg" /></td>
-                                                            <!--<data></data>-->
+                                                            <td class="img">
+                                                                @if (!item.Images.Any())
+                                                                {
+                                                                    <img class="img-responsive" src="~/Content/Theme/images/event/event3.jpg" alt="slider">
+                                                                }
+                                                                else
+                                                                {
+                                                                    <img class="img-responsive" src="@item.Images.FirstOrDefault().ThumbnailPath" alt="slider">
+                                                                }
+                                                            </td>
                                                             <td class="td-block">
                                                                 <p class="date">@item.Title</p>
-                                                                <p class="title">@Html.ActionLink(item.Title, Views.Edit, new { id = item.Id })</p>
-                                                                @*<p class="desc">@place.Description</p>*@
-                                                                <p class="desc">
-                                                                    A calendar is a system of organizing days for social, religious, commercial, or administrative purposes. This is done by giving names to periods of time, typically days, weeks, months, and years. The name given to each day is known as a date. Periods in a calendar (such as years and months) are usually, though not necessarily,
-                                                                    synchronized with the cycle of the sun or the moon.
-                                                                </p>
-                                                                <p class="like">5 Likes</p>
+                                                                <p class="title">@(Html.ActionLink<EventsController>(item.Title, c => c.Edit(item.Id)))</p>
+                                                                <p class="desc">@item.Description</p>
                                                             </td>
                                                         </tr>
                                                     }
@@ -79,7 +79,7 @@
 
                                                 <ul class="pagination">
                                                     <li>
-                                                        @(Html.ActionLink<PlacesController>("First", c => c.All(Model.OrderBy, Model.Search, 1)))
+                                                        @(Html.ActionLink<EventsController>("First", c => c.All(Model.OrderBy, Model.Search, 1)))
                                                     </li>
                                                     @for (int i = 1; i <= Model.AllPage; i++)
                                                     {
@@ -90,16 +90,16 @@
                                                         }
 
                                                         <li class="@cssClass">
-                                                            @(Html.ActionLink<PlacesController>(i.ToString(), c => c.All(Model.OrderBy, Model.Search, i)))
+                                                            @(Html.ActionLink<EventsController>(i.ToString(), c => c.All(Model.OrderBy, Model.Search, i)))
                                                         </li>
                                                     }
                                                     <li>
-                                                        @(Html.ActionLink<PlacesController>("Last", c => c.All(Model.OrderBy, Model.Search, Model.AllPage)))
+                                                        @(Html.ActionLink<EventsController>("Last", c => c.All(Model.OrderBy, Model.Search, Model.AllPage)))
                                                     </li>
                                                 </ul>
 
                                                 <div>
-                                                    @(Html.ActionLink<PlacesController>("Create new place", c => c.Create(), null, new { @class = "btn btn-green pull-right" }))
+                                                    @(Html.ActionLink<EventsController>("Create new place", c => c.Create(), null, new { @class = "btn btn-green pull-right" }))
                                                 </div>
                                             </div>
                                         </div>

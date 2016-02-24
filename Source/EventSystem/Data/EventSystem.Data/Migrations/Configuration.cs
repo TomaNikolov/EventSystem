@@ -19,7 +19,6 @@ namespace EventSystem.Data.Migrations
 
         protected override void Seed(EventSystemDbContext context)
         {
-
             if (context.Events.Any())
             {
                 return;
