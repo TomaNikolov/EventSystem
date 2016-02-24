@@ -479,6 +479,7 @@
     <Content Include="Content\Theme\images\guitar2.jpg" />
     <Content Include="Content\Theme\images\header-bg.png" />
     <Content Include="Content\Theme\images\light.png" />
+    <Content Include="Content\Theme\images\logo.back.png" />
     <Content Include="Content\Theme\images\logo.png" />
     <Content Include="Content\Theme\images\map-icon.png" />
     <Content Include="Content\Theme\images\performar-bg.jpg" />

@@ -46,7 +46,7 @@
                         <div class="col-md-2 pull-right">
                             <div>
                                 <span>Total: </span>
-                                <span data-id="total">200</span>
+                                <span data-id="total">@Model.OrderedTickets.Sum(x => x.Quantity * x.Price)</span>
                             </div>
                         </div>
                     </div>

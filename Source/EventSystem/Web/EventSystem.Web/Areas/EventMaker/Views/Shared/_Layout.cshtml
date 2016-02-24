@@ -1,10 +1,10 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNet.Identity
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-
+    <title>@ViewBag.Title - Event Seeker</title>
     <link href="~/Content/KAdminTheme/styles/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/KAdminTheme/styles/animate.css" rel="stylesheet" />
     <link href="~/Content/KAdminTheme/styles/font-awesome.min.css" rel="stylesheet" />
@@ -17,12 +17,9 @@
     @Styles.Render("~/styleBundles/css")
 </head>
 <body>
-       <div>
+       <div id="event-manager">
 
-        <!--BEGIN BACK TO TOP-->
         <a id="totop" href="#"><i class="fa fa-angle-up"></i></a>
-        <!--END BACK TO TOP-->
-        <!--BEGIN TOPBAR-->
         <div id="header-topbar-option-demo" class="page-header-topbar">
             <nav id="topbar" role="navigation" style="margin-bottom: 0;" data-step="3" class="navbar navbar-default navbar-static-top">
                 <div class="navbar-header">
@@ -31,10 +28,6 @@
                 </div>
                 <div class="topbar-main">
                     <a id="menu-toggle" href="#" class="hidden-xs"><i class="fa fa-bars"></i></a>
-
-                    <form id="topbar-search" action="" method="" class="hidden-sm hidden-xs">
-                        <div class="input-icon right text-white"><a href="#"><i class="fa fa-search"></i></a><input type="text" placeholder="Search here..." class="form-control text-white" /></div>
-                    </form>
 
                     <ul class="nav navbar navbar-top-links navbar-right mbn">
                         <li class="dropdown">
@@ -45,12 +38,8 @@
                             <a data-hover="dropdown" href="#" class="dropdown-toggle"><i class="fa fa-envelope fa-fw"></i><span class="badge badge-orange">7</span></a>
 
                         </li>
-                        <li class="dropdown">
-                            <a data-hover="dropdown" href="#" class="dropdown-toggle"><i class="fa fa-tasks fa-fw"></i><span class="badge badge-yellow">8</span></a>
-
-                        </li>
                         <li class="dropdown topbar-user">
-                            <a data-hover="dropdown" href="#" class="dropdown-toggle"><i class="fa fa-user fa-fw"></i>&nbsp;<span class="hidden-xs">Robert John</span>&nbsp;<span class="caret"></span></a>
+                            <a data-hover="dropdown" href="#" class="dropdown-toggle"><i class="fa fa-user fa-fw"></i>&nbsp;<span class="hidden-xs">Hello  @User.Identity.GetUserName()</span>&nbsp;<span class="caret"></span></a>
                             <ul class="dropdown-menu dropdown-user pull-right">
                                 <li><a href="#"><i class="fa fa-user"></i>My Profile</a></li>
                                 <li><a href="#"><i class="fa fa-calendar"></i>My Calendar</a></li>
@@ -61,7 +50,6 @@
                                 <li><a href="Login.html"><i class="fa fa-key"></i>Log Out</a></li>
                             </ul>
                         </li>
-                        <li id="topbar-chat" class="hidden-xs"><a href="javascript:void(0)" data-step="4" data-intro="&lt;b&gt;Form chat&lt;/b&gt; keep you connecting with other coworker" data-position="left" class="btn-chat"><i class="fa fa-comments"></i><span class="badge badge-info">3</span></a></li>
                     </ul>
                 </div>
             </nav>
@@ -69,7 +57,7 @@
         </div>
         <!--END TOPBAR-->
 
-        <div id="wrapper">
+        <div id="wrapper" class="event-manager">
             <!--BEGIN SIDEBAR MENU-->
             <nav id="sidebar" role="navigation" data-step="2" data-intro="Template has &lt;b&gt;many navigation styles&lt;/b&gt;"
                  data-position="right" class="navbar-default navbar-static-side">
@@ -81,7 +69,6 @@
                     </ul>
                 </div>
             </nav>
-            <!--END SIDEBAR MENU-->
 
             <!--BEGIN PAGE WRAPPER-->
             <div id="page-wrapper">
