@@ -12,33 +12,38 @@
     using Infrastructure.Notifications;
     using EventSystem.Models;
     using Services.Web.Contracts;
+    using Infrastructure.Constants;
 
     public class EventsController : BaseEventMakerController<EventViewModel>
     {
-        private  IEventsService eventssService;
+        private  IEventsService eventsService;
         private IImagesService imagesService;
+        private ITicketsService ticketsServices;
 
-        public EventsController(IEventsService eventssService, IImagesService imagesService, IUsersService usersService)
+        public EventsController(IEventsService eventsService, IImagesService imagesService, ITicketsService ticketsServices, IUsersService usersService)
             :base(usersService)
         {
-            this.eventssService = eventssService;
+            this.eventsService = eventsService;
             this.imagesService = imagesService;
+            this.ticketsServices = ticketsServices;
         }
 
         [HttpGet]
         [PopulatePlaces]
+        [PopulateCategories]
         public ActionResult Create()
         {
-            var model = this.GetModel<CreateEventViewModel, Event>(this.eventssService, null);
+            var model = this.GetModel<CreateEventViewModel, Event>(this.eventsService, null);
 
             return this.View(model);
         }
 
         [HttpGet]
         [PopulatePlaces]
+        [PopulateCategories]
         public ActionResult Edit(int id)
         {
-            var model = this.GetModel<CreateEventViewModel, Event>(this.eventssService, id);
+            var model = this.GetModel<CreateEventViewModel, Event>(this.eventsService, id);
 
             return this.View(model);
         }
@@ -47,9 +52,17 @@
         [ValidateAntiForgeryToken]
         public ActionResult Create(CreateEventViewModel model)
         {
-          //  this.imagesService.SaveImages(model.Files);
-            this.AddToastMessage("Congratulations", "You made it all the way here!", ToastType.Success);
-            return this.RedirectToAction(x => x.Details(2));
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(model);
+            }
+          
+            var imageIds = this.imagesService.SaveImages(model.Title, model.Files);
+            var eventId = this.eventsService.Create(this.CurrentUser.Id, model.Title, model.Description, model.EventStart, model.CategoryId, model.PlaceId, imageIds);
+            this.ticketsServices.Create(model.Ticket.Price, model.Ticket.Ammount, eventId);
+            this.AddToastMessage(Messages.Congratulations, Messages.PlaceCreateMessage, ToastType.Success);
+
+            return this.RedirectToAction(x => x.Details(eventId));
         }
 
         public ActionResult Details(int id)
@@ -59,14 +72,14 @@
 
         protected override IQueryable<TModel> GetData<TModel>(int page, string orderBy, string search)
         {
-            return this.eventssService
+            return this.eventsService
               .GetByPage(this.CurrentUser.Id, page, orderBy, search)
                .To<EventViewModel>() as IQueryable<TModel>;
         }
 
         protected override int GetAllPage<TModel>(int page, string orderBy, string search)
         {
-            return this.eventssService.GetAllPage(this.CurrentUser.Id, page, orderBy, search);
+            return this.eventsService.GetAllPage(this.CurrentUser.Id, page, orderBy, search);
         }
     }
 }

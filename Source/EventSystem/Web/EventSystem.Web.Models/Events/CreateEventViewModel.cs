@@ -5,6 +5,7 @@
     using System.ComponentModel.DataAnnotations;
     using System.Web;
     using Tickets;
+
     public class CreateEventViewModel
     {
         [Required]
@@ -15,16 +16,26 @@
         [Required]
         [MinLength(10)]
         [MaxLength(2000)]
+        [DataType(DataType.MultilineText)]
+        [UIHint("TextArea")]
         public string Description { get; set; }
 
+        [Display(Name = "Event start")]
+        [UIHint("DateTime")]
         public DateTime EventStart { get; set; }
 
+        [Display(Name = "Place")]
+        [UIHint("PlacesDropDown")]
         public int PlaceId { get; set; }
 
+        [Display(Name = "Category")]
+        [UIHint("CategoriesDropDown")]
         public int CategoryId { get; set; }
 
-        public virtual ICollection<HttpPostedFileBase> Images { get; set; }
+        [UIHint("FileUpload")]
+        public virtual ICollection<HttpPostedFileBase> Files { get; set; }
 
-        public ICollection<TicketViewModel> Tickets { get; set; }
+        [UIHint("Ticket")]
+        public CreateTicketViewModel Ticket { get; set; }
     }
 }

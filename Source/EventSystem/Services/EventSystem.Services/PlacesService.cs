@@ -13,7 +13,6 @@
         private const int PageSize = 5;
 
         private IDbRepository<Place> places;
-
         private IDbRepository<Image> images;
 
         public PlacesService(IDbRepository<Place> places, IDbRepository<Image> images)

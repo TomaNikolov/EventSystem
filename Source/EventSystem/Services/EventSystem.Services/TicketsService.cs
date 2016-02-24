@@ -63,5 +63,20 @@
 
             return ticket.Ammount - quantity >= 0;
         }
+
+        public int Create(decimal price, int ammount, int eventId)
+        {
+            var ticket = new Ticket()
+            {
+                Price = price,
+                Ammount = ammount,
+                EventId = eventId
+            };
+
+            this.tickets.Add(ticket);
+            this.tickets.Save();
+
+            return ticket.Id;
+        }
     }
 }

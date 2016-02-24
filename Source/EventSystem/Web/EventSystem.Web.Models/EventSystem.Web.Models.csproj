@@ -143,6 +143,7 @@
     <Compile Include="Orders\CreateDeliveryAddressViewModel.cs" />
     <Compile Include="Orders\DeliveryAddressViewModel.cs" />
     <Compile Include="Orders\FinishOrderViewModel.cs" />
+    <Compile Include="Tickets\CreateTicketViewModel.cs" />
     <Compile Include="Tickets\TicketViewModel.cs" />
     <Compile Include="Home\HomeViewModel.cs" />
     <Compile Include="Manage\AddPhoneNumberViewModel.cs" />

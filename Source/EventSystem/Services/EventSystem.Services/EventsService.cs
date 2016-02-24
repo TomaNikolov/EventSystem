@@ -1,6 +1,7 @@
 ﻿namespace EventSystem.Services
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
 
     using Data.Common.Repositories;
@@ -13,18 +14,17 @@
         private const string EmptyString = "";
 
         private IDbRepository<Event> events;
+        private ITicketsService ticketsService;
+        private IDbRepository<Image> images;
 
-        public EventsService(IDbRepository<Event> events)
+        public EventsService(IDbRepository<Event> events, ITicketsService ticketsService, IDbRepository<Image> images)
         {
             this.events = events;
+            this.ticketsService = ticketsService;
+            this.images = images;
         }
 
         public IQueryable<Event> GetAll()
-        {
-            return this.events.All();
-        }
-
-        public IQueryable<Event> GetAllEvents()
         {
             return this.events.All();
         }
@@ -63,7 +63,7 @@
 
         public int GetAllPage(string userId, int page, string orderBy, string search)
         {
-            return (int)Math.Ceiling((double)this.GetQuery(userId, orderBy, search).Count() / PageSize);
+            return (int)Math.Ceiling((double)this.GetQuery(userId, orderBy, search).Where(e => e.UserId == userId).Count() / PageSize);
         }
 
         public int GetAllPage(int page, string orderby, string search, string place, string catogory, string country, string city)
@@ -81,25 +81,9 @@
         public IQueryable<Event> GetByPage(string userId, int page, string orderBy, string search)
         {
             return this.GetQuery(userId, orderBy, search)
+                       .Where(e => e.UserId == userId)
                        .Skip(PageSize * (page - 1))
                        .Take(PageSize);
-        }
-
-        public IQueryable<Event> GetQuery(string userId, string orderby, string search)
-        {
-            IQueryable<Event> result = this.events.All().Where(x => x.UserId == userId).OrderBy(x => x.CreatedOn);
-
-            if (!string.IsNullOrEmpty(search))
-            {
-                result = result.Where(x => x.Title.ToLower().Contains(search.ToLower()) || x.Description.ToLower().Contains(search.ToLower()));
-            }
-
-            if (!string.IsNullOrEmpty(orderby))
-            {
-                //TODO
-            }
-
-            return result;
         }
 
         public IQueryable<Event> GetQuery(string orderby, string search, string place = EmptyString, string catogory = EmptyString, string country = EmptyString, string city = EmptyString)
@@ -139,9 +123,30 @@
             return result;
         }
 
-        IQueryable<Event> IEventsService.GetById(string userId, int id)
+        public int Create(string userId, string title, string description, DateTime eventStart, int categoryId, int placeId, ICollection<int> ImageIds)
         {
-            throw new NotImplementedException();
+            var images = this.images.All().Where(x => ImageIds.Contains(x.Id)).ToList();
+
+            var newEvent = new Event()
+            {
+                Title = title,
+                Description = description,
+                EventStart = eventStart,
+                CategoryId = categoryId,
+                PlaceId = placeId,
+                UserId = userId,
+            };
+
+            this.events.Add(newEvent);
+            this.events.Save();
+
+            return newEvent.Id;
+        }
+
+        public IQueryable<Event> GetById(string userId, int id)
+        {
+            return this.events.All()
+                .Where(x => x.Id == id && x.UserId == userId);
         }
     }
 }
