@@ -1,7 +1,8 @@
 ﻿namespace EventSystem.Models
 {
-    using EventSystem.Data.Common.Models;
     using System.ComponentModel.DataAnnotations;
+
+    using EventSystem.Data.Common.Models;
 
     public class DeliveryAddress : BaseModel<int>
     {
