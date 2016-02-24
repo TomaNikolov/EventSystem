@@ -24,6 +24,6 @@
 
         int GetAllPage(int page, string orderby, string search, string place, string catogory, string country, string city);
 
-        int Create(string userId, string title, string description, DateTime eventStart, int categoryId, int placeId, ICollection<int> ImageIds);
+        int Create(string userId, string title, string description, DateTime eventStart, int categoryId, int placeId, ICollection<int> imageIds);
     }
 }

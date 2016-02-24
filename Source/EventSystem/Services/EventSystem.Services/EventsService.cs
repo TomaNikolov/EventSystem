@@ -60,7 +60,6 @@
                 .Where(x => x.Id == (int)id && x.UserId == userId).FirstOrDefault();
         }
 
-
         public int GetAllPage(string userId, int page, string orderBy, string search)
         {
             return (int)Math.Ceiling((double)this.GetQuery(userId, orderBy, search).Where(e => e.UserId == userId).Count() / PageSize);
@@ -97,7 +96,7 @@
 
             if (!string.IsNullOrEmpty(orderby))
             {
-                //TODO
+                ///TODO
             }
 
             if (!string.IsNullOrEmpty(place))
@@ -123,9 +122,9 @@
             return result;
         }
 
-        public int Create(string userId, string title, string description, DateTime eventStart, int categoryId, int placeId, ICollection<int> ImageIds)
+        public int Create(string userId, string title, string description, DateTime eventStart, int categoryId, int placeId, ICollection<int> imageIds)
         {
-            var images = this.images.All().Where(x => ImageIds.Contains(x.Id)).ToList();
+            var images = this.images.All().Where(x => imageIds.Contains(x.Id)).ToList();
 
             var newEvent = new Event()
             {

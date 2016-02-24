@@ -1,8 +1,9 @@
 ﻿namespace EventSystem.Services
 {
     using System;
-    using System.Linq;
     using System.Collections.Generic;
+    using System.Linq;
+
     using Data.Common.Repositories;
     using EventSystem.Services.Contracts;
     using Models;
@@ -13,7 +14,7 @@
         private INotificationsService notificationsService;
         private ITicketsService ticketsService;
 
-        public OrdersService( IDbRepository<Order> orders, INotificationsService notificationsService, ITicketsService ticketsService)
+        public OrdersService(IDbRepository<Order> orders, INotificationsService notificationsService, ITicketsService ticketsService)
         {
             this.orders = orders;
             this.notificationsService = notificationsService;
@@ -36,7 +37,7 @@
                 OrderItems = tickets
             };
 
-            foreach (var ticket in tickets) 
+            foreach (var ticket in tickets)
             {
                 this.notificationsService.Create(ticket.Ticket.EventId, NotificationType.TicketSold);
             }

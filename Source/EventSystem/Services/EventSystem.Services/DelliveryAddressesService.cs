@@ -24,7 +24,7 @@
             {
                 Country = country,
                 City = city,
-                Street =street,
+                Street = street,
                 PostCode = postCode,
                 Email = email,
                 Phone = phone,

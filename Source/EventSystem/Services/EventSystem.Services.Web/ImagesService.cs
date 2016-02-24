@@ -7,7 +7,7 @@
 
     using Contracts;
     using Data.Common.Repositories;
-   
+
     public class ImagesService : IImagesService
     {
         private const string RooDirectory = "/Images/";
@@ -23,7 +23,7 @@
 
         public ICollection<int> SaveImages(string name, IEnumerable<HttpPostedFileBase> files)
         {
-            var rootDir = HttpContext.Current.Server.MapPath( "~" + RooDirectory);
+            var rootDir = HttpContext.Current.Server.MapPath("~" + RooDirectory);
             var dir = Directory.CreateDirectory(Path.Combine(rootDir, name));
             var imageIds = new List<int>();
 
@@ -31,13 +31,13 @@
             {
                 if (file != null && file.ContentLength > 0)
                 {
-                    var originalImageName= Path.GetFileName(file.FileName);
+                    var originalImageName = Path.GetFileName(file.FileName);
                     var extension = originalImageName.Substring(originalImageName.LastIndexOf('.'));
                     var fileName = Guid.NewGuid().ToString();
-                    var filePath =  name + "/" + fileName + extension;
+                    var filePath = name + "/" + fileName + extension;
                     var thumbnailfilePath = name + "/" + fileName + Thumbnail + extension;
-                    var data = this.GetBiteArrayFromStream(file.InputStream);            
-                    var thumbnail = CreateImageThumbnail(data);
+                    var data = this.GetBiteArrayFromStream(file.InputStream);
+                    var thumbnail = this.CreateImageThumbnail(data);
 
                     var path = Path.Combine(rootDir + filePath);
                     file.SaveAs(path);
@@ -51,13 +51,6 @@
             }
 
             return imageIds;
-        }
-
-        private byte[] GetBiteArrayFromStream(Stream inputStream)
-        {
-            MemoryStream memoryStream = new MemoryStream();
-            inputStream.CopyTo(memoryStream);
-            return memoryStream.ToArray();
         }
 
         public byte[] CreateImageThumbnail(byte[] image, int width = 263, int height = 231)
@@ -74,16 +67,22 @@
                 }
             }
         }
-      
+
+        private byte[] GetBiteArrayFromStream(Stream inputStream)
+        {
+            MemoryStream memoryStream = new MemoryStream();
+            inputStream.CopyTo(memoryStream);
+            return memoryStream.ToArray();
+        }
 
         private Models.Image SaveToImage(string name, string type, string path, string thumbnailPath)
         {
             var image = new Models.Image()
             {
                 Name = name,
-                FileExtension = type, 
+                FileExtension = type,
                 Path = path,
-                ThumbnailPath =thumbnailPath
+                ThumbnailPath = thumbnailPath
             };
 
             this.images.Add(image);

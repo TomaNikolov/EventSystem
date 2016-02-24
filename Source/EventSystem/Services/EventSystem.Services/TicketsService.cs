@@ -31,7 +31,7 @@
                 var orderedTicket = tickets.FirstOrDefault(x => x.TicketId == ticketToBeSold.Id);
                 ticketToBeSold.Ammount -= orderedTicket.Quantity;
 
-                if(ticketToBeSold.Ammount < 0)
+                if (ticketToBeSold.Ammount < 0)
                 {
                     return false;
                 }

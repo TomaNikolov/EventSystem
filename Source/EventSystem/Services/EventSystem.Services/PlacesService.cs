@@ -31,18 +31,18 @@
             return this.places.GetById(id);
         }
 
-        public int Create(string userId, string name, string description, int countryId, int cityId, double Latitude, double Longitude, string Street, ICollection<int> ImageIds)
+        public int Create(string userId, string name, string description, int countryId, int cityId, double latitude, double longitude, string street, ICollection<int> imageIds)
         {
-            var images = this.images.All().Where(x => ImageIds.Contains(x.Id)).ToList();
+            var images = this.images.All().Where(x => imageIds.Contains(x.Id)).ToList();
             var place = new Place()
             {
                 Name = name,
                 Description = description,
                 CountryId = countryId,
                 CityId = cityId,
-                Longitude = Longitude,
-                Latitude = Latitude,
-                Street = Street,
+                Longitude = longitude,
+                Latitude = latitude,
+                Street = street,
                 Images = images,
                 UserId = userId
             };
@@ -60,7 +60,7 @@
                        .Take(PageSize);
         }
 
-        public int GetAllPage(string userId,int page, string orderBy, string search)
+        public int GetAllPage(string userId, int page, string orderBy, string search)
         {
             return (int)Math.Ceiling((double)this.GetQuery(userId, orderBy, search).Count() / PageSize);
         }
@@ -76,7 +76,7 @@
 
             if (!string.IsNullOrEmpty(orderBy))
             {
-                //TODO
+                ///TODO
             }
 
             return result;

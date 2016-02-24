@@ -8,13 +8,14 @@
 
         void AddTicket(OrderedTicketViewModel orderdTicket);
 
-        void RemoveTicket(string Id);
+        void RemoveTicket(string id);
 
         void Clear();
 
         int GetItemsCount();
 
         decimal GetTotalPrice();
+
         void RemoveTicketFormCart();
     }
 }
