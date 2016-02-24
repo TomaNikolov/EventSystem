@@ -59,11 +59,11 @@
                                                             <td class="img">
                                                                 @if (!place.Images.Any())
                                                                 {
-                                                                    <img class="img-responsive" src="~/Content/Theme/images/slider/bg1.jpg" alt="slider">
+                                                                    <img class="img-responsive" src="~/Content/Theme/images/event/event3.jpg" alt="slider">
                                                                 }
                                                                 else
                                                                 {
-                                                                    <img class="img-responsive" src="@place.Images.FirstOrDefault().Path" alt="slider">
+                                                                    <img class="img-responsive" src="@place.Images.FirstOrDefault().ThumbnailPath" alt="slider">
                                                                 }
                                                             </td>
                                                             <td class="td-block">

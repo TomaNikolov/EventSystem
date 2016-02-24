@@ -39,9 +39,7 @@
             where TModel : new()
             where TEntity : class
         {
-            return id.HasValue ? MapperFactory.GetConfig()
-                                              .CreateMapper()
-                                              .Map<TModel>(adminService.GetById(this.CurrentUser.Id, id)) : new TModel();
+            return id.HasValue ? this.Mapper.Map<TModel>(adminService.GetById(this.CurrentUser.Id, id)) : new TModel();
         }
 
         [NonAction]

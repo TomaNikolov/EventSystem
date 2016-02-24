@@ -4,9 +4,12 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.Web;
+
+    using EventSystem.Models;
+    using Infrastructure.Mappings;
     using Tickets;
 
-    public class CreateEventViewModel
+    public class CreateEventViewModel : IMapFrom<Event>
     {
         [Required]
         [MinLength(10)]
