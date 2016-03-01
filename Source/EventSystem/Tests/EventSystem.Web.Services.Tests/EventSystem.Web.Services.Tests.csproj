@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{813FD3BB-844C-4185-A752-1933D3211692}</ProjectGuid>
+    <ProjectGuid>{024E0C8B-E778-4AAC-A221-21F46419A973}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EventSystem.Tests</RootNamespace>
-    <AssemblyName>EventSystem.Tests</AssemblyName>
+    <RootNamespace>EventSystem.Web.Services.Tests</RootNamespace>
+    <AssemblyName>EventSystem.Web.Services.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>

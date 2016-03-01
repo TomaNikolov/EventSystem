@@ -1,7 +1,8 @@
-﻿namespace EventSystem.Tests
-{
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+namespace EventSystem.Web.Services.Tests
+{
     [TestClass]
     public class UnitTest1
     {
