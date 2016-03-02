@@ -15,7 +15,7 @@
                   .InRequestScope()
                   .WithConstructorArgument(
                       "session",
-                      ninjectContext => HttpContext.Current.Session
+                      ninjectContext => new HttpSessionStateWrapper(HttpContext.Current.Session)
                   );
         }
     }

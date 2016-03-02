@@ -1,46 +1,67 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using EventSystem.Services.Web.Contracts;
-using EventSystem.Services.Contracts;
-using Moq;
-using EventSystem.Services.Web;
-using System.Web;
-using System.IO;
-using System.Collections.Generic;
-using EventSystem.Web.Models.Orders;
-using System.Web.SessionState;
-using EventSystem.Web.Infrastructure.Adapters;
-
-namespace EventSystem.Web.Services.Tests
+﻿namespace EventSystem.Web.Services.Tests
 {
-    public class MockHttpSession : HttpSessionStateBase
-    {
-        Dictionary<string, object> m_SessionStorage = new Dictionary<string, object>();
-
-        public override object this[string name]
-        {
-            get { return m_SessionStorage[name]; }
-            set { m_SessionStorage[name] = value; }
-        }
-    }
+    using EventSystem.Services.Contracts;
+    using EventSystem.Services.Web;
+    using EventSystem.Services.Web.Contracts;
+    using Infrastructure.Adapters;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using Models.Orders;
+    using Moq;
+    using Setups;
 
     [TestClass]
     public class ShoppingCartSeviceTests
     {
-        [TestMethod]
-        public void GetShoppingCartShouldReturnNewShoppingCartViewModel()
+        private IShoppingCartService shoppingCart;
+
+        [TestInitialize]
+        public void TestIntt()
         {
             var mockTickets = new Mock<ITicketsService>();
 
-            var mockSession = new Mock<HttpSessionStateBase>();
+            var mockSession = new MockHttpSession();
+            mockSession["Cart"] = null;
+
             var sessionAdapter = new Mock<ISessionAdapter>();
-            sessionAdapter.Setup(x => x.Session).Returns(mockSession.Object);
+            sessionAdapter.Setup(x => x.Session).Returns(mockSession);
 
-            IShoppingCartService shoppingCart = new ShoppingCartService(mockTickets.Object, sessionAdapter.Object);
+            this.shoppingCart = new ShoppingCartService(mockTickets.Object, sessionAdapter.Object);
+        }
 
-            var shoppingCartViewModel = shoppingCart.GetShopingCart();
+        [TestMethod]
+        public void GetShoppingCartShouldReturnNewShoppingCartViewModel()
+        {
+            var shoppingCartViewModel = this.shoppingCart.GetShopingCart();
 
             Assert.IsNotNull(shoppingCartViewModel);
+        }
+
+        [TestMethod]
+        public void AddTicketShoudAddItemPropertly()
+        {
+            var orderedTicket = new OrderedTicketViewModel();
+            this.shoppingCart.AddTicket(orderedTicket);
+
+            var shoppingCart = this.shoppingCart.GetShopingCart();
+
+            Assert.IsTrue(1 == shoppingCart.OrderedTickets.Count);
+        }
+
+        [TestMethod]
+        public void AddTicketShoudRemoveItemPropertly()
+        {
+            var ticketId = "1";
+
+            var orderedTicket = new OrderedTicketViewModel() { Id = ticketId};
+            this.shoppingCart.AddTicket(orderedTicket);
+            
+            var shoppingCart = this.shoppingCart.GetShopingCart();
+
+            Assert.IsTrue(1 == shoppingCart.OrderedTickets.Count);
+
+            this.shoppingCart.RemoveTicket(ticketId);
+
+            Assert.IsTrue(0 == shoppingCart.OrderedTickets.Count);
         }
     }
 }
