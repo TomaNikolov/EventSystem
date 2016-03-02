@@ -73,6 +73,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
       <Private>True</Private>
@@ -109,6 +110,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adapters\ISessionAdapter.cs" />
+    <Compile Include="Adapters\SessionAdapter.cs" />
     <Compile Include="Constants\Assemblies.cs" />
     <Compile Include="Constants\Messages.cs" />
     <Compile Include="Constants\Notification.cs" />
@@ -133,6 +136,7 @@
     <Compile Include="Registries\DataBindingsRegister.cs" />
     <Compile Include="Registries\INinjectRegistry.cs" />
     <Compile Include="Registries\ServiceBindingsRegister.cs" />
+    <Compile Include="Registries\SessionBindingRegistry.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
