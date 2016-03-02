@@ -33,6 +33,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSystem.Web.Config", "W
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSystem.Services.Web", "Services\EventSystem.Services.Web\EventSystem.Services.Web.csproj", "{0EC84C81-24B7-42C2-B3AA-9AB19CF0C0A9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSystem.Web.Controllers.Tests", "Tests\EventSystem.Web.Controllers.Tests\EventSystem.Web.Controllers.Tests.csproj", "{5309D288-228B-4EE5-A1E3-9856B4033199}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSystem.Web.Services.Tests", "Tests\EventSystem.Web.Services.Tests\EventSystem.Web.Services.Tests.csproj", "{024E0C8B-E778-4AAC-A221-21F46419A973}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,6 +87,14 @@ Global
 		{0EC84C81-24B7-42C2-B3AA-9AB19CF0C0A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0EC84C81-24B7-42C2-B3AA-9AB19CF0C0A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0EC84C81-24B7-42C2-B3AA-9AB19CF0C0A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5309D288-228B-4EE5-A1E3-9856B4033199}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5309D288-228B-4EE5-A1E3-9856B4033199}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5309D288-228B-4EE5-A1E3-9856B4033199}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5309D288-228B-4EE5-A1E3-9856B4033199}.Release|Any CPU.Build.0 = Release|Any CPU
+		{024E0C8B-E778-4AAC-A221-21F46419A973}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{024E0C8B-E778-4AAC-A221-21F46419A973}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{024E0C8B-E778-4AAC-A221-21F46419A973}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{024E0C8B-E778-4AAC-A221-21F46419A973}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -99,5 +111,7 @@ Global
 		{FEA5894D-B9F8-45DD-9B8B-0F77AFE7903F} = {D0AEE334-68D5-4E7F-B86B-D04D7CCEB746}
 		{483140E3-E7EF-4DCC-8CF1-9C4DC9004B6F} = {FEA38B6B-6DE8-4902-987A-F66406E62286}
 		{0EC84C81-24B7-42C2-B3AA-9AB19CF0C0A9} = {D19AD646-21EA-47B6-A16A-9BDEDB9EBF6E}
+		{5309D288-228B-4EE5-A1E3-9856B4033199} = {ECACE68B-2E1A-4711-8C11-A37553FD4B5B}
+		{024E0C8B-E778-4AAC-A221-21F46419A973} = {ECACE68B-2E1A-4711-8C11-A37553FD4B5B}
 	EndGlobalSection
 EndGlobal

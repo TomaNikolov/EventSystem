@@ -6,16 +6,19 @@
     using EventSystem.Services.Web.Contracts;
     using EventSystem.Web.Models.Orders;
     using Services.Contracts;
+    using EventSystem.Web.Infrastructure.Adapters;
 
     public class ShoppingCartService : IShoppingCartService
     {
         private const string CartSessionKey = "Cart";
 
         private ITicketsService ticketsService;
+        private ISessionAdapter sessionAdapter;
 
-        public ShoppingCartService(ITicketsService ticketsService)
+        public ShoppingCartService(ITicketsService ticketsService, ISessionAdapter sessionAdapter)
         {
             this.ticketsService = ticketsService;
+            this.sessionAdapter = sessionAdapter;
         }
 
         public void AddTicket(OrderedTicketViewModel orderdTicket)
@@ -35,12 +38,12 @@
 
         public ShoppingCartViewModel GetShopingCart()
         {
-            var shopingCart = HttpContext.Current.Session[CartSessionKey];
+            var shopingCart = this.sessionAdapter.Session[CartSessionKey];
 
             if (shopingCart == null)
             {
                 shopingCart = new ShoppingCartViewModel();
-                HttpContext.Current.Session[CartSessionKey] = shopingCart;
+                this.sessionAdapter.Session[CartSessionKey] = shopingCart;
             }
 
             return (ShoppingCartViewModel)shopingCart;
