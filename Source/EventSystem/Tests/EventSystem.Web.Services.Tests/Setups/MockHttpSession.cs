@@ -14,7 +14,15 @@
 
         public override object this[string name]
         {
-            get { return sessionStorage[name]; }
+            get
+            {
+                if (!this.sessionStorage.ContainsKey(name))
+                {
+                    this.sessionStorage[name] = null;
+                }
+
+                return sessionStorage[name];
+            }
             set { sessionStorage[name] = value; }
         }
     }

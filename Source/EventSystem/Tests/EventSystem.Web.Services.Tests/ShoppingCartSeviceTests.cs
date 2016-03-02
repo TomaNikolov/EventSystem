@@ -20,7 +20,6 @@
             var mockTickets = new Mock<ITicketsService>();
 
             var mockSession = new MockHttpSession();
-            mockSession["Cart"] = null;
 
             var sessionAdapter = new Mock<ISessionAdapter>();
             sessionAdapter.Setup(x => x.Session).Returns(mockSession);
