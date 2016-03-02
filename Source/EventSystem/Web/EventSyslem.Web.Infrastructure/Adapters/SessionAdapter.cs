@@ -6,9 +6,9 @@ namespace EventSystem.Web.Infrastructure.Adapters
 {
     public class SessionAdapter : ISessionAdapter
     {
-        public SessionAdapter(HttpSessionState session)
+        public SessionAdapter(HttpSessionStateBase session)
         {
-            this.Session = new HttpSessionStateWrapper(session);
+            this.Session = session;
         }
 
         public HttpSessionStateBase Session { get; private set; }
