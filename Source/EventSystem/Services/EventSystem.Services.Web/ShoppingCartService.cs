@@ -1,7 +1,7 @@
 ﻿namespace EventSystem.Services.Web
 {
+    using System.Collections.Generic;
     using System.Linq;
-    using System.Web;
 
     using EventSystem.Services.Web.Contracts;
     using EventSystem.Web.Models.Orders;
@@ -69,13 +69,19 @@
         public void RemoveTicketFormCart()
         {
             var shoppingCart = this.GetShopingCart();
+            var ticketToRemove = new List<OrderedTicketViewModel>();
 
             foreach (var ticket in shoppingCart.OrderedTickets)
             {
                 if (!this.ticketsService.HasQuantity(ticket.TicketId, ticket.Quantity))
                 {
-                    shoppingCart.OrderedTickets.Remove(ticket);
+                    ticketToRemove.Add(ticket);
                 }
+            }
+
+            foreach (var ticket in ticketToRemove)
+            {
+                shoppingCart.OrderedTickets.Remove(ticket);
             }
         }
     }
