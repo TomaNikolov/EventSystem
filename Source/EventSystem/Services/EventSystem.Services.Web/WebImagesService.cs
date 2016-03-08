@@ -20,17 +20,20 @@
 
         private IFileSaverAdapter fileSaver;
 
-        public WebImagesService(IImagesService images, IMapPathAdapter serverUtilities, IFileSaverAdapter fileSaver)
+        private IDirectoryAdapter directory;
+
+        public WebImagesService(IImagesService images, IMapPathAdapter serverUtilities, IFileSaverAdapter fileSaver, IDirectoryAdapter directory)
         {
             this.images = images;
             this.serverUtilities = serverUtilities;
             this.fileSaver = fileSaver;
+            this.directory = directory;
         }
 
         public ICollection<int> SaveImages(string name, IEnumerable<HttpPostedFileBase> files)
         {
             var rootDir = this.serverUtilities.MapPath("~" + RooDirectory);
-            var dir = Directory.CreateDirectory(Path.Combine(rootDir, name));
+            this.directory.Create(Path.Combine(rootDir, name));
             var imageIds = new List<int>();
 
             foreach (var file in files)
@@ -49,7 +52,7 @@
                     file.SaveAs(path);
 
                     var thumbnailPath = Path.Combine(rootDir + thumbnailfilePath);
-                    File.WriteAllBytes(thumbnailPath, thumbnail);
+                    this.fileSaver.WriteAllBytes(thumbnailPath, thumbnail);
 
                     var image = this.images.Save(fileName, extension, RooDirectory + filePath, RooDirectory + thumbnailfilePath);
                     imageIds.Add(image.Id);

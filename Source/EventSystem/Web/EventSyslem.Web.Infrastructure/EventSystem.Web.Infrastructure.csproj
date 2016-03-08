@@ -110,7 +110,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adapters\DirectoryAdapter.cs" />
+    <Compile Include="Adapters\FileSaverAdapter.cs" />
+    <Compile Include="Adapters\IDirectoryAdapter.cs" />
+    <Compile Include="Adapters\IFileSaverAdapter.cs" />
+    <Compile Include="Adapters\IMapPathAdapter.cs" />
     <Compile Include="Adapters\ISessionAdapter.cs" />
+    <Compile Include="Adapters\MapPathAdapter.cs" />
     <Compile Include="Adapters\SessionAdapter.cs" />
     <Compile Include="Constants\Assemblies.cs" />
     <Compile Include="Constants\Messages.cs" />
@@ -136,7 +142,7 @@
     <Compile Include="Registries\DataBindingsRegister.cs" />
     <Compile Include="Registries\INinjectRegistry.cs" />
     <Compile Include="Registries\ServiceBindingsRegister.cs" />
-    <Compile Include="Registries\SessionBindingRegistry.cs" />
+    <Compile Include="Registries\AdapterBindingRegistry.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

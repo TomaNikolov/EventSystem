@@ -28,7 +28,11 @@
 
             kernel.Bind<IFileSaverAdapter>()
                .To<FileSaverAdapter>()
-               .InRequestScope()
+               .InRequestScope();
+
+            kernel.Bind<IDirectoryAdapter>()
+              .To<DirectoryAdapter>()
+              .InRequestScope();
         }
     }
 }
