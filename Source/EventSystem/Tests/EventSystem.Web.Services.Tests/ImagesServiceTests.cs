@@ -1,0 +1,31 @@
+﻿namespace EventSystem.Web.Services.Tests
+{
+    using Data.Common.Repositories;
+    using EventSystem.Models;
+    using EventSystem.Services.Contracts;
+    using EventSystem.Services.Web;
+    using Infrastructure.Adapters;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using Moq;
+    using System.Web;
+    [TestClass]
+    public class ImagesServiceTests
+    {
+        private WebImagesService imagesService;
+
+        [TestInitialize]
+        public void TestInit()
+        {
+            var mockImageService = new Mock<IImagesService>();
+            mockImageService.Setup(x => x.Save(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
+                .Returns((string name, string type, string path, string thumbnailPath) =>
+                { return new Image() { Name = name, Path = path, ThumbnailPath = thumbnailPath }; });
+
+            var mockMapPathAdapter = new Mock<IMapPathAdapter>();
+            var mockDirectoryAdapter = new Mock<IDirectoryAdapter>();
+            var mockFileSaverAdapter = new Mock<IFileSaverAdapter>();
+
+            this.imagesService = new WebImagesService(mockImageService.Object, mockMapPathAdapter.Object, mockFileSaverAdapter.Object, mockDirectoryAdapter.Object);
+        }
+    }
+}

@@ -6,7 +6,7 @@
     using Ninject;
     using Ninject.Web.Common;
 
-    public class SessionBindingRegistry : INinjectRegistry
+    public class AdapterBindingRegistry : INinjectRegistry
     {
         public void Register(IKernel kernel)
         {
@@ -17,6 +17,22 @@
                       "session",
                       ninjectContext => new HttpSessionStateWrapper(HttpContext.Current.Session)
                   );
+
+            kernel.Bind<IMapPathAdapter>()
+                .To<MapPathAdapter>()
+                .InRequestScope()
+                .WithConstructorArgument(
+                    "utility",
+                    ninjectContext => HttpContext.Current.Server
+                );
+
+            kernel.Bind<IFileSaverAdapter>()
+               .To<FileSaverAdapter>()
+               .InRequestScope();
+
+            kernel.Bind<IDirectoryAdapter>()
+              .To<DirectoryAdapter>()
+              .InRequestScope();
         }
     }
 }

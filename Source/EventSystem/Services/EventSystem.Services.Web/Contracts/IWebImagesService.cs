@@ -3,7 +3,7 @@
     using System.Collections.Generic;
     using System.Web;
 
-    public interface IImagesService
+    public interface IWebImagesService
     {
         ICollection<int> SaveImages(string name, IEnumerable<HttpPostedFileBase> files);
     }

@@ -6,25 +6,34 @@
     using System.Web;
 
     using Contracts;
-    using Data.Common.Repositories;
-
-    public class ImagesService : IImagesService
+    using Services.Contracts;
+    using EventSystem.Web.Infrastructure.Adapters;
+    public class WebImagesService : IWebImagesService
     {
         private const string RooDirectory = "/Images/";
 
         private const string Thumbnail = "-thumbnail";
 
-        private IDbRepository<Models.Image> images;
+        private IImagesService images;
 
-        public ImagesService(IDbRepository<Models.Image> images)
+        private IMapPathAdapter serverUtilities;
+
+        private IFileSaverAdapter fileSaver;
+
+        private IDirectoryAdapter directory;
+
+        public WebImagesService(IImagesService images, IMapPathAdapter serverUtilities, IFileSaverAdapter fileSaver, IDirectoryAdapter directory)
         {
             this.images = images;
+            this.serverUtilities = serverUtilities;
+            this.fileSaver = fileSaver;
+            this.directory = directory;
         }
 
         public ICollection<int> SaveImages(string name, IEnumerable<HttpPostedFileBase> files)
         {
-            var rootDir = HttpContext.Current.Server.MapPath("~" + RooDirectory);
-            var dir = Directory.CreateDirectory(Path.Combine(rootDir, name));
+            var rootDir = this.serverUtilities.MapPath("~" + RooDirectory);
+            this.directory.Create(Path.Combine(rootDir, name));
             var imageIds = new List<int>();
 
             foreach (var file in files)
@@ -43,9 +52,9 @@
                     file.SaveAs(path);
 
                     var thumbnailPath = Path.Combine(rootDir + thumbnailfilePath);
-                    File.WriteAllBytes(thumbnailPath, thumbnail);
+                    this.fileSaver.WriteAllBytes(thumbnailPath, thumbnail);
 
-                    var image = this.SaveToImage(fileName, extension, RooDirectory + filePath, RooDirectory + thumbnailfilePath);
+                    var image = this.images.Save(fileName, extension, RooDirectory + filePath, RooDirectory + thumbnailfilePath);
                     imageIds.Add(image.Id);
                 }
             }
@@ -73,22 +82,6 @@
             MemoryStream memoryStream = new MemoryStream();
             inputStream.CopyTo(memoryStream);
             return memoryStream.ToArray();
-        }
-
-        private Models.Image SaveToImage(string name, string type, string path, string thumbnailPath)
-        {
-            var image = new Models.Image()
-            {
-                Name = name,
-                FileExtension = type,
-                Path = path,
-                ThumbnailPath = thumbnailPath
-            };
-
-            this.images.Add(image);
-            this.images.Save();
-
-            return image;
         }
     }
 }
