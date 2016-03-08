@@ -23,6 +23,16 @@
           //  this.imagesService = new WebImagesService(mockImageService.Object);
         }
 
-      
+        [TestMethod]
+        public void Testtest()
+        {
+            var mockImageService = new Mock<IImagesService>();
+            mockImageService.Setup(x => x.Save(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
+                .Returns((string name, string type, string path, string thumbnailPath) =>
+                { return new Image() { Name = name, Path = path, ThumbnailPath = thumbnailPath }; });
+
+            var mock = mockImageService.Object;
+            var image = mock.Save("snimka", "tip", "sda/asd", "asd/asd/thumbnail");
+        }
     }
 }

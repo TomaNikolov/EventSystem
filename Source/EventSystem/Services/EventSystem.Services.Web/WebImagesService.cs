@@ -18,10 +18,13 @@
 
         private IMapPathAdapter serverUtilities;
 
-        public WebImagesService(IImagesService images, IMapPathAdapter serverUtilities)
+        private IFileSaverAdapter fileSaver;
+
+        public WebImagesService(IImagesService images, IMapPathAdapter serverUtilities, IFileSaverAdapter fileSaver)
         {
             this.images = images;
             this.serverUtilities = serverUtilities;
+            this.fileSaver = fileSaver;
         }
 
         public ICollection<int> SaveImages(string name, IEnumerable<HttpPostedFileBase> files)
