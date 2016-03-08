@@ -1,9 +1,9 @@
 ﻿namespace EventSystem.Services
 {
-    using System;
-    using Models;
-    using EventSystem.Services.Contracts;
     using Data.Common.Repositories;
+    using EventSystem.Services.Contracts;
+    using Models;
+
     public class ImagesService : IImagesService
     {
         private IDbRepository<Image> images;

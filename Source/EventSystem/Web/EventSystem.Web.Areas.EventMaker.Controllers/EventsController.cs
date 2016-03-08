@@ -17,10 +17,10 @@
     public class EventsController : BaseEventMakerController<EventViewModel>
     {
         private  IEventsService eventsService;
-        private IImagesService imagesService;
+        private IWebImagesService imagesService;
         private ITicketsService ticketsServices;
 
-        public EventsController(IEventsService eventsService, IImagesService imagesService, ITicketsService ticketsServices, IUsersService usersService)
+        public EventsController(IEventsService eventsService, IWebImagesService imagesService, ITicketsService ticketsServices, IUsersService usersService)
             :base(usersService)
         {
             this.eventsService = eventsService;

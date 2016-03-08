@@ -17,6 +17,14 @@
                       "session",
                       ninjectContext => new HttpSessionStateWrapper(HttpContext.Current.Session)
                   );
+
+            kernel.Bind<IMapPathAdapter>()
+                .To<MapPathAdapter>()
+                .InRequestScope()
+                .WithConstructorArgument(
+                    "session",
+                    ninjectContext => new HttpSessionStateWrapper(HttpContext.Current.Session)
+                );
         }
     }
 }

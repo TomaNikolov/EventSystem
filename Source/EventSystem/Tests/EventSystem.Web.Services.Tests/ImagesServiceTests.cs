@@ -6,16 +6,23 @@
     using EventSystem.Services.Web;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Moq;
+    using System.Web;
     [TestClass]
     public class ImagesServiceTests
     {
-        private ImagesService imagesService;
+        private WebImagesService imagesService;
 
         [TestInitialize]
         public void TestInit()
         {
-            var mockImageRepository = new Mock<IDbRepository<Image>>();
-            this.imagesService = new ImagesService(mockImageRepository.Object);
+            var mockImageService = new Mock<IImagesService>();
+            mockImageService.Setup(x => x.Save(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
+                .Returns((string name, string type, string path,string thumbnailPath) =>
+                { return new Image() { Name = name, Path = path, ThumbnailPath = thumbnailPath }; });
+
+          //  this.imagesService = new WebImagesService(mockImageService.Object);
         }
+
+      
     }
 }

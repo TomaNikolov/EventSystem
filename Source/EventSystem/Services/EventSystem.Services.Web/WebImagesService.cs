@@ -7,7 +7,7 @@
 
     using Contracts;
     using Services.Contracts;
-
+    using EventSystem.Web.Infrastructure.Adapters;
     public class WebImagesService : IWebImagesService
     {
         private const string RooDirectory = "/Images/";
@@ -16,14 +16,17 @@
 
         private IImagesService images;
 
-        public WebImagesService(IImagesService images)
+        private IMapPathAdapter serverUtilities;
+
+        public WebImagesService(IImagesService images, IMapPathAdapter serverUtilities)
         {
             this.images = images;
+            this.serverUtilities = serverUtilities;
         }
 
         public ICollection<int> SaveImages(string name, IEnumerable<HttpPostedFileBase> files)
         {
-            var rootDir = HttpContext.Current.Server.MapPath("~" + RooDirectory);
+            var rootDir = this.serverUtilities.MapPath("~" + RooDirectory);
             var dir = Directory.CreateDirectory(Path.Combine(rootDir, name));
             var imageIds = new List<int>();
 

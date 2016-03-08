@@ -18,9 +18,9 @@
     {
         private IPlacesService placesService;
 
-        private IImagesService imagesService;
+        private IWebImagesService imagesService;
 
-        public PlacesController(IPlacesService placesService, IImagesService imagesService, IUsersService usersService)
+        public PlacesController(IPlacesService placesService, IWebImagesService imagesService, IUsersService usersService)
             :base(usersService)
         {
             this.placesService = placesService;
