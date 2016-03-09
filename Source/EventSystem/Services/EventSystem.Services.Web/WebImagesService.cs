@@ -6,8 +6,9 @@
     using System.Web;
 
     using Contracts;
-    using Services.Contracts;
     using EventSystem.Web.Infrastructure.Adapters;
+    using Services.Contracts;
+
     public class WebImagesService : IWebImagesService
     {
         private const string RooDirectory = "/Images/";
@@ -22,19 +23,27 @@
 
         private IDirectoryAdapter directory;
 
-        public WebImagesService(IImagesService images, IMapPathAdapter serverUtilities, IFileSaverAdapter fileSaver, IDirectoryAdapter directory)
+        private IGuidAdapter guid;
+
+        public WebImagesService(
+            IImagesService images,
+            IMapPathAdapter serverUtilities, 
+            IFileSaverAdapter fileSaver, 
+            IDirectoryAdapter directory, 
+            IGuidAdapter guid)
         {
             this.images = images;
             this.serverUtilities = serverUtilities;
             this.fileSaver = fileSaver;
             this.directory = directory;
+            this.guid = guid;
         }
 
-        public ICollection<int> SaveImages(string name, IEnumerable<HttpPostedFileBase> files)
+        public ICollection<Models.Image> SaveImages(string name, IEnumerable<HttpPostedFileBase> files)
         {
             var rootDir = this.serverUtilities.MapPath("~" + RooDirectory);
             this.directory.Create(Path.Combine(rootDir, name));
-            var imageIds = new List<int>();
+            var images = new List<Models.Image>();
 
             foreach (var file in files)
             {
@@ -42,7 +51,7 @@
                 {
                     var originalImageName = Path.GetFileName(file.FileName);
                     var extension = originalImageName.Substring(originalImageName.LastIndexOf('.'));
-                    var fileName = Guid.NewGuid().ToString();
+                    var fileName = this.guid.NewGuid();
                     var filePath = name + "/" + fileName + extension;
                     var thumbnailfilePath = name + "/" + fileName + Thumbnail + extension;
                     var data = this.GetBiteArrayFromStream(file.InputStream);
@@ -55,11 +64,11 @@
                     this.fileSaver.WriteAllBytes(thumbnailPath, thumbnail);
 
                     var image = this.images.Save(fileName, extension, RooDirectory + filePath, RooDirectory + thumbnailfilePath);
-                    imageIds.Add(image.Id);
+                    images.Add(image);
                 }
             }
 
-            return imageIds;
+            return images;
         }
 
         public byte[] CreateImageThumbnail(byte[] image, int width = 263, int height = 231)

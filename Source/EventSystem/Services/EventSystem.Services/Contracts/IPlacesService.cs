@@ -11,6 +11,6 @@
 
         int GetAllPage(string userId, int page, string orderBy, string search);
 
-        int Create(string userId, string name, string description, int countryId, int cityId, double latitude, double longitude, string street, ICollection<int> imageIds);
+        int Create(string userId, string name, string description, int countryId, int cityId, double latitude, double longitude, string street, ICollection<Image> images);
     }
 }

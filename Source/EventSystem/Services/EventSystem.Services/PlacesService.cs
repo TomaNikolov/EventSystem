@@ -31,9 +31,8 @@
             return this.places.GetById(id);
         }
 
-        public int Create(string userId, string name, string description, int countryId, int cityId, double latitude, double longitude, string street, ICollection<int> imageIds)
+        public int Create(string userId, string name, string description, int countryId, int cityId, double latitude, double longitude, string street, ICollection<Image> images)
         {
-            var images = this.images.All().Where(x => imageIds.Contains(x.Id)).ToList();
             var place = new Place()
             {
                 Name = name,
