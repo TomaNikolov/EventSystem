@@ -112,8 +112,10 @@
   <ItemGroup>
     <Compile Include="Adapters\DirectoryAdapter.cs" />
     <Compile Include="Adapters\FileSaverAdapter.cs" />
+    <Compile Include="Adapters\GuidAdapter.cs" />
     <Compile Include="Adapters\IDirectoryAdapter.cs" />
     <Compile Include="Adapters\IFileSaverAdapter.cs" />
+    <Compile Include="Adapters\IGuidAdapter.cs" />
     <Compile Include="Adapters\IMapPathAdapter.cs" />
     <Compile Include="Adapters\ISessionAdapter.cs" />
     <Compile Include="Adapters\MapPathAdapter.cs" />

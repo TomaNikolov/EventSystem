@@ -56,8 +56,8 @@
                 return this.View(model);
             }
 
-            var imageIds = this.imagesService.SaveImages(model.Name, model.Files);
-            var placeId = this.placesService.Create(this.CurrentUser.Id, model.Name, model.Description, model.CountryId, model.CityId, model.Latitude, model.Longitude, model.Street, imageIds);
+            var images = this.imagesService.SaveImages(model.Name, model.Files);
+            var placeId = this.placesService.Create(this.CurrentUser.Id, model.Name, model.Description, model.CountryId, model.CityId, model.Latitude, model.Longitude, model.Street, images);
 
             this.AddToastMessage(Messages.Congratulations, Messages.PlaceCreateMessage, ToastType.Success);
 

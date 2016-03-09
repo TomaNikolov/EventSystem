@@ -122,10 +122,8 @@
             return result;
         }
 
-        public int Create(string userId, string title, string description, DateTime eventStart, int categoryId, int placeId, ICollection<int> imageIds)
+        public int Create(string userId, string title, string description, DateTime eventStart, int categoryId, int placeId, ICollection<Image> images)
         {
-            var images = this.images.All().Where(x => imageIds.Contains(x.Id)).ToList();
-
             var newEvent = new Event()
             {
                 Title = title,
@@ -134,6 +132,7 @@
                 CategoryId = categoryId,
                 PlaceId = placeId,
                 UserId = userId,
+                Images = images
             };
 
             this.events.Add(newEvent);

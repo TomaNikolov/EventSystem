@@ -5,6 +5,6 @@
 
     public interface IWebImagesService
     {
-        ICollection<int> SaveImages(string name, IEnumerable<HttpPostedFileBase> files);
+        ICollection<Models.Image> SaveImages(string name, IEnumerable<HttpPostedFileBase> files);
     }
 }

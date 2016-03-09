@@ -57,8 +57,8 @@
                 return this.View(model);
             }
           
-            var imageIds = this.imagesService.SaveImages(model.Title, model.Files);
-            var eventId = this.eventsService.Create(this.CurrentUser.Id, model.Title, model.Description, model.EventStart, model.CategoryId, model.PlaceId, imageIds);
+            var images = this.imagesService.SaveImages(model.Title, model.Files);
+            var eventId = this.eventsService.Create(this.CurrentUser.Id, model.Title, model.Description, model.EventStart, model.CategoryId, model.PlaceId, images);
             this.ticketsServices.Create(model.Ticket.Price, model.Ticket.Ammount, eventId);
             this.AddToastMessage(Messages.Congratulations, Messages.PlaceCreateMessage, ToastType.Success);
 

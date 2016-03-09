@@ -4,9 +4,9 @@
     using System.Linq;
 
     using EventSystem.Services.Web.Contracts;
+    using EventSystem.Web.Infrastructure.Adapters;
     using EventSystem.Web.Models.Orders;
     using Services.Contracts;
-    using EventSystem.Web.Infrastructure.Adapters;
 
     public class ShoppingCartService : IShoppingCartService
     {

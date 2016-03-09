@@ -33,6 +33,10 @@
             kernel.Bind<IDirectoryAdapter>()
               .To<DirectoryAdapter>()
               .InRequestScope();
+
+            kernel.Bind<IGuidAdapter>()
+              .To<GuidAdapter>()
+              .InRequestScope();
         }
     }
 }
