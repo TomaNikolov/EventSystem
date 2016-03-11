@@ -9,7 +9,7 @@
     using Models.Events;
     using Moq;
     using Services.Contracts;
-  
+
     using TestStack.FluentMVCTesting;
 
     [TestClass]
@@ -30,15 +30,19 @@
         [TestInitialize]
         public void TestInit()
         {
-            var EventServiceMock = new Mock<IEventsService>();
-            EventServiceMock.Setup(x => x.GetById(It.IsAny<int>()))
+            var eventServiceMock = new Mock<IEventsService>();
+            eventServiceMock.Setup(x => x.GetById(It.IsAny<int>()))
                 .Returns(new List<Event>()
-                {  new Event { Description = EventDescription,
-                        User = new User() { UserName = UserName },
-                        Category = new Category() { Name = CategoryName } }
+                {
+                    new Event()
+                        {
+                                Description = EventDescription,
+                                User = new User() { UserName = UserName },
+                                Category = new Category() { Name = CategoryName }
+                        }
                 }.AsQueryable());
 
-            this.eventController = new EventController(EventServiceMock.Object);
+            this.eventController = new EventController(eventServiceMock.Object);
         }
 
         [TestMethod]
