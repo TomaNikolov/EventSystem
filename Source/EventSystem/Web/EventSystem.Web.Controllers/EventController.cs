@@ -32,17 +32,17 @@
         [PopulateCities]
         [PopulateCountries]
         [PopulateCategories]
-        public ActionResult Search(string orderBy, string search, string place, string catogory, string country, string city, int page = 1)
+        public ActionResult Search(string orderBy, string search, string place, string category, string country, string city, int page = 1)
         {
             page = page < 1 ? 1 : page;
 
             var model = new EventsPagableAndSortbleViewModel<EventsSearchViewModel>();
-            model.Data = this.eventService.GetByPage(page, orderBy, search, place, catogory, country, city)
+            model.Data = this.eventService.GetByPage(page, orderBy, search, place, category, country, city)
             .To<EventsSearchViewModel>()
             .ToList();
 
-            model.AllPage = this.eventService.GetAllPage(page, orderBy, search, place, catogory, country, city);
-            model.BindData(orderBy, search, place, catogory, country, city, page);
+            model.AllPage = this.eventService.GetAllPage(page, orderBy, search, place, category, country, city);
+            model.BindData(orderBy, search, place, category, country, city, page);
 
             return this.View(model);
         }
