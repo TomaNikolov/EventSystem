@@ -10,7 +10,9 @@
 
         public const string Edit = "Edit";
 
-        public const string Detatils = "Detatils";
+        public const string Details = "Details";
+
+        public const string Search = "Search";
 
         public const string Errors = "Error";
     }

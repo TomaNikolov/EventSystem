@@ -12,6 +12,7 @@
 
     using TestStack.FluentMVCTesting;
     using Models.PagingAndSorting;
+    using Infrastructure.Constants;
     [TestClass]
     public class EventControllerTests
     {
@@ -19,6 +20,8 @@
         public const string UserName = "Pesho";
         public const string CategoryName = "Rock";
         public const string ThumbnailPath = "ThumbnailPath";
+        public const string PlaceName = "Bar Fabric";
+        public const string CityName = "Plovdiv";
 
         private EventController eventController;
 
@@ -38,8 +41,8 @@
                                 Description = EventDescription,
                                 User = new User() { UserName = UserName },
                                 Category = new Category() { Name = CategoryName },
-                                Place = new Place () {Name = "Bar Fabric", City = new City() {Name = "Plovdiv" } },
-                                Images = new List<Image>() {new Image() { ThumbnailPath = "ThumbnailPath" } }
+                                Place = new Place () {Name = PlaceName, City = new City() {Name = CityName } },
+                                Images = new List<Image>() {new Image() { ThumbnailPath = ThumbnailPath } }
                         }
                 };
             var eventServiceMock = new Mock<IEventsService>();
@@ -56,7 +59,7 @@
         public void DetailsShouldWorkCorrectly()
         {
             this.eventController.WithCallTo(x => x.Details(1))
-                .ShouldRenderView("Details")
+                .ShouldRenderView(Views.Details)
                 .WithModel<EventDetailsViewModel>(
                     viewModel =>
                     {
@@ -70,7 +73,7 @@
         public void SearchShouldWorkCorrectly()
         {
             this.eventController.WithCallTo(x => x.Search(null, null, null, null, null, null, 0))
-                .ShouldRenderView("Search")
+                .ShouldRenderView(Views.Search)
                 .WithModel<EventsPagableAndSortbleViewModel<EventsSearchViewModel>>(
                     viewModel =>
                     {
